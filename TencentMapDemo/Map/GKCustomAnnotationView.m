@@ -50,10 +50,6 @@
         
         [self.iconView addTarget:self action:@selector(iconViewClicked:) forControlEvents:UIControlEventTouchUpInside];
         
-        //      [GKMapViewSingleTon sharedInstance].userIconRect = CGRectMake(self.frame.origin.x,
-        //                                                                    self.frame.origin.y,
-        //                                                                    80,
-        //                                                                    80);
     }
     
     return _iconView;

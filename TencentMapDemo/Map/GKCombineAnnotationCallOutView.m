@@ -75,8 +75,12 @@
         
         [_GKCombineBrandScrollView addSubview:cell];
         
-//        [self layoutIfNeeded];
     }
+}
+
+- (void)GKCallOutViewBrandCell:(GKCallOutViewBrandCell *)cell DidSelectedBrandCellWithCellId:(NSInteger)cellId
+{
+    
 }
 
 @end

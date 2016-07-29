@@ -152,7 +152,6 @@
     return nil;
 }
 
-
 - (void)mapView:(QMapView *)mapView didSelectAnnotationView:(QAnnotationView *)view
 {
     // 品牌
@@ -188,7 +187,6 @@
         } completion:^(BOOL finished) {
             _jobCard.isVisible = !_jobCard.isVisible;
         }];
-        
     }
     
     // 用户头像
@@ -239,16 +237,16 @@
     
     QMapRect mapViewRect =[mapView visibleMapRect];
     
-    if(_userCircleRect.origin.x < QMapRectGetMaxX(mapViewRect)
-       && (_userCircleRect.origin.x + _userCircleRect.size.width) > QMapRectGetMinX(mapViewRect)
-       && (_userCircleRect.origin.y + _userCircleRect.size.height) > QMapRectGetMinY(mapViewRect)
-       && _userCircleRect.origin.y < QMapRectGetMaxY(mapViewRect)
+    if(QMapRectGetMinX(_userCircleRect) > QMapRectGetMaxX(mapViewRect)
+       || QMapRectGetMaxX(_userCircleRect) < QMapRectGetMinX(mapViewRect)
+       || QMapRectGetMinY(_userCircleRect) > QMapRectGetMaxY(mapViewRect)
+       || QMapRectGetMaxY(_userCircleRect) < QMapRectGetMinY(mapViewRect)
        )
     {
-        NSLog(@"未出屏幕");
+        NSLog(@"出屏幕");
     }else
     {
-        NSLog(@"出屏幕");
+        NSLog(@"未出屏幕");
     }
 }
 
