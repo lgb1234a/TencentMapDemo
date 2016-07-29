@@ -25,7 +25,11 @@
 
 @property (nonatomic, strong) GKJobCardView *jobCard;
 
+@property (nonatomic, strong) QCircle *userCircle;
+
 @property (nonatomic, strong) QCircle *tapedCircle;
+
+@property (nonatomic, assign) QMapRect userCircleRect;
 
 @end
 
@@ -48,14 +52,12 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.mapView = [[GKMapView alloc] initWithFrame:self.bounds];
-        self.mapView.showsUserLocation = YES;
+        self.mapView.hideAccuracyCircle = YES;
         self.mapView.delegate = self;
         [self addSubview:self.mapView];
         
         // 设置地图中心
         [self.mapView setCenterCoordinate:CLLocationCoordinate2DMake(39.920269,116.390533)];
-        // 开启定位
-        [self.mapView setShowsUserLocation:YES];
         // 设置缩放大小
         [self.mapView setZoomLevel:10];
         
@@ -63,6 +65,7 @@
         CLLocationCoordinate2D center = CLLocationCoordinate2DMake(39.980161,116.327621);
         //构造圆形，半径单位m
         QCircle *circle = [QCircle circleWithCenterCoordinate:center radius:3000];
+        self.userCircleRect = circle.boundingMapRect;
         //添加圆形
         [self.mapView addOverlay:circle];
         
@@ -228,6 +231,24 @@
              _jobCard.isVisible = !_jobCard.isVisible;
              
          }];
+    }
+}
+
+- (void)mapRegionChanged:(QMapView*)mapView
+{
+    
+    QMapRect mapViewRect =[mapView visibleMapRect];
+    
+    if(_userCircleRect.origin.x < QMapRectGetMaxX(mapViewRect)
+       && (_userCircleRect.origin.x + _userCircleRect.size.width) > QMapRectGetMinX(mapViewRect)
+       && (_userCircleRect.origin.y + _userCircleRect.size.height) > QMapRectGetMinY(mapViewRect)
+       && _userCircleRect.origin.y < QMapRectGetMaxY(mapViewRect)
+       )
+    {
+        NSLog(@"未出屏幕");
+    }else
+    {
+        NSLog(@"出屏幕");
     }
 }
 
