@@ -22,12 +22,12 @@
 @implementation GKCustomCalloutView
 
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect {
+ // Drawing code
+ }
+ */
 
 #define arrowHeight 10
 
@@ -113,7 +113,7 @@
     [self addSubview:_stackView];
     //添加title
     _labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(0,
-    0,
+                                                            0,
                                                             titleWidth,
                                                             titleHeight)];
     [_stackView addArrangedSubview:_labelTitle];

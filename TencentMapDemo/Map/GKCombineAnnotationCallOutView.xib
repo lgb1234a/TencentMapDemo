@@ -12,12 +12,12 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fyC-oS-UAR">
-                    <rect key="frame" x="0.0" y="0.0" width="544" height="150"/>
+                    <rect key="frame" x="0.0" y="5" width="544" height="155"/>
                 </scrollView>
                 <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Ph3-tm-FL4">
-                    <rect key="frame" x="0.0" y="150" width="544" height="10"/>
+                    <rect key="frame" x="0.0" y="160" width="544" height="5"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="10" id="wN3-8K-0MU"/>
+                        <constraint firstAttribute="height" constant="5" id="wN3-8K-0MU"/>
                     </constraints>
                     <color key="pageIndicatorTintColor" red="0.7843137255" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="currentPageIndicatorTintColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -25,17 +25,18 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="fyC-oS-UAR" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="0Px-Wv-4Wa"/>
+                <constraint firstItem="fyC-oS-UAR" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="0Px-Wv-4Wa"/>
                 <constraint firstItem="Ph3-tm-FL4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="cZY-GE-fkQ"/>
-                <constraint firstAttribute="bottom" secondItem="fyC-oS-UAR" secondAttribute="bottom" constant="20" id="fM9-LF-rFc"/>
+                <constraint firstAttribute="bottom" secondItem="fyC-oS-UAR" secondAttribute="bottom" constant="10" id="fM9-LF-rFc"/>
                 <constraint firstItem="fyC-oS-UAR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="hSm-xM-2wI"/>
                 <constraint firstAttribute="trailing" secondItem="Ph3-tm-FL4" secondAttribute="trailing" id="nPd-Rh-jwU"/>
-                <constraint firstAttribute="bottom" secondItem="Ph3-tm-FL4" secondAttribute="bottom" constant="10" id="w7A-vx-WGd"/>
+                <constraint firstAttribute="bottom" secondItem="Ph3-tm-FL4" secondAttribute="bottom" constant="5" id="w7A-vx-WGd"/>
                 <constraint firstAttribute="trailing" secondItem="fyC-oS-UAR" secondAttribute="trailing" id="wFZ-vZ-1dd"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="GKCombineBrandScrollView" destination="fyC-oS-UAR" id="UaF-Ln-mfa"/>
+                <outlet property="GKPageControl" destination="Ph3-tm-FL4" id="Adc-A8-uUb"/>
             </connections>
             <point key="canvasLocation" x="468" y="383"/>
         </view>

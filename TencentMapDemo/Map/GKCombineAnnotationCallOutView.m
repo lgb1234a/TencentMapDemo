@@ -13,6 +13,8 @@
 
 @property (weak, nonatomic) IBOutlet UIScrollView *GKCombineBrandScrollView;
 
+@property (weak, nonatomic) IBOutlet UIPageControl *GKPageControl;
+
 @property (nonatomic, strong) NSMutableArray *brandDataArray;
 
 @end
@@ -22,54 +24,59 @@
 
 - (NSMutableArray *)brandDataArray
 {
-  if(!_brandDataArray)
-  {
-    _brandDataArray = [NSMutableArray arrayWithArray:@[@1, @2, @3, @4, @5]];
-  }
-  
-  return _brandDataArray;
+    if(!_brandDataArray)
+    {
+        _brandDataArray = [NSMutableArray arrayWithArray:@[@1, @2, @3, @4, @5]];
+    }
+    
+    return _brandDataArray;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
-  self = [super initWithFrame:frame];
-  if (self) {
-    
-  }
-  return self;
+    self = [super initWithFrame:frame];
+    if (self) {
+        
+    }
+    return self;
 }
 
 
 - (void)awakeFromNib
 {
-  [super awakeFromNib];
-  
-  static CGFloat cellMargin = 5.0;
-  static CGFloat cellWidth  = 30.0;
-  static CGFloat cellHeight = 30.0;
-  static CGFloat selfWidth  = 5.0;
-  static CGFloat selfHeight = 50.0;
-  
-  for(int i = 0; i < self.brandDataArray.count; i++)
-  {
-    GKCallOutViewBrandCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"GKCallOutViewBrandCell" owner:nil options:nil] lastObject];
-    cell.cellId = [self.brandDataArray[i] integerValue];
-    cell.delegate = self;
-      
-    cell.frame = CGRectMake(selfWidth, 0, cellWidth, cellHeight);
-    selfWidth = selfWidth + cellWidth + cellMargin;
+    [super awakeFromNib];
     
-    _GKCombineBrandScrollView.contentSize = CGSizeMake(selfWidth, selfHeight);
+    _GKPageControl.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.5, 0.5);
     
-    if(i < 4)
+//    self.backgroundColor = [UIColor clearColor];
+    self.layer.cornerRadius = 22.5;
+    
+    static CGFloat cellMargin = 5.0;
+    static CGFloat cellWidth  = 30.0;
+    static CGFloat cellHeight = 30.0;
+    static CGFloat selfWidth  = 5.0;
+    static CGFloat selfHeight = 45.0;
+    
+    for(int i = 0; i < self.brandDataArray.count; i++)
     {
-      self.bounds = CGRectMake(0, 0, selfWidth, selfHeight);
+        GKCallOutViewBrandCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"GKCallOutViewBrandCell" owner:nil options:nil] lastObject];
+        cell.cellId = [self.brandDataArray[i] integerValue];
+        cell.delegate = self;
+        
+        cell.frame = CGRectMake(selfWidth, 0, cellWidth, cellHeight);
+        selfWidth = selfWidth + cellWidth + cellMargin;
+        
+        _GKCombineBrandScrollView.contentSize = CGSizeMake(selfWidth, selfHeight);
+        
+        if(i < 4)
+        {
+            self.bounds = CGRectMake(0, 0, selfWidth, selfHeight);
+        }
+        
+        [_GKCombineBrandScrollView addSubview:cell];
+        
+//        [self layoutIfNeeded];
     }
-    
-    [_GKCombineBrandScrollView addSubview:cell];
-    
-    [self layoutIfNeeded];
-  }
 }
 
 @end

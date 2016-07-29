@@ -28,12 +28,12 @@
 #pragma mark - life
 - (void)awakeFromNib
 {
-  [super awakeFromNib];
-  
+    [super awakeFromNib];
+    
     self.GKJobTableView.delegate = self;
     self.GKJobTableView.dataSource = self;
-  
-  [self.GKJobTableView registerNib:[UINib nibWithNibName:@"GKJobCell" bundle:nil] forCellReuseIdentifier:@"cell"];
+    
+    [self.GKJobTableView registerNib:[UINib nibWithNibName:@"GKJobCell" bundle:nil] forCellReuseIdentifier:@"cell"];
     self.GKCardBackgroundView.layer.cornerRadius = 5.0;
 }
 
@@ -51,7 +51,7 @@
     
     if(!cell)
     {
-      cell = [[[NSBundle mainBundle] loadNibNamed:@"GKJobCell" owner:nil options:nil] lastObject];
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"GKJobCell" owner:nil options:nil] lastObject];
     }
     
     return cell;

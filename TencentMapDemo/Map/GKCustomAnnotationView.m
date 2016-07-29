@@ -49,11 +49,11 @@
         [self.iconView setImage:[UIImage imageNamed:@"subway_station"] forState:UIControlStateNormal];
         
         [self.iconView addTarget:self action:@selector(iconViewClicked:) forControlEvents:UIControlEventTouchUpInside];
-      
-//      [GKMapViewSingleTon sharedInstance].userIconRect = CGRectMake(self.frame.origin.x,
-//                                                                    self.frame.origin.y,
-//                                                                    80,
-//                                                                    80);
+        
+        //      [GKMapViewSingleTon sharedInstance].userIconRect = CGRectMake(self.frame.origin.x,
+        //                                                                    self.frame.origin.y,
+        //                                                                    80,
+        //                                                                    80);
     }
     
     return _iconView;
@@ -63,7 +63,7 @@
 
 - (void)setIconViewImg:(UIImage *)image
 {
-  [self.iconView setImage:image forState:UIControlStateNormal];
+    [self.iconView setImage:image forState:UIControlStateNormal];
 }
 
 
@@ -91,31 +91,29 @@
 }
 
 -(void)setSelected:(BOOL)selected animated:(BOOL)animated {
-
-  
+    
+    
     if (self.selected == selected) {
         return;
     }
     if (selected) {
-      
-      // 添加动画
-      
-      //需要弹出callout的时候才开始初始化CalloutView
-      if (_combineAnnotationCallOutView == nil) {
         
-        _combineAnnotationCallOutView = [[[NSBundle mainBundle] loadNibNamed:@"GKCombineAnnotationCallOutView" owner:nil options:nil] lastObject];
+        //需要弹出callout的时候才开始初始化CalloutView
+        if (_combineAnnotationCallOutView == nil) {
+            
+            _combineAnnotationCallOutView = [[[NSBundle mainBundle] loadNibNamed:@"GKCombineAnnotationCallOutView" owner:nil options:nil] lastObject];
+            
+            _combineAnnotationCallOutView.center =CGPointMake(CGRectGetWidth(self.bounds) / 2,
+                                                              -CGRectGetHeight(_combineAnnotationCallOutView.bounds)/2);
+            
+        }
+        [self addSubview:_combineAnnotationCallOutView];
         
-        _combineAnnotationCallOutView.center =CGPointMake(CGRectGetWidth(self.bounds) / 2,
-                                                          -CGRectGetHeight(_combineAnnotationCallOutView.bounds)/2);
-        
-      }
-      [self addSubview:_combineAnnotationCallOutView];
-      
     } else {
-      
-      
+        
+        [_combineAnnotationCallOutView removeFromSuperview];
     }
-  
+    
     [super setSelected:selected animated:animated];
 }
 
@@ -132,7 +130,7 @@
 {
     // sdk内的annotation点击到图标返回YES,否则NO
     BOOL inside = [super pointInside:point withEvent:event];
-  
+    
     if (!inside)
     {
         /* Callout existed. */
@@ -147,31 +145,5 @@
     return inside;
 }
 
-
-- (void)animationDidStart:(CAAnimation *)anim
-{
-  NSLog(@"开始");
-}
-
-
-- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
-{
-  NSLog(@"停止");
-}
-
-
-BOOL isCoordinateCoincided(CLLocationCoordinate2D firstCoor, CLLocationCoordinate2D secondCoor)
-{
-  if(firstCoor.latitude == secondCoor.latitude  &&  firstCoor.longitude == secondCoor.longitude)
-  {
-    return YES;
-  }
-  return NO;
-}
-
-- (BOOL)isTapedUserIconViewWithTapedCoordinate:(CLLocationCoordinate2D)tapCoor
-{
-  return NO;
-}
 
 @end

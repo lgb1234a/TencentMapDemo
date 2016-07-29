@@ -12,14 +12,14 @@
 
 + (GKMapViewSingleTon *)sharedInstance
 {
-  static GKMapViewSingleTon *sharedInstance;
-  static dispatch_once_t onceToken;
-  
-  dispatch_once(&onceToken, ^{
-    sharedInstance = [[GKMapViewSingleTon alloc] init];
-  });
-  
-  return sharedInstance;
+    static GKMapViewSingleTon *sharedInstance;
+    static dispatch_once_t onceToken;
+    
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[GKMapViewSingleTon alloc] init];
+    });
+    
+    return sharedInstance;
 }
 
 
