@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="GKJobCell">
+            <rect key="frame" x="0.0" y="0.0" width="373" height="71"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="岗位名称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LBs-Zk-aqr">
+                    <rect key="frame" x="15" y="9" width="348" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="sYG-pP-ohG"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥4000~6000元" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lLb-ya-gN8">
+                    <rect key="frame" x="60" y="40" width="303" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="OuC-uq-XzU"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.5777844551282052" green="0.049498913224950619" blue="0.027855786180667915" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YW5-wo-dD3">
+                    <rect key="frame" x="15" y="40" width="40" height="21"/>
+                    <color key="backgroundColor" red="0.74579326923076916" green="0.064477421372559005" blue="0.043527540065207329" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="UXh-I3-OoV"/>
+                        <constraint firstAttribute="width" constant="40" id="cmF-fQ-UYR"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <state key="normal" title="月薪">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="LBs-Zk-aqr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="9" id="84j-or-wJX"/>
+                <constraint firstItem="lLb-ya-gN8" firstAttribute="leading" secondItem="YW5-wo-dD3" secondAttribute="trailing" constant="5" id="SzN-2X-aBv"/>
+                <constraint firstAttribute="trailing" secondItem="LBs-Zk-aqr" secondAttribute="trailing" constant="10" id="X8q-S8-PcE"/>
+                <constraint firstItem="YW5-wo-dD3" firstAttribute="top" secondItem="LBs-Zk-aqr" secondAttribute="bottom" constant="10" id="aWb-gE-c9q"/>
+                <constraint firstItem="LBs-Zk-aqr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="hxj-ol-EWX"/>
+                <constraint firstAttribute="trailing" secondItem="lLb-ya-gN8" secondAttribute="trailing" constant="10" id="m3D-Jc-2oA"/>
+                <constraint firstItem="YW5-wo-dD3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="tbH-tr-UAV"/>
+                <constraint firstAttribute="bottom" secondItem="lLb-ya-gN8" secondAttribute="bottom" constant="10" id="x3H-ky-YpB"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="GKJobNameLabel" destination="LBs-Zk-aqr" id="91t-5f-dEn"/>
+                <outlet property="GKSalaryLabel" destination="lLb-ya-gN8" id="Ebl-y9-XhD"/>
+                <outlet property="GKSalaryTypeBtn" destination="YW5-wo-dD3" id="BCU-Yo-aXy"/>
+            </connections>
+            <point key="canvasLocation" x="509.5" y="359.5"/>
+        </view>
+    </objects>
+</document>
