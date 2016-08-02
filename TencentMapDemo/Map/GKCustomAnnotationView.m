@@ -13,7 +13,6 @@
 #import "GKUserIconView.h"
 #import "QPointAnnotation.h"
 #import "GKMapViewSingleTon.h"
-#import "GKCombineAnnotationCallOutView.h"
 #import "GKCircleView.h"
 #import "GKJobCardView.h"
 #import "GKCombineAnnotationView.h"
@@ -27,7 +26,6 @@
 
 @property (nonatomic, strong) GKCustomCalloutView *customCalloutView;
 @property (nonatomic, strong) UIButton *iconView;
-@property (nonatomic, strong) GKCombineAnnotationCallOutView *combineAnnotationCallOutView;
 
 @property (nonatomic, strong) GKCircleView *circleView;
 @property (nonatomic, strong) GKJobCardView *jobCard;
@@ -119,10 +117,10 @@
         }
         
         [UIView animateWithDuration:0.2 animations:^{
-            self.AnnotationView.transform = CGAffineTransformMakeScale(1.1, 1.1);
+            self.AnnotationView.transform = CGAffineTransformScale(self.AnnotationView.transform, 1.1, 1.1);
         } completion:^(BOOL finished) {
             [UIView animateWithDuration:0.1 animations:^{
-                self.AnnotationView.transform = CGAffineTransformMakeScale(10 / 11.0, 10 / 11.0);
+                self.AnnotationView.transform = CGAffineTransformScale(self.AnnotationView.transform, 10 / 11.0, 10 / 11.0);
             } completion:^(BOOL finished) {
                 [UIView animateWithDuration:0.5 animations:^{
                     

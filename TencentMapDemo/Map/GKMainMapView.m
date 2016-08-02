@@ -29,7 +29,7 @@
 
 @property (nonatomic, strong) QCircle *tapedCircle;
 
-@property (nonatomic, assign) QMapRect userCircleRect;
+@property (nonatomic, assign) CLLocationCoordinate2D userCircleCoordinate;
 
 @end
 
@@ -66,7 +66,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.mapView = [[GKMapView alloc] initWithFrame:self.bounds];
-        self.mapView.hideAccuracyCircle = YES;
+        self.mapView.showScale = NO;
+        self.mapView.showsCompass = NO;
         self.mapView.delegate = self;
         [self addSubview:self.mapView];
         
@@ -82,6 +83,7 @@
         
         GKUserIconViewAnnotation *iconAnnotation = [[GKUserIconViewAnnotation alloc] init];
         [iconAnnotation setCoordinate:CLLocationCoordinate2DMake(39.980161,116.227621)];
+        self.userCircleCoordinate = iconAnnotation.coordinate;
         
         //添加标注
         [self.annotations addObject:annotation];
@@ -151,19 +153,14 @@
 
 - (void)mapRegionChanged:(QMapView*)mapView
 {
+    QMapRect mapRect = [self.mapView visibleMapRect];
     
-    QMapRect mapViewRect =[mapView visibleMapRect];
-    
-    if(QMapRectGetMinX(_userCircleRect) > QMapRectGetMaxX(mapViewRect)
-       || QMapRectGetMaxX(_userCircleRect) < QMapRectGetMinX(mapViewRect)
-       || QMapRectGetMinY(_userCircleRect) > QMapRectGetMaxY(mapViewRect)
-       || QMapRectGetMaxY(_userCircleRect) < QMapRectGetMinY(mapViewRect)
-       )
+    if(QMapRectContainsPoint(mapRect, QMapPointForCoordinate(_userCircleCoordinate)))
     {
-        NSLog(@"出屏幕");
+        NSLog(@"屏幕内");
     }else
     {
-        NSLog(@"未出屏幕");
+        NSLog(@"屏幕外");
     }
 }
 
@@ -182,10 +179,6 @@
 
 #pragma mark - private
 
-- (void)didTapMapView:(UIGestureRecognizer *)gesture
-{
-    
-}
 
 - (void)addCardView
 {

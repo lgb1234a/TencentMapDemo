@@ -35,12 +35,6 @@
 		EF0675A81D4B332200AEBFDB /* 2014121502372790.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EF0675731D4B332200AEBFDB /* 2014121502372790.jpeg */; };
 		EF0675A91D4B332200AEBFDB /* 2014121502373224.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EF0675741D4B332200AEBFDB /* 2014121502373224.jpeg */; };
 		EF0675AA1D4B332200AEBFDB /* 2014121502373626.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EF0675751D4B332200AEBFDB /* 2014121502373626.jpeg */; };
-		EF0675AB1D4B332200AEBFDB /* GKCallOutViewBrandCell.h in Headers */ = {isa = PBXBuildFile; fileRef = EF0675771D4B332200AEBFDB /* GKCallOutViewBrandCell.h */; };
-		EF0675AC1D4B332200AEBFDB /* GKCallOutViewBrandCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0675781D4B332200AEBFDB /* GKCallOutViewBrandCell.m */; };
-		EF0675AD1D4B332200AEBFDB /* GKCallOutViewBrandCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF0675791D4B332200AEBFDB /* GKCallOutViewBrandCell.xib */; };
-		EF0675AE1D4B332200AEBFDB /* GKCombineAnnotationCallOutView.h in Headers */ = {isa = PBXBuildFile; fileRef = EF06757A1D4B332200AEBFDB /* GKCombineAnnotationCallOutView.h */; };
-		EF0675AF1D4B332200AEBFDB /* GKCombineAnnotationCallOutView.m in Sources */ = {isa = PBXBuildFile; fileRef = EF06757B1D4B332200AEBFDB /* GKCombineAnnotationCallOutView.m */; };
-		EF0675B01D4B332200AEBFDB /* GKCombineAnnotationCallOutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF06757C1D4B332200AEBFDB /* GKCombineAnnotationCallOutView.xib */; };
 		EF0675B11D4B332200AEBFDB /* GKCustomAnnotationView.h in Headers */ = {isa = PBXBuildFile; fileRef = EF06757D1D4B332200AEBFDB /* GKCustomAnnotationView.h */; };
 		EF0675B21D4B332200AEBFDB /* GKCustomAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = EF06757E1D4B332200AEBFDB /* GKCustomAnnotationView.m */; };
 		EF0675B31D4B332200AEBFDB /* GKCustomCalloutView.h in Headers */ = {isa = PBXBuildFile; fileRef = EF06757F1D4B332200AEBFDB /* GKCustomCalloutView.h */; };
@@ -364,12 +358,6 @@
 		EF0675731D4B332200AEBFDB /* 2014121502372790.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2014121502372790.jpeg; sourceTree = "<group>"; };
 		EF0675741D4B332200AEBFDB /* 2014121502373224.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2014121502373224.jpeg; sourceTree = "<group>"; };
 		EF0675751D4B332200AEBFDB /* 2014121502373626.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2014121502373626.jpeg; sourceTree = "<group>"; };
-		EF0675771D4B332200AEBFDB /* GKCallOutViewBrandCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCallOutViewBrandCell.h; sourceTree = "<group>"; };
-		EF0675781D4B332200AEBFDB /* GKCallOutViewBrandCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKCallOutViewBrandCell.m; sourceTree = "<group>"; };
-		EF0675791D4B332200AEBFDB /* GKCallOutViewBrandCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GKCallOutViewBrandCell.xib; sourceTree = "<group>"; };
-		EF06757A1D4B332200AEBFDB /* GKCombineAnnotationCallOutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCombineAnnotationCallOutView.h; sourceTree = "<group>"; };
-		EF06757B1D4B332200AEBFDB /* GKCombineAnnotationCallOutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKCombineAnnotationCallOutView.m; sourceTree = "<group>"; };
-		EF06757C1D4B332200AEBFDB /* GKCombineAnnotationCallOutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GKCombineAnnotationCallOutView.xib; sourceTree = "<group>"; };
 		EF06757D1D4B332200AEBFDB /* GKCustomAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCustomAnnotationView.h; sourceTree = "<group>"; };
 		EF06757E1D4B332200AEBFDB /* GKCustomAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKCustomAnnotationView.m; sourceTree = "<group>"; };
 		EF06757F1D4B332200AEBFDB /* GKCustomCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCustomCalloutView.h; sourceTree = "<group>"; };
@@ -727,15 +715,9 @@
 				EF3470261D4EF25700E7A735 /* CALayer+GKAnimation.m */,
 				EF0675C31D4B339D00AEBFDB /* GKMapViewSingleTon.h */,
 				EF0675C41D4B339D00AEBFDB /* GKMapViewSingleTon.m */,
-				EF0675771D4B332200AEBFDB /* GKCallOutViewBrandCell.h */,
-				EF0675781D4B332200AEBFDB /* GKCallOutViewBrandCell.m */,
-				EF0675791D4B332200AEBFDB /* GKCallOutViewBrandCell.xib */,
 				EF6C47641D507647008D135C /* GKCombineAnnotationView.h */,
 				EF6C47651D507647008D135C /* GKCombineAnnotationView.m */,
 				EF6C47681D50766A008D135C /* GKCombineAnnotationView.xib */,
-				EF06757A1D4B332200AEBFDB /* GKCombineAnnotationCallOutView.h */,
-				EF06757B1D4B332200AEBFDB /* GKCombineAnnotationCallOutView.m */,
-				EF06757C1D4B332200AEBFDB /* GKCombineAnnotationCallOutView.xib */,
 				EF06757D1D4B332200AEBFDB /* GKCustomAnnotationView.h */,
 				EF06757E1D4B332200AEBFDB /* GKCustomAnnotationView.m */,
 				EF06757F1D4B332200AEBFDB /* GKCustomCalloutView.h */,
@@ -1134,7 +1116,6 @@
 				EF0675BB1D4B332200AEBFDB /* GKMainMapView.h in Headers */,
 				EF6C47661D507647008D135C /* GKCombineAnnotationView.h in Headers */,
 				EFD261EC1D3CD96D002693F9 /* QAnnotationView.h in Headers */,
-				EF0675AB1D4B332200AEBFDB /* GKCallOutViewBrandCell.h in Headers */,
 				EF0675B31D4B332200AEBFDB /* GKCustomCalloutView.h in Headers */,
 				EFD261ED1D3CD96D002693F9 /* QAppKeyCheck.h in Headers */,
 				EF0675B81D4B332200AEBFDB /* GKJobCell.h in Headers */,
@@ -1161,7 +1142,6 @@
 				EFD261FC1D3CD96E002693F9 /* QOverlayView.h in Headers */,
 				EF0675C11D4B332200AEBFDB /* GKUserIconViewAnnotation.h in Headers */,
 				EFD261FD1D3CD96E002693F9 /* QPinAnnotationView.h in Headers */,
-				EF0675AE1D4B332200AEBFDB /* GKCombineAnnotationCallOutView.h in Headers */,
 				EFD261FE1D3CD96E002693F9 /* QPlacemark.h in Headers */,
 				EF0675B51D4B332200AEBFDB /* GKJobCardView.h in Headers */,
 				EFD261FF1D3CD96E002693F9 /* QPointAnnotation.h in Headers */,
@@ -1395,7 +1375,6 @@
 				EF0675A21D4B332200AEBFDB /* 2014121502365814.jpeg in Resources */,
 				EF0675921D4B332200AEBFDB /* 2014121502354934.jpeg in Resources */,
 				EFD2634C1D3CDB1B002693F9 /* navi_icon_right_back@3x.png in Resources */,
-				EF0675B01D4B332200AEBFDB /* GKCombineAnnotationCallOutView.xib in Resources */,
 				EFD2632A1D3CDB1B002693F9 /* navi_icon_island_in@3x.png in Resources */,
 				EFD263141D3CDB1B002693F9 /* navi_icon_front_right@2x.png in Resources */,
 				EFD262F21D3CDB1B002693F9 /* location_direction@2x.png in Resources */,
@@ -1494,7 +1473,6 @@
 				EFD262D01D3CDB1B002693F9 /* Province.png in Resources */,
 				EFD263551D3CDB1B002693F9 /* navi_info_speed_10@2x.png in Resources */,
 				EFD262EB1D3CDB1B002693F9 /* compass@2x.png in Resources */,
-				EF0675AD1D4B332200AEBFDB /* GKCallOutViewBrandCell.xib in Resources */,
 				EFD2630E1D3CDB1B002693F9 /* navi_icon_fork_right@2x.png in Resources */,
 				EFD263031D3CDB1B002693F9 /* navi_icon_back@2x.png in Resources */,
 				EFD263451D3CDB1B002693F9 /* navi_icon_right_1@3x.png in Resources */,
@@ -1554,7 +1532,6 @@
 				EF0675B91D4B332200AEBFDB /* GKJobCell.m in Sources */,
 				EF6C47801D50A9D3008D135C /* GKBrandCollectionViewCell.m in Sources */,
 				EF6C47741D509C02008D135C /* GKBrandTableViewCell.m in Sources */,
-				EF0675AC1D4B332200AEBFDB /* GKCallOutViewBrandCell.m in Sources */,
 				EFD261881D3CD661002693F9 /* main.m in Sources */,
 				EF0675C61D4B339D00AEBFDB /* GKMapViewSingleTon.m in Sources */,
 				EF6C47851D50AC73008D135C /* GKBrandCollectionView.m in Sources */,
@@ -1562,7 +1539,6 @@
 				EF6C476D1D509A9B008D135C /* GKMainFilterView.m in Sources */,
 				EF6C47671D507648008D135C /* GKCombineAnnotationView.m in Sources */,
 				EF6C47631D503062008D135C /* GKCircleView.m in Sources */,
-				EF0675AF1D4B332200AEBFDB /* GKCombineAnnotationCallOutView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
