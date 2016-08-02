@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="GKMainFilterView">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="E9G-27-hf0">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="530"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="Hyz-Cf-Hil"/>
+                        <outlet property="delegate" destination="-1" id="mq6-fR-L9e"/>
+                    </connections>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DaJ-Pe-7Sb">
+                    <rect key="frame" x="15" y="550" width="280" height="30"/>
+                    <state key="normal" title="重置"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z9W-Sy-ANg">
+                    <rect key="frame" x="305" y="550" width="280" height="30"/>
+                    <state key="normal" title="确定"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="E9G-27-hf0" secondAttribute="trailing" id="2mS-AX-zJZ"/>
+                <constraint firstAttribute="bottom" secondItem="E9G-27-hf0" secondAttribute="bottom" id="B45-Bh-vUd"/>
+                <constraint firstItem="DaJ-Pe-7Sb" firstAttribute="top" secondItem="E9G-27-hf0" secondAttribute="bottom" constant="20" id="Igf-tf-IfP"/>
+                <constraint firstItem="Z9W-Sy-ANg" firstAttribute="leading" secondItem="DaJ-Pe-7Sb" secondAttribute="trailing" constant="10" id="IhO-Zu-Pj4"/>
+                <constraint firstItem="Z9W-Sy-ANg" firstAttribute="width" secondItem="DaJ-Pe-7Sb" secondAttribute="width" id="KAA-k5-CqH"/>
+                <constraint firstAttribute="bottom" secondItem="E9G-27-hf0" secondAttribute="bottom" constant="70" id="PBb-pu-Ewm"/>
+                <constraint firstItem="DaJ-Pe-7Sb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="ZBj-Za-zFJ"/>
+                <constraint firstAttribute="bottom" secondItem="Z9W-Sy-ANg" secondAttribute="bottom" constant="20" id="gBm-N6-gTY"/>
+                <constraint firstItem="E9G-27-hf0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="h55-lI-JHo"/>
+                <constraint firstItem="Z9W-Sy-ANg" firstAttribute="top" secondItem="E9G-27-hf0" secondAttribute="bottom" constant="20" id="jyI-Wk-kuC"/>
+                <constraint firstAttribute="bottom" secondItem="DaJ-Pe-7Sb" secondAttribute="bottom" constant="20" id="kzR-s4-fgx"/>
+                <constraint firstItem="Z9W-Sy-ANg" firstAttribute="height" secondItem="DaJ-Pe-7Sb" secondAttribute="height" id="rLu-TP-qKC"/>
+                <constraint firstAttribute="trailing" secondItem="Z9W-Sy-ANg" secondAttribute="trailing" constant="15" id="s2b-Hs-oiQ"/>
+                <constraint firstItem="E9G-27-hf0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="vaK-w8-Dv1"/>
+                <constraint firstItem="Z9W-Sy-ANg" firstAttribute="leading" secondItem="DaJ-Pe-7Sb" secondAttribute="trailing" constant="10" id="vaj-b2-Df6"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="B45-Bh-vUd"/>
+                    <exclude reference="IhO-Zu-Pj4"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="commitBtn" destination="Z9W-Sy-ANg" id="CbZ-if-AxC"/>
+                <outlet property="filterTableView" destination="E9G-27-hf0" id="kZs-Um-yOG"/>
+                <outlet property="resetBtn" destination="DaJ-Pe-7Sb" id="zFO-8d-Ds8"/>
+            </connections>
+        </view>
+    </objects>
+</document>

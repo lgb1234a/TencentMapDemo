@@ -57,14 +57,15 @@
         self.AnnotationView = [[[NSBundle mainBundle] loadNibNamed:@"GKCombineAnnotationView" owner:self options:nil] lastObject];
         self.AnnotationView.frame = CGRectMake(self.bounds.origin.x, self.bounds.origin.y, 60, 65);
         self.AnnotationView.center = CGPointMake(self.bounds.origin.x + self.bounds.size.width * 0.5, self.bounds.origin.y + self.bounds.size.height * 0.5);
-        self.layer.anchorPoint = CGPointMake(0.5, 0.5);
-        self.AnnotationView.layer.cornerRadius = 30;
+        self.AnnotationView.layer.cornerRadius = 32.5;
         self.AnnotationView.clipsToBounds = YES;
         
         [self addSubview:self.AnnotationView];
         
         [self.AnnotationView.iconBtn addTarget:self action:@selector(clickedAnnotation:) forControlEvents:UIControlEventTouchUpInside];
-        
+        [self.AnnotationView.btn_1 addTarget:self action:@selector(didclickBtn:) forControlEvents:UIControlEventTouchUpInside];
+        [self.AnnotationView.btn_2 addTarget:self action:@selector(didclickBtn:) forControlEvents:UIControlEventTouchUpInside];
+        [self.AnnotationView.btn_3 addTarget:self action:@selector(didclickBtn:) forControlEvents:UIControlEventTouchUpInside];
     }
     return self;
 }
@@ -72,39 +73,23 @@
 
 #pragma mark - lazy
 
-//- (GKCombineAnnotationCallOutView *)combineAnnotationCallOutView
-//{
-//    if(!_combineAnnotationCallOutView)
-//    {
-//        _combineAnnotationCallOutView = [[[NSBundle mainBundle] loadNibNamed:@"GKCombineAnnotationCallOutView" owner:nil options:nil] lastObject];
-//        
-//        _combineAnnotationCallOutView.center = CGPointMake(self.bounds.origin.x + self.bounds.size.width * 0.5, self.bounds.origin.y + self.bounds.size.height * 0.5);
-//        
-//        [self addSubview:_combineAnnotationCallOutView];
-//        
-//        _combineAnnotationCallOutView.hidden = YES;
-//    }
-//    
-//    return _combineAnnotationCallOutView;
-//}
-
 
 #pragma mark - public
 
 - (void)resetUI
 {
     self.AnnotationView.hidden = NO;
-//    self.combineAnnotationCallOutView.hidden = YES;
     
+    self.AnnotationView.layer.anchorPoint = CGPointMake(0.5, 0.5);
     if(self.delegate && [self.delegate respondsToSelector:@selector(shouldPresentJobCardView:)])
     {
         [self.delegate shouldPresentJobCardView:NO];
     }
     
     [UIView animateWithDuration:0.5 animations:^{
-//        self.AnnotationView.transform = CGAffineTransformMakeScale(1.1, 1.1);
         
         self.AnnotationView.frame = CGRectMake(self.bounds.origin.x, self.bounds.origin.y, 60, 65);
+        self.AnnotationView.center = CGPointMake(self.bounds.origin.x + self.bounds.size.width * 0.5, self.bounds.origin.y + self.bounds.size.height * 0.5);
         
         self.AnnotationView.leadingBetBtn_1AndScroll.priority = UILayoutPriorityDefaultHigh;
         self.AnnotationView.leadingBetBtn_2AndScroll.priority = UILayoutPriorityDefaultHigh;
@@ -112,11 +97,9 @@
         
         [self layoutIfNeeded];
     } completion:^(BOOL finished) {
-//        [UIView animateWithDuration:0.1 animations:^{
-//            self.AnnotationView.transform = CGAffineTransformMakeScale(10 / 11.0, 10 / 11.0);
-//        }];
+        
+        
     }];
-    
 }
 
 
@@ -135,34 +118,54 @@
             [self.delegate shouldPresentJobCardView:YES];
         }
         
-        [UIView animateWithDuration:0.5 animations:^{
-//            self.AnnotationView.transform = CGAffineTransformMakeScale(1.1, 1.1);
-            
-            self.AnnotationView.frame = CGRectMake(self.bounds.origin.x, self.bounds.origin.y, 225, 65);
-            
-            self.AnnotationView.leadingBetBtn_1AndScroll.priority = UILayoutPriorityDefaultLow;
-            self.AnnotationView.leadingBetBtn_2AndScroll.priority = UILayoutPriorityDefaultLow;
-            self.AnnotationView.leadingBetBtn_3AndScroll.priority = UILayoutPriorityDefaultLow;
-            
-            
-            [self layoutIfNeeded];
+        [UIView animateWithDuration:0.2 animations:^{
+            self.AnnotationView.transform = CGAffineTransformMakeScale(1.1, 1.1);
         } completion:^(BOOL finished) {
-//            [UIView animateWithDuration:0.1 animations:^{
-//                self.AnnotationView.transform = CGAffineTransformMakeScale(10 / 11.0, 10 / 11.0);
-//            } completion:^(BOOL finished) {
-//                
-//                self.AnnotationView.hidden = YES;
-//                self.combineAnnotationCallOutView.hidden = NO;
-//            }];
+            [UIView animateWithDuration:0.1 animations:^{
+                self.AnnotationView.transform = CGAffineTransformMakeScale(10 / 11.0, 10 / 11.0);
+            } completion:^(BOOL finished) {
+                [UIView animateWithDuration:0.5 animations:^{
+                    
+                    self.AnnotationView.frame = CGRectMake(self.bounds.origin.x, self.bounds.origin.y, 225, 65);
+                    self.AnnotationView.center = CGPointMake(self.bounds.origin.x + self.bounds.size.width * 0.5, self.bounds.origin.y + self.bounds.size.height * 0.5);
+                    
+                    self.AnnotationView.leadingBetBtn_1AndScroll.priority = UILayoutPriorityDefaultLow;
+                    self.AnnotationView.leadingBetBtn_2AndScroll.priority = UILayoutPriorityDefaultLow;
+                    self.AnnotationView.leadingBetBtn_3AndScroll.priority = UILayoutPriorityDefaultLow;
+                    
+                    
+                    [self layoutIfNeeded];
+                } completion:^(BOOL finished) {
+                    
+                    
+                }];
+            }];
         }];
-        
-//        self.circleView.hidden = NO;
         
     }else
     {
         [self resetUI];
         
-//        self.circleView.hidden = YES;
+    }
+}
+
+- (void)didclickBtn:(id)sender
+{
+    UIButton *btn = (UIButton *)sender;
+    
+    switch (btn.tag) {
+        case 1:
+            NSLog(@"click btn1");
+            break;
+        case 2:
+            NSLog(@"click btn2");
+            break;
+        case 3:
+            NSLog(@"click btn3");
+            break;
+            
+        default:
+            break;
     }
 }
 
@@ -179,6 +182,21 @@
     
     if ([_AnnotationView.iconBtn pointInside:shopViewPointButton withEvent:event]) {
         return _AnnotationView.iconBtn;
+    }
+    
+    shopViewPointButton = [_AnnotationView.btn_1 convertPoint:point fromView:self];
+    if ([_AnnotationView.btn_1 pointInside:shopViewPointButton withEvent:event]) {
+        return _AnnotationView.btn_1;
+    }
+    
+    shopViewPointButton = [_AnnotationView.btn_2 convertPoint:point fromView:self];
+    if ([_AnnotationView.btn_2 pointInside:shopViewPointButton withEvent:event]) {
+        return _AnnotationView.btn_2;
+    }
+    
+    shopViewPointButton = [_AnnotationView.btn_3 convertPoint:point fromView:self];
+    if ([_AnnotationView.btn_3 pointInside:shopViewPointButton withEvent:event]) {
+        return _AnnotationView.btn_3;
     }
     
     return result;

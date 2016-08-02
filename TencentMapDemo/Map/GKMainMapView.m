@@ -81,7 +81,7 @@
         [annotation setCoordinate:CLLocationCoordinate2DMake(39.987161,116.427621)];
         
         GKUserIconViewAnnotation *iconAnnotation = [[GKUserIconViewAnnotation alloc] init];
-        [iconAnnotation setCoordinate:CLLocationCoordinate2DMake(39.980161,116.327621)];
+        [iconAnnotation setCoordinate:CLLocationCoordinate2DMake(39.980161,116.227621)];
         
         //添加标注
         [self.annotations addObject:annotation];
@@ -91,9 +91,6 @@
         
         [self buildJobCardView];
         
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapMapView:)];
-        
-        [self addGestureRecognizer:tap];
     }
     return self;
 }

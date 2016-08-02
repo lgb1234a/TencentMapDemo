@@ -22,4 +22,6 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leadingBetBtn_2AndScroll;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leadingBetBtn_3AndScroll;
 
+@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+
 @end

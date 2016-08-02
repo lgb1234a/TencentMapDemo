@@ -16,11 +16,13 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="10" id="BWA-z2-mkh"/>
                     </constraints>
+                    <color key="pageIndicatorTintColor" red="0.7843137255" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="currentPageIndicatorTintColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                 </pageControl>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hLj-h7-vDg">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="65"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CZW-bP-WaG">
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CZW-bP-WaG">
                             <rect key="frame" x="5" y="5" width="50" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="0a4-Jh-eLT"/>
@@ -28,7 +30,7 @@
                             </constraints>
                             <state key="normal" image="201412150236201.jpeg"/>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O3t-Sn-d9r">
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O3t-Sn-d9r">
                             <rect key="frame" x="5" y="5" width="50" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="NPn-yu-R7m"/>
@@ -36,7 +38,7 @@
                             </constraints>
                             <state key="normal" image="2014121502362710.jpeg"/>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8VM-Lv-jx3">
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8VM-Lv-jx3">
                             <rect key="frame" x="5" y="5" width="50" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="66Q-KN-c9q"/>
@@ -100,6 +102,7 @@
                 <outlet property="leadingBetBtn_1AndScroll" destination="eZY-Su-ze2" id="1Xh-Iz-TnM"/>
                 <outlet property="leadingBetBtn_2AndScroll" destination="nFu-jC-DFf" id="ovp-bs-zc0"/>
                 <outlet property="leadingBetBtn_3AndScroll" destination="oZu-Rw-vUa" id="0sK-ub-HOW"/>
+                <outlet property="pageControl" destination="0rL-tF-lwd" id="6Kv-px-Qbe"/>
             </connections>
             <point key="canvasLocation" x="774" y="500.5"/>
         </view>

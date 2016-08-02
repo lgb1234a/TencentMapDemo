@@ -70,6 +70,20 @@
 		EF6C47661D507647008D135C /* GKCombineAnnotationView.h in Headers */ = {isa = PBXBuildFile; fileRef = EF6C47641D507647008D135C /* GKCombineAnnotationView.h */; };
 		EF6C47671D507648008D135C /* GKCombineAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = EF6C47651D507647008D135C /* GKCombineAnnotationView.m */; };
 		EF6C47691D50766A008D135C /* GKCombineAnnotationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF6C47681D50766A008D135C /* GKCombineAnnotationView.xib */; };
+		EF6C476C1D509A9B008D135C /* GKMainFilterView.h in Headers */ = {isa = PBXBuildFile; fileRef = EF6C476A1D509A9B008D135C /* GKMainFilterView.h */; };
+		EF6C476D1D509A9B008D135C /* GKMainFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = EF6C476B1D509A9B008D135C /* GKMainFilterView.m */; };
+		EF6C476F1D509AAE008D135C /* GKMainFilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF6C476E1D509AAE008D135C /* GKMainFilterView.xib */; };
+		EF6C47731D509C02008D135C /* GKBrandTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = EF6C47701D509C02008D135C /* GKBrandTableViewCell.h */; };
+		EF6C47741D509C02008D135C /* GKBrandTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF6C47711D509C02008D135C /* GKBrandTableViewCell.m */; };
+		EF6C47751D509C02008D135C /* GKBrandTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF6C47721D509C02008D135C /* GKBrandTableViewCell.xib */; };
+		EF6C47791D509CA2008D135C /* GKJobTypeTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = EF6C47761D509CA2008D135C /* GKJobTypeTableViewCell.h */; };
+		EF6C477A1D509CA2008D135C /* GKJobTypeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF6C47771D509CA2008D135C /* GKJobTypeTableViewCell.m */; };
+		EF6C477B1D509CA2008D135C /* GKJobTypeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF6C47781D509CA2008D135C /* GKJobTypeTableViewCell.xib */; };
+		EF6C477F1D50A9D3008D135C /* GKBrandCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = EF6C477C1D50A9D3008D135C /* GKBrandCollectionViewCell.h */; };
+		EF6C47801D50A9D3008D135C /* GKBrandCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF6C477D1D50A9D3008D135C /* GKBrandCollectionViewCell.m */; };
+		EF6C47811D50A9D3008D135C /* GKBrandCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF6C477E1D50A9D3008D135C /* GKBrandCollectionViewCell.xib */; };
+		EF6C47841D50AC73008D135C /* GKBrandCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = EF6C47821D50AC73008D135C /* GKBrandCollectionView.h */; };
+		EF6C47851D50AC73008D135C /* GKBrandCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = EF6C47831D50AC73008D135C /* GKBrandCollectionView.m */; };
 		EFB904F91D47042600E52B37 /* FBKVOController.h in Headers */ = {isa = PBXBuildFile; fileRef = EFB904F31D47042600E52B37 /* FBKVOController.h */; };
 		EFB904FA1D47042600E52B37 /* FBKVOController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFB904F41D47042600E52B37 /* FBKVOController.m */; };
 		EFB904FC1D47042600E52B37 /* KVOController.h in Headers */ = {isa = PBXBuildFile; fileRef = EFB904F61D47042600E52B37 /* KVOController.h */; };
@@ -385,6 +399,20 @@
 		EF6C47641D507647008D135C /* GKCombineAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCombineAnnotationView.h; sourceTree = "<group>"; };
 		EF6C47651D507647008D135C /* GKCombineAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKCombineAnnotationView.m; sourceTree = "<group>"; };
 		EF6C47681D50766A008D135C /* GKCombineAnnotationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GKCombineAnnotationView.xib; sourceTree = "<group>"; };
+		EF6C476A1D509A9B008D135C /* GKMainFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKMainFilterView.h; sourceTree = "<group>"; };
+		EF6C476B1D509A9B008D135C /* GKMainFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKMainFilterView.m; sourceTree = "<group>"; };
+		EF6C476E1D509AAE008D135C /* GKMainFilterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GKMainFilterView.xib; sourceTree = "<group>"; };
+		EF6C47701D509C02008D135C /* GKBrandTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKBrandTableViewCell.h; sourceTree = "<group>"; };
+		EF6C47711D509C02008D135C /* GKBrandTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKBrandTableViewCell.m; sourceTree = "<group>"; };
+		EF6C47721D509C02008D135C /* GKBrandTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GKBrandTableViewCell.xib; sourceTree = "<group>"; };
+		EF6C47761D509CA2008D135C /* GKJobTypeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKJobTypeTableViewCell.h; sourceTree = "<group>"; };
+		EF6C47771D509CA2008D135C /* GKJobTypeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKJobTypeTableViewCell.m; sourceTree = "<group>"; };
+		EF6C47781D509CA2008D135C /* GKJobTypeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GKJobTypeTableViewCell.xib; sourceTree = "<group>"; };
+		EF6C477C1D50A9D3008D135C /* GKBrandCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKBrandCollectionViewCell.h; sourceTree = "<group>"; };
+		EF6C477D1D50A9D3008D135C /* GKBrandCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKBrandCollectionViewCell.m; sourceTree = "<group>"; };
+		EF6C477E1D50A9D3008D135C /* GKBrandCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GKBrandCollectionViewCell.xib; sourceTree = "<group>"; };
+		EF6C47821D50AC73008D135C /* GKBrandCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKBrandCollectionView.h; sourceTree = "<group>"; };
+		EF6C47831D50AC73008D135C /* GKBrandCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKBrandCollectionView.m; sourceTree = "<group>"; };
 		EFB904F31D47042600E52B37 /* FBKVOController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBKVOController.h; sourceTree = "<group>"; };
 		EFB904F41D47042600E52B37 /* FBKVOController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBKVOController.m; sourceTree = "<group>"; };
 		EFB904F61D47042600E52B37 /* KVOController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVOController.h; sourceTree = "<group>"; };
@@ -728,6 +756,20 @@
 				EF06758E1D4B332200AEBFDB /* GKUserIconViewAnnotation.m */,
 				EF6C47601D503062008D135C /* GKCircleView.h */,
 				EF6C47611D503062008D135C /* GKCircleView.m */,
+				EF6C476A1D509A9B008D135C /* GKMainFilterView.h */,
+				EF6C476B1D509A9B008D135C /* GKMainFilterView.m */,
+				EF6C476E1D509AAE008D135C /* GKMainFilterView.xib */,
+				EF6C47701D509C02008D135C /* GKBrandTableViewCell.h */,
+				EF6C47711D509C02008D135C /* GKBrandTableViewCell.m */,
+				EF6C47721D509C02008D135C /* GKBrandTableViewCell.xib */,
+				EF6C47821D50AC73008D135C /* GKBrandCollectionView.h */,
+				EF6C47831D50AC73008D135C /* GKBrandCollectionView.m */,
+				EF6C477C1D50A9D3008D135C /* GKBrandCollectionViewCell.h */,
+				EF6C477D1D50A9D3008D135C /* GKBrandCollectionViewCell.m */,
+				EF6C477E1D50A9D3008D135C /* GKBrandCollectionViewCell.xib */,
+				EF6C47761D509CA2008D135C /* GKJobTypeTableViewCell.h */,
+				EF6C47771D509CA2008D135C /* GKJobTypeTableViewCell.m */,
+				EF6C47781D509CA2008D135C /* GKJobTypeTableViewCell.xib */,
 				EF34701D1D4EDFEC00E7A735 /* GKApplication.h */,
 				EF34701E1D4EDFEC00E7A735 /* GKApplication.m */,
 			);
@@ -1096,6 +1138,7 @@
 				EF0675B31D4B332200AEBFDB /* GKCustomCalloutView.h in Headers */,
 				EFD261ED1D3CD96D002693F9 /* QAppKeyCheck.h in Headers */,
 				EF0675B81D4B332200AEBFDB /* GKJobCell.h in Headers */,
+				EF6C47731D509C02008D135C /* GKBrandTableViewCell.h in Headers */,
 				EFD261EE1D3CD96D002693F9 /* QCircle.h in Headers */,
 				EFD261EF1D3CD96E002693F9 /* QCircleView.h in Headers */,
 				EFD261F01D3CD96E002693F9 /* QCityData.h in Headers */,
@@ -1128,7 +1171,10 @@
 				EFD262021D3CD96E002693F9 /* QPolygonView.h in Headers */,
 				EFD262031D3CD96E002693F9 /* QPolyline.h in Headers */,
 				EFD262041D3CD96E002693F9 /* QPolylineView.h in Headers */,
+				EF6C476C1D509A9B008D135C /* GKMainFilterView.h in Headers */,
 				EF0675BD1D4B332200AEBFDB /* GKMapView.h in Headers */,
+				EF6C47841D50AC73008D135C /* GKBrandCollectionView.h in Headers */,
+				EF6C477F1D50A9D3008D135C /* GKBrandCollectionViewCell.h in Headers */,
 				EFD262051D3CD96E002693F9 /* QReverseGeocoder.h in Headers */,
 				EFB904FC1D47042600E52B37 /* KVOController.h in Headers */,
 				EFD262061D3CD96E002693F9 /* QRoute.h in Headers */,
@@ -1136,6 +1182,7 @@
 				EFD262081D3CD96E002693F9 /* QRouteResult.h in Headers */,
 				EFD262091D3CD96E002693F9 /* QRouteSearch.h in Headers */,
 				EFD2620A1D3CD96E002693F9 /* QSearch.h in Headers */,
+				EF6C47791D509CA2008D135C /* GKJobTypeTableViewCell.h in Headers */,
 				EF6C47621D503062008D135C /* GKCircleView.h in Headers */,
 				EFD2620B1D3CD96E002693F9 /* QShape.h in Headers */,
 				EFD2620C1D3CD96E002693F9 /* QTileOverlay.h in Headers */,
@@ -1253,6 +1300,7 @@
 				EFD262C51D3CDB1B002693F9 /* city.json in Resources */,
 				EFD263251D3CDB1B002693F9 /* navi_icon_island_8@2x.png in Resources */,
 				EFD262FA1D3CDB1B002693F9 /* navi_location_compass@2x.png in Resources */,
+				EF6C47811D50A9D3008D135C /* GKBrandCollectionViewCell.xib in Resources */,
 				EF0675A41D4B332200AEBFDB /* 2014121502371292.jpeg in Resources */,
 				EFD263011D3CDB1B002693F9 /* navi_bg_horizon_left@2x.png in Resources */,
 				EFD263181D3CDB1B002693F9 /* navi_icon_island_1@3x.png in Resources */,
@@ -1297,6 +1345,7 @@
 				EFD2635F1D3CDB1B002693F9 /* navi_info_speed_50@2x.png in Resources */,
 				EFD2631E1D3CDB1B002693F9 /* navi_icon_island_4@3x.png in Resources */,
 				EFD2631F1D3CDB1B002693F9 /* navi_icon_island_5@2x.png in Resources */,
+				EF6C477B1D509CA2008D135C /* GKJobTypeTableViewCell.xib in Resources */,
 				EFD2634A1D3CDB1B002693F9 /* navi_icon_right_2@3x.png in Resources */,
 				EFD263231D3CDB1B002693F9 /* navi_icon_island_7@2x.png in Resources */,
 				EF0675A31D4B332200AEBFDB /* 2014121502370518.jpeg in Resources */,
@@ -1398,6 +1447,7 @@
 				EFD262EE1D3CDB1B002693F9 /* end_point_in_map@2x.png in Resources */,
 				EFD262CF1D3CDB1B002693F9 /* poi_icon_navi@2x.png in Resources */,
 				EFD262F71D3CDB1B002693F9 /* navi_button_press@2x.png in Resources */,
+				EF6C47751D509C02008D135C /* GKBrandTableViewCell.xib in Resources */,
 				EFD2632B1D3CDB1B002693F9 /* navi_icon_keep_on_left@2x.png in Resources */,
 				EFD2630D1D3CDB1B002693F9 /* navi_icon_fork_mid_right@3x.png in Resources */,
 				EFD262EF1D3CDB1B002693F9 /* failure_location@2x.png in Resources */,
@@ -1458,6 +1508,7 @@
 				EFD263091D3CDB1B002693F9 /* navi_icon_fork_left@3x.png in Resources */,
 				EFD263601D3CDB1B002693F9 /* navi_info_speed_55@2x.png in Resources */,
 				EF0675AA1D4B332200AEBFDB /* 2014121502373626.jpeg in Resources */,
+				EF6C476F1D509AAE008D135C /* GKMainFilterView.xib in Resources */,
 				EFD2632C1D3CDB1B002693F9 /* navi_icon_keep_on_left@3x.png in Resources */,
 				EF06759F1D4B332200AEBFDB /* 2014121502364211.jpeg in Resources */,
 				EFD262FC1D3CDB1B002693F9 /* none@2x.png in Resources */,
@@ -1496,14 +1547,19 @@
 				EF0675B61D4B332200AEBFDB /* GKJobCardView.m in Sources */,
 				EFD2618B1D3CD661002693F9 /* AppDelegate.m in Sources */,
 				EF0675B41D4B332200AEBFDB /* GKCustomCalloutView.m in Sources */,
+				EF6C477A1D509CA2008D135C /* GKJobTypeTableViewCell.m in Sources */,
 				EFB904FA1D47042600E52B37 /* FBKVOController.m in Sources */,
 				EF0675C01D4B332200AEBFDB /* GKUserIconView.m in Sources */,
 				EFB904FE1D47042600E52B37 /* NSObject+FBKVOController.m in Sources */,
 				EF0675B91D4B332200AEBFDB /* GKJobCell.m in Sources */,
+				EF6C47801D50A9D3008D135C /* GKBrandCollectionViewCell.m in Sources */,
+				EF6C47741D509C02008D135C /* GKBrandTableViewCell.m in Sources */,
 				EF0675AC1D4B332200AEBFDB /* GKCallOutViewBrandCell.m in Sources */,
 				EFD261881D3CD661002693F9 /* main.m in Sources */,
 				EF0675C61D4B339D00AEBFDB /* GKMapViewSingleTon.m in Sources */,
+				EF6C47851D50AC73008D135C /* GKBrandCollectionView.m in Sources */,
 				EF0675C21D4B332200AEBFDB /* GKUserIconViewAnnotation.m in Sources */,
+				EF6C476D1D509A9B008D135C /* GKMainFilterView.m in Sources */,
 				EF6C47671D507648008D135C /* GKCombineAnnotationView.m in Sources */,
 				EF6C47631D503062008D135C /* GKCircleView.m in Sources */,
 				EF0675AF1D4B332200AEBFDB /* GKCombineAnnotationCallOutView.m in Sources */,
