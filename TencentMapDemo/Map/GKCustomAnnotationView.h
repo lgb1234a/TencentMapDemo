@@ -12,22 +12,15 @@
 
 - (void)iconViewClicked;
 
+
+- (void)shouldPresentJobCardView:(BOOL)shouldPresent;
+
 @end
 
 @interface GKCustomAnnotationView : QAnnotationView
-//设置callout要显示的图片
--(void)setCalloutImage:(UIImage *)image;
-
-//设置callout内置button的标题和状态
--(void)setCalloutBtnTitle:(NSString *)title
-                 forState:(UIControlState)state;
-
-//设置callout的button回调
--(void)addCalloutBtnTarget:(id)target
-                    action:(SEL)action
-          forControlEvents:(UIControlEvents)events;
-
 
 @property (nonatomic, assign) id<GKCustomAnnotationViewDelegate> delegate;
+
+- (void)resetUI;
 
 @end

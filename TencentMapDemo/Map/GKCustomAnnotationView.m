@@ -14,6 +14,9 @@
 #import "QPointAnnotation.h"
 #import "GKMapViewSingleTon.h"
 #import "GKCombineAnnotationCallOutView.h"
+#import "GKCircleView.h"
+#import "GKJobCardView.h"
+#import "GKCombineAnnotationView.h"
 
 @interface GKCustomAnnotationView ()
 {
@@ -22,123 +25,163 @@
     CAKeyframeAnimation *_layerOpacity;
 }
 
-@property (nonatomic, strong) UIImage *imageCallout;
-@property (nonatomic, strong) NSString *btnTitle;
-@property (nonatomic, strong) id btnTarget;
-@property (nonatomic) UIControlState btnState;
-@property (nonatomic) SEL btnAction;
-@property (nonatomic) UIControlEvents btnControlEvents;
 @property (nonatomic, strong) GKCustomCalloutView *customCalloutView;
-//@property (nonatomic, strong) CircleView *backView;
 @property (nonatomic, strong) UIButton *iconView;
 @property (nonatomic, strong) GKCombineAnnotationCallOutView *combineAnnotationCallOutView;
 
+@property (nonatomic, strong) GKCircleView *circleView;
+@property (nonatomic, strong) GKJobCardView *jobCard;
+@property (nonatomic, strong) UIButton *iconBtn;
+@property (nonatomic, strong) GKCombineAnnotationView *AnnotationView;
 
 @end
 
 @implementation GKCustomAnnotationView
 
-#pragma mark - lazy
-- (UIButton *)iconView
+
+#pragma mark - life
+
+- (id)initWithAnnotation:(id<QAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier
 {
-    if(!_iconView)
-    {
-        CGPoint origin = self.bounds.origin;
-        self.iconView = [[UIButton alloc] initWithFrame:CGRectMake(origin.x, origin.y, 80, 80)];
-        self.iconView.center = CGPointMake(self.center.x + self.bounds.size.width * 0.5, self.center.y + self.bounds.size.height * 0.5);
-        [self.iconView setImage:[UIImage imageNamed:@"subway_station"] forState:UIControlStateNormal];
+    if (self=[super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier]) {
+        self.image = nil;
+        self.backgroundColor = [UIColor clearColor];
         
-        [self.iconView addTarget:self action:@selector(iconViewClicked:) forControlEvents:UIControlEventTouchUpInside];
+//        self.circleView = [[GKCircleView alloc] initWithFrame:CGRectMake(self.bounds.origin.x, self.bounds.origin.y, 80, 80)];
+//        self.circleView.center = CGPointMake(self.bounds.origin.x + self.bounds.size.width * 0.5, self.bounds.origin.y + self.bounds.size.height * 0.5);
+//        self.circleView.hidden = YES;
+        
+//        [self addSubview:self.circleView];
+        
+        
+        self.AnnotationView = [[[NSBundle mainBundle] loadNibNamed:@"GKCombineAnnotationView" owner:self options:nil] lastObject];
+        self.AnnotationView.frame = CGRectMake(self.bounds.origin.x, self.bounds.origin.y, 60, 65);
+        self.AnnotationView.center = CGPointMake(self.bounds.origin.x + self.bounds.size.width * 0.5, self.bounds.origin.y + self.bounds.size.height * 0.5);
+        self.layer.anchorPoint = CGPointMake(0.5, 0.5);
+        self.AnnotationView.layer.cornerRadius = 30;
+        self.AnnotationView.clipsToBounds = YES;
+        
+        [self addSubview:self.AnnotationView];
+        
+        [self.AnnotationView.iconBtn addTarget:self action:@selector(clickedAnnotation:) forControlEvents:UIControlEventTouchUpInside];
         
     }
-    
-    return _iconView;
+    return self;
 }
+
+
+#pragma mark - lazy
+
+//- (GKCombineAnnotationCallOutView *)combineAnnotationCallOutView
+//{
+//    if(!_combineAnnotationCallOutView)
+//    {
+//        _combineAnnotationCallOutView = [[[NSBundle mainBundle] loadNibNamed:@"GKCombineAnnotationCallOutView" owner:nil options:nil] lastObject];
+//        
+//        _combineAnnotationCallOutView.center = CGPointMake(self.bounds.origin.x + self.bounds.size.width * 0.5, self.bounds.origin.y + self.bounds.size.height * 0.5);
+//        
+//        [self addSubview:_combineAnnotationCallOutView];
+//        
+//        _combineAnnotationCallOutView.hidden = YES;
+//    }
+//    
+//    return _combineAnnotationCallOutView;
+//}
+
 
 #pragma mark - public
 
-- (void)setIconViewImg:(UIImage *)image
+- (void)resetUI
 {
-    [self.iconView setImage:image forState:UIControlStateNormal];
+    self.AnnotationView.hidden = NO;
+//    self.combineAnnotationCallOutView.hidden = YES;
+    
+    if(self.delegate && [self.delegate respondsToSelector:@selector(shouldPresentJobCardView:)])
+    {
+        [self.delegate shouldPresentJobCardView:NO];
+    }
+    
+    [UIView animateWithDuration:0.5 animations:^{
+//        self.AnnotationView.transform = CGAffineTransformMakeScale(1.1, 1.1);
+        
+        self.AnnotationView.frame = CGRectMake(self.bounds.origin.x, self.bounds.origin.y, 60, 65);
+        
+        self.AnnotationView.leadingBetBtn_1AndScroll.priority = UILayoutPriorityDefaultHigh;
+        self.AnnotationView.leadingBetBtn_2AndScroll.priority = UILayoutPriorityDefaultHigh;
+        self.AnnotationView.leadingBetBtn_3AndScroll.priority = UILayoutPriorityDefaultHigh;
+        
+        [self layoutIfNeeded];
+    } completion:^(BOOL finished) {
+//        [UIView animateWithDuration:0.1 animations:^{
+//            self.AnnotationView.transform = CGAffineTransformMakeScale(10 / 11.0, 10 / 11.0);
+//        }];
+    }];
+    
 }
 
-
--(void)setCalloutImage:(UIImage *)image {
-    _imageCallout = image;
-}
-
--(void)setCalloutBtnTitle:(NSString *)title
-                 forState:(UIControlState)state {
-    _btnTitle = title;
-}
-
--(void)addCalloutBtnTarget:(id)target
-                    action:(SEL)action
-          forControlEvents:(UIControlEvents)events {
-    _btnTarget = target;
-    _btnAction = action;
-    _btnControlEvents = events;
-}
 
 #pragma mark - private
 
--(void)setSelected:(BOOL)selected {
-    [self setSelected:selected animated:NO];
-}
 
--(void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    
-    
-    if (self.selected == selected) {
-        return;
-    }
-    if (selected) {
-        
-        //需要弹出callout的时候才开始初始化CalloutView
-        if (_combineAnnotationCallOutView == nil) {
-            
-            _combineAnnotationCallOutView = [[[NSBundle mainBundle] loadNibNamed:@"GKCombineAnnotationCallOutView" owner:nil options:nil] lastObject];
-            
-            _combineAnnotationCallOutView.center =CGPointMake(CGRectGetWidth(self.bounds) / 2,
-                                                              -CGRectGetHeight(_combineAnnotationCallOutView.bounds)/2);
-            
-        }
-        [self addSubview:_combineAnnotationCallOutView];
-        
-    } else {
-        
-        [_combineAnnotationCallOutView removeFromSuperview];
-    }
-    
-    [super setSelected:selected animated:animated];
-}
-
-
-- (void)iconViewClicked:(id)sender
+- (void)clickedAnnotation:(id)sender
 {
-    if(self.delegate && [self.delegate respondsToSelector:@selector(iconViewClicked)])
-    {
-        [self.delegate iconViewClicked];
-    }
-}
-
-- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event
-{
-    // sdk内的annotation点击到图标返回YES,否则NO
-    BOOL inside = [super pointInside:point withEvent:event];
+    self.AnnotationView.iconBtn.selected = !self.AnnotationView.iconBtn.selected;
     
-    if (!inside)
+    if(self.AnnotationView.iconBtn.selected)
     {
-        /* Callout existed. */
-        if (self.selected && self.customCalloutView.superview)
+        
+        if(self.delegate && [self.delegate respondsToSelector:@selector(shouldPresentJobCardView:)])
         {
-            CGPoint pointInCallout = [self convertPoint:point toView:self.customCalloutView];
-            
-            inside = CGRectContainsPoint(self.customCalloutView.bounds, pointInCallout);
+            [self.delegate shouldPresentJobCardView:YES];
         }
+        
+        [UIView animateWithDuration:0.5 animations:^{
+//            self.AnnotationView.transform = CGAffineTransformMakeScale(1.1, 1.1);
+            
+            self.AnnotationView.frame = CGRectMake(self.bounds.origin.x, self.bounds.origin.y, 225, 65);
+            
+            self.AnnotationView.leadingBetBtn_1AndScroll.priority = UILayoutPriorityDefaultLow;
+            self.AnnotationView.leadingBetBtn_2AndScroll.priority = UILayoutPriorityDefaultLow;
+            self.AnnotationView.leadingBetBtn_3AndScroll.priority = UILayoutPriorityDefaultLow;
+            
+            
+            [self layoutIfNeeded];
+        } completion:^(BOOL finished) {
+//            [UIView animateWithDuration:0.1 animations:^{
+//                self.AnnotationView.transform = CGAffineTransformMakeScale(10 / 11.0, 10 / 11.0);
+//            } completion:^(BOOL finished) {
+//                
+//                self.AnnotationView.hidden = YES;
+//                self.combineAnnotationCallOutView.hidden = NO;
+//            }];
+        }];
+        
+//        self.circleView.hidden = NO;
+        
+    }else
+    {
+        [self resetUI];
+        
+//        self.circleView.hidden = YES;
+    }
+}
+
+
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event{
+    return NO;
+}
+
+// 点击大头针
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
+    UIView *result = [super hitTest:point withEvent:event];
+    
+    CGPoint shopViewPointButton = [_AnnotationView.iconBtn convertPoint:point fromView:self];
+    
+    if ([_AnnotationView.iconBtn pointInside:shopViewPointButton withEvent:event]) {
+        return _AnnotationView.iconBtn;
     }
     
-    return inside;
+    return result;
 }
 
 

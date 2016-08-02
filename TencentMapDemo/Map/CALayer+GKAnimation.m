@@ -1,14 +1,14 @@
 //
-//  QCircleView+GK_Animation.m
-//  RNCandidateProj
+//  CALayer+GKAnimation.m
+//  TencentMapDemo
 //
-//  Created by chenyn on 16/7/28.
-//  Copyright © 2016年 Facebook. All rights reserved.
+//  Created by chenyn on 16/8/1.
+//  Copyright © 2016年 chenyn. All rights reserved.
 //
 
-#import "QCircleView+GK_Animation.h"
+#import "CALayer+GKAnimation.h"
 
-@implementation QCircleView (GK_Animation)
+@implementation CALayer (GKAnimation)
 
 - (void)gk_AddAnimation
 {
@@ -23,7 +23,7 @@
     double gk_maxScale = 1.3;
     double gk_minScale = 1.0;
     frameScale.values = @[@(gk_minScale), @(gk_maxScale)];
-    [self.layer addAnimation:frameScale forKey:@"scale"];
+    [self addAnimation:frameScale forKey:@"scale"];
     
     
     CAKeyframeAnimation *layerOpacity = [CAKeyframeAnimation animation];
@@ -35,7 +35,7 @@
     
     
     layerOpacity.values = @[@1.0, @0.0];
-    [self.layer addAnimation:layerOpacity forKey:@"opacity"];
+    [self addAnimation:layerOpacity forKey:@"opacity"];
     
     [self setNeedsDisplay];
 }
@@ -51,5 +51,6 @@
 {
     NSLog(@"停止");
 }
+
 
 @end

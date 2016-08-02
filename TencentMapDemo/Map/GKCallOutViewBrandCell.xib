@@ -14,6 +14,9 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ewQ-Bd-ANU">
                     <rect key="frame" x="0.0" y="0.0" width="191" height="168"/>
                     <state key="normal" image="2014121502355952.jpeg"/>
+                    <connections>
+                        <action selector="didSelectedBrandCell" destination="iN0-l3-epB" eventType="touchUpInside" id="hpc-ug-ZYl"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -25,7 +28,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="GKCallOutBrandCell" destination="ewQ-Bd-ANU" id="dgs-7P-hgD"/>
+                <outlet property="GKCallOutBrandCell" destination="ewQ-Bd-ANU" id="xDP-c9-0tI"/>
             </connections>
             <point key="canvasLocation" x="476.5" y="360"/>
         </view>

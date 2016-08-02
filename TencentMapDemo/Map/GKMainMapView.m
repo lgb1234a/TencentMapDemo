@@ -14,7 +14,7 @@
 #import "GKUserIconViewAnnotation.h"
 #import "GKUserIconView.h"
 #import "GKMapViewSingleTon.h"
-#import "QCircleView+GK_Animation.h"
+#import "CALayer+GKAnimation.h"
 #import "GKJobCardView.h"
 
 @interface GKMainMapView () <QMapViewDelegate, GKCustomAnnotationViewDelegate>
@@ -45,6 +45,20 @@
     return _annotations;
 }
 
+- (void)buildJobCardView
+{
+    CGRect screenRect = [UIScreen mainScreen].bounds;
+    CGRect cardRect = CGRectMake(10, screenRect.size.height, screenRect.size.width - 20, 300);
+    if(!_jobCard)
+    {
+        _jobCard = [[[NSBundle mainBundle] loadNibNamed:@"GKJobCardView" owner:nil options:nil] firstObject];
+        _jobCard.frame = cardRect;
+        _jobCard.hidden = YES;
+        _jobCard.isVisible = NO;
+        [self addSubview:_jobCard];
+    }
+}
+
 #pragma mark - life
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -61,14 +75,6 @@
         // 设置缩放大小
         [self.mapView setZoomLevel:10];
         
-        //圆心坐标
-        CLLocationCoordinate2D center = CLLocationCoordinate2DMake(39.980161,116.327621);
-        //构造圆形，半径单位m
-        QCircle *circle = [QCircle circleWithCenterCoordinate:center radius:3000];
-        self.userCircleRect = circle.boundingMapRect;
-        //添加圆形
-        [self.mapView addOverlay:circle];
-        
         
         // 设置标注
         QPointAnnotation *annotation = [[QPointAnnotation alloc] init];
@@ -82,6 +88,12 @@
         [self.annotations addObject:iconAnnotation];
         
         [self.mapView addAnnotations:self.annotations];
+        
+        [self buildJobCardView];
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapMapView:)];
+        
+        [self addGestureRecognizer:tap];
     }
     return self;
 }
@@ -104,8 +116,6 @@
         {
             annotationView = [[GKUserIconView alloc] initWithAnnotation:annotation reuseIdentifier:userIconReuseIdentifier];
             
-            annotationView.image = [UIImage imageNamed:@"subway_station"];
-            
             return annotationView;
         }
     }
@@ -116,8 +126,7 @@
             GKCustomAnnotationView *annotationView = (GKCustomAnnotationView *)[_mapView dequeueReusableAnnotationViewWithIdentifier:customReuseIndentifier];
             if (annotationView == nil) {
                 annotationView = [[GKCustomAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:customReuseIndentifier];
-                UIImage *image = [UIImage imageNamed:@"start_point_in_map"];
-                annotationView.image = image;
+                annotationView.delegate = self;
                 
                 return annotationView;
             }
@@ -132,104 +141,15 @@
     NSLog(@"latitude:%f, longitude:%f", userLocation.location.latitude, userLocation.location.longitude);
 }
 
-- (QOverlayView *) mapView:(QMapView *)mapView viewForOverlay:(id<QOverlay>)overlay
-{
-    if ([overlay isKindOfClass:[QCircle class]]) {
-        QCircleView *circleView = [[QCircleView alloc] initWithCircle:overlay];
-        
-        [circleView gk_AddAnimation];
-        
-        //设置描边色为黑色
-        [circleView setStrokeColor:[UIColor blackColor]];
-        //设置填充色为红色
-        [circleView setFillColor:[UIColor colorWithRed:0.2472 green:0.5955 blue:0.8759 alpha:0.53]];
-        
-        
-//        [self setNeedsDisplay];
-        
-        return circleView;
-    }
-    return nil;
-}
 
 - (void)mapView:(QMapView *)mapView didSelectAnnotationView:(QAnnotationView *)view
 {
-    // 品牌
-    if([view isKindOfClass:[GKCustomAnnotationView class]])
-    {
-        
-        id<QAnnotation> annotation = view.annotation;
-//        [mapView setCenterCoordinate:annotation.coordinate];
-        
-        //圆心坐标
-        CLLocationCoordinate2D center = annotation.coordinate;
-        //构造圆形，半径单位m
-        _tapedCircle = [QCircle circleWithCenterCoordinate:center radius:3000];
-        //添加圆形
-        [mapView addOverlay:_tapedCircle];
-        
-        CGRect screenRect = [UIScreen mainScreen].bounds;
-        CGRect cardRect = CGRectMake(10, screenRect.size.height, screenRect.size.width - 20, 300);
-        
-        if(!_jobCard)
-        {
-            _jobCard = [[[NSBundle mainBundle] loadNibNamed:@"GKJobCardView" owner:nil options:nil] firstObject];
-            _jobCard.frame = cardRect;
-            _jobCard.hidden = NO;
-            _jobCard.isVisible = NO;
-            [self addSubview:_jobCard];
-        }
-        
-        [UIView animateWithDuration:1.0 animations:^{
-            
-            _jobCard.transform = CGAffineTransformTranslate(_jobCard.transform, 0, -355);
-            
-        } completion:^(BOOL finished) {
-            _jobCard.isVisible = !_jobCard.isVisible;
-        }];
-    }
     
-    // 用户头像
-    if([view isKindOfClass:[GKUserIconView class]])
-    {
-        [self iconViewClicked];
-    }
 }
 
 - (void)mapView:(QMapView *)mapView didDeselectAnnotationView:(QAnnotationView *)view
 {
-    // 品牌
-    if([view isKindOfClass:[GKCustomAnnotationView class]])
-    {
-        // 移除圆
-        [mapView removeOverlay:_tapedCircle];
-        
-        CGRect screenRect = [UIScreen mainScreen].bounds;
-        CGRect cardRect = CGRectMake(10, screenRect.size.height - 345, screenRect.size.width - 20, 300);
-        
-        if(!_jobCard)
-        {
-            _jobCard = [[[NSBundle mainBundle] loadNibNamed:@"GKJobCardView" owner:nil options:nil] firstObject];
-            _jobCard.frame = cardRect;
-            _jobCard.hidden = NO;
-            _jobCard.isVisible = YES;
-            [self addSubview:_jobCard];
-        }
-        
-        [UIView animateWithDuration:1.0 animations:^
-         {
-             if(_jobCard.isVisible)
-             {
-                 _jobCard.transform = CGAffineTransformTranslate(_jobCard.transform, 0, 355);
-                 
-             }
-             
-         } completion:^(BOOL finished){
-             
-             _jobCard.isVisible = !_jobCard.isVisible;
-             
-         }];
-    }
+    
 }
 
 - (void)mapRegionChanged:(QMapView*)mapView
@@ -250,14 +170,53 @@
     }
 }
 
-
 #pragma mark - CustomAnnotationViewDelegate
 
+- (void)shouldPresentJobCardView:(BOOL)shouldPresent
+{
+    if(shouldPresent)
+    {
+        [self addCardView];
+    }else
+    {
+        [self removewCardView];
+    }
+}
 
 #pragma mark - private
-- (void)iconViewClicked
+
+- (void)didTapMapView:(UIGestureRecognizer *)gesture
 {
-    // 点击头像
+    
+}
+
+- (void)addCardView
+{
+    self.jobCard.hidden = NO;
+    [UIView animateWithDuration:1.0 animations:^{
+        
+        self.jobCard.transform = CGAffineTransformTranslate(self.jobCard.transform, 0, -355);
+        
+    } completion:^(BOOL finished) {
+        self.jobCard.isVisible = !self.jobCard.isVisible;
+    }];
+}
+
+- (void)removewCardView
+{
+    [UIView animateWithDuration:1.0 animations:^
+     {
+         if(self.jobCard.isVisible)
+         {
+             self.jobCard.transform = CGAffineTransformTranslate(self.jobCard.transform, 0, 355);
+             
+         }
+         
+     } completion:^(BOOL finished){
+         
+         self.jobCard.isVisible = !self.jobCard.isVisible;
+         self.jobCard.hidden = YES;
+     }];
 }
 
 @end

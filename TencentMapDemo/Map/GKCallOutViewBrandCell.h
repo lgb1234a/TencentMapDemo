@@ -12,7 +12,7 @@
 
 @protocol GKCallOutViewBrandCellDelegate <NSObject>
 
-- (void)GKCallOutViewBrandCell:(GKCallOutViewBrandCell *)cell DidSelectedBrandCellWithCellId:(NSInteger)cellId;
+- (void)GKCallOutViewBrandCell:(GKCallOutViewBrandCell *)cell didSelectedBrandCellWithCellId:(NSInteger)cellId;
 
 @end
 
@@ -21,5 +21,7 @@
 @property (nonatomic, assign) NSInteger cellId;
 
 @property (nonatomic, assign) id<GKCallOutViewBrandCellDelegate> delegate;
+
+
 
 @end

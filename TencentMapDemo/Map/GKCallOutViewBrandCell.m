@@ -14,6 +14,8 @@
 
 @end
 
+//NSString *const notiScreenTouch = @"notiScreenTouch";
+
 @implementation GKCallOutViewBrandCell
 
 /*
@@ -28,20 +30,44 @@
 {
     [super awakeFromNib];
     
-    [_GKCallOutBrandCell addTarget:self action:@selector(didSelectedBrandCell) forControlEvents:UIControlEventTouchUpInside];
+//    _GKCallOutBrandCell.layer.cornerRadius = 15.0;
     
-    _GKCallOutBrandCell.layer.cornerRadius = 15.0;
+    self.backgroundColor = [UIColor clearColor];
+    self.GKCallOutBrandCell.layer.cornerRadius = 20.0;
+    self.GKCallOutBrandCell.clipsToBounds = YES;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onScreenTouch:) name:@"notiScreenTouch" object:nil];
 }
 
-- (void)didSelectedBrandCell
+- (void)dealloc
 {
-    NSLog(@"Taped cell : %ld", _cellId);
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+
+- (void)onScreenTouch:(NSNotification *)notification
+{
+    UIEvent *event = [notification.userInfo objectForKey:@"data"];
     
-    if(self.delegate && [self.delegate respondsToSelector:@selector(GKCallOutViewBrandCell:DidSelectedBrandCellWithCellId:)])
+    NSLog(@"touch screen!!!!!");
+    CGPoint pt = [[[[event allTouches] allObjects] objectAtIndex:0] locationInView:self.GKCallOutBrandCell];
+    NSLog(@"pt.x=%f, pt.y=%f", pt.x, pt.y);
+    
+    CGPoint pointInCallout = [self convertPoint:pt toView:self.GKCallOutBrandCell];
+    
+    BOOL inside = CGRectContainsPoint(self.GKCallOutBrandCell.bounds, pointInCallout);
+    
+    if(inside)
     {
-        __weak typeof(self) wself = self;
-        [self.delegate GKCallOutViewBrandCell:wself DidSelectedBrandCellWithCellId:wself.cellId];
+        NSLog(@"%@  %ld", NSStringFromCGRect(self.frame), _cellId);
+        
+        if(self.delegate && [self.delegate respondsToSelector:@selector(GKCallOutViewBrandCell:didSelectedBrandCellWithCellId:)])
+        {
+            __weak typeof(self) wself = self;
+            [self.delegate GKCallOutViewBrandCell:wself didSelectedBrandCellWithCellId:wself.cellId];
+        }
     }
 }
+
 
 @end
