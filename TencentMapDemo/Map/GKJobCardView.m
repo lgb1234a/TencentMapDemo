@@ -23,6 +23,8 @@
 
 @end
 
+#define backgroundViewCorner 5.0
+
 @implementation GKJobCardView
 
 #pragma mark - life
@@ -34,7 +36,7 @@
     self.GKJobTableView.dataSource = self;
     
     [self.GKJobTableView registerNib:[UINib nibWithNibName:@"GKJobCell" bundle:nil] forCellReuseIdentifier:@"cell"];
-    self.GKCardBackgroundView.layer.cornerRadius = 5.0;
+    self.GKCardBackgroundView.layer.cornerRadius = backgroundViewCorner;
 }
 
 

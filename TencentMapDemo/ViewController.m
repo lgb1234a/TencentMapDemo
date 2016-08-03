@@ -12,7 +12,7 @@
 #import "GKUserIconView.h"
 #import "GKMainMapView.h"
 
-@interface ViewController () <QMapViewDelegate, GKCustomAnnotationViewDelegate>
+@interface ViewController () <QMapViewDelegate>
 
 @property (nonatomic, strong) QMapView *mapView;
 

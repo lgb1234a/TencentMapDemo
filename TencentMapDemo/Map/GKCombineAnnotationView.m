@@ -14,6 +14,9 @@
 
 @end
 
+#define pageControlTransform 0.5
+#define btnCornerRadius  _iconBtn.bounds.size.width * 0.5;
+
 @implementation GKCombineAnnotationView
 
 /*
@@ -27,20 +30,20 @@
 
 - (void)awakeFromNib
 {
-    self.iconBtn.layer.cornerRadius = 25.0;
+    self.iconBtn.layer.cornerRadius = btnCornerRadius;
     self.iconBtn.clipsToBounds = YES;
     
-    self.btn_1.layer.cornerRadius = 25.0;
+    self.btn_1.layer.cornerRadius = btnCornerRadius;
     self.btn_1.clipsToBounds = YES;
     
-    self.btn_2.layer.cornerRadius = 25.0;
+    self.btn_2.layer.cornerRadius = btnCornerRadius;
     self.btn_2.clipsToBounds = YES;
     
-    self.btn_3.layer.cornerRadius = 25.0;
+    self.btn_3.layer.cornerRadius = btnCornerRadius;
     self.btn_3.clipsToBounds = YES;
     
     
-    self.pageControl.transform = CGAffineTransformMakeScale(0.5, 0.5);
+    self.pageControl.transform = CGAffineTransformMakeScale(pageControlTransform, pageControlTransform);
     
 //    [_btn_1 addTarget:self action:@selector(didclickBtn:) forControlEvents:UIControlEventTouchUpInside];
 //    [_btn_2 addTarget:self action:@selector(didclickBtn:) forControlEvents:UIControlEventTouchUpInside];

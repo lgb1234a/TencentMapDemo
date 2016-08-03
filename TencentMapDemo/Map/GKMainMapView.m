@@ -14,8 +14,9 @@
 #import "GKUserIconViewAnnotation.h"
 #import "GKUserIconView.h"
 #import "GKMapViewSingleTon.h"
-#import "CALayer+GKAnimation.h"
 #import "GKJobCardView.h"
+#import "GKBackgroundAnnotation.h"
+#import "GKBackgroundAnnotationView.h"
 
 @interface GKMainMapView () <QMapViewDelegate, GKCustomAnnotationViewDelegate>
 
@@ -31,13 +32,19 @@
 
 @property (nonatomic, assign) CLLocationCoordinate2D userCircleCoordinate;
 
-
 @property (nonatomic, strong) UIButton *userIconBtn;
 
 @end
 
 
 #define screenRect [UIScreen mainScreen].bounds
+#define  jobCardMargin  10
+#define  jobCardHeight  280
+#define userIconBtnMargin 10
+#define userIconWidth    60
+#define userIconHeight   60
+#define tabbarHeight     50
+#define tabbarTopMargin  5
 
 @implementation GKMainMapView
 
@@ -53,8 +60,8 @@
 
 - (void)buildJobCardView
 {
-//    CGRect screenRect = [UIScreen mainScreen].bounds;
-    CGRect cardRect = CGRectMake(10, screenRect.size.height, screenRect.size.width - 20, 280);
+    
+    CGRect cardRect = CGRectMake(jobCardMargin, screenRect.size.height, screenRect.size.width - 2 * jobCardMargin, jobCardHeight);
     if(!_jobCard)
     {
         _jobCard = [[[NSBundle mainBundle] loadNibNamed:@"GKJobCardView" owner:nil options:nil] firstObject];
@@ -70,12 +77,12 @@
     if(!_userIconBtn)
     {
         _userIconBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _userIconBtn.frame = CGRectMake(10, screenRect.size.height - 70, 60, 60);
-        [_userIconBtn setImage:[UIImage imageNamed:@"color_texture"] forState:UIControlStateNormal];
-        _userIconBtn.backgroundColor = [UIColor redColor];
-        _userIconBtn.layer.cornerRadius = 30.0;
+        _userIconBtn.frame = CGRectMake(userIconBtnMargin, screenRect.size.height - (userIconWidth + userIconBtnMargin), userIconWidth, userIconHeight);
+        [_userIconBtn setImage:[UIImage imageNamed:@"0.jpg"] forState:UIControlStateNormal];
+        _userIconBtn.layer.cornerRadius = userIconWidth * 0.5;
         _userIconBtn.clipsToBounds = YES;
         _userIconBtn.hidden = YES;
+        [_userIconBtn addTarget:self action:@selector(tapedUserIconBtn:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_userIconBtn];
     }
 }
@@ -99,8 +106,8 @@
         
         
         // 设置标注
-        QPointAnnotation *annotation = [[QPointAnnotation alloc] init];
-        [annotation setCoordinate:CLLocationCoordinate2DMake(39.987161,116.527621)];
+        QPointAnnotation *combineAnnotation = [[QPointAnnotation alloc] init];
+        [combineAnnotation setCoordinate:CLLocationCoordinate2DMake(39.987161,116.527621)];
         
         QPointAnnotation *normalAnnotation = [[QPointAnnotation alloc] init];
         [normalAnnotation setCoordinate:CLLocationCoordinate2DMake(39.867161,116.327621)];
@@ -110,9 +117,10 @@
         self.userCircleCoordinate = iconAnnotation.coordinate;
         
         //添加标注
-        [self.annotations addObject:annotation];
-        [self.annotations addObject:normalAnnotation];
+        
         [self.annotations addObject:iconAnnotation];
+        [self.annotations addObject:combineAnnotation];
+        [self.annotations addObject:normalAnnotation];
         
         [self.mapView addAnnotations:self.annotations];
         
@@ -125,10 +133,9 @@
 
 
 #pragma mark - QMapViewDelegate
-- (QAnnotationView *)mapView:(QMapView *)mapView
-           viewForAnnotation:(id<QAnnotation>)annotation
+- (QAnnotationView *)mapView:(QMapView *)mapView viewForAnnotation:(id<QAnnotation>)annotation
 {
-    static NSString *customReuseIndentifier = @"custReuseIdentifieer";
+    static NSString *customReuseIndentifier = @"combineReuseIdentifieer";
     static NSString *normalReuseIndentifier = @"normalReuseIdentifieer";
     static NSString *userIconReuseIdentifier = @"userIcon";
     
@@ -148,7 +155,7 @@
     
     if ([annotation isKindOfClass:[QPointAnnotation class]]) {
         //添加自定义annotation
-        if ([annotation isEqual:[_annotations objectAtIndex:0]]) {
+        if ([annotation isEqual:[_annotations objectAtIndex:1]]) {
             GKCustomAnnotationView *annotationView = (GKCustomAnnotationView *)[_mapView dequeueReusableAnnotationViewWithIdentifier:customReuseIndentifier];
             if (annotationView == nil) {
                 annotationView = [[GKCustomAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:customReuseIndentifier];
@@ -159,7 +166,7 @@
             }
         }
         
-        if ([annotation isEqual:[_annotations objectAtIndex:1]]) {
+        if ([annotation isEqual:[_annotations objectAtIndex:2]]) {
             GKCustomAnnotationView *annotationView = (GKCustomAnnotationView *)[_mapView dequeueReusableAnnotationViewWithIdentifier:normalReuseIndentifier];
             if (annotationView == nil) {
                 annotationView = [[GKCustomAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:normalReuseIndentifier];
@@ -177,6 +184,8 @@
 //<QMapViewDelegate >中的定位回调函数
 - (void)mapView:(QMapView *)mapView didUpdateUserLocation:(QUserLocation *)userLocation {
     NSLog(@"latitude:%f, longitude:%f", userLocation.location.latitude, userLocation.location.longitude);
+    
+    _userCircleCoordinate = userLocation.location;
 }
 
 
@@ -218,6 +227,7 @@
     }
 }
 
+// 点击标注，移动到地图中心
 - (void)moveAnnotationToMapCenter:(id<QAnnotation>)nnotation
 {
     [self.mapView setCenterCoordinate:nnotation.coordinate animated:YES];
@@ -225,6 +235,12 @@
 
 #pragma mark - private
 
+// 点击左下用户头像
+- (void)tapedUserIconBtn:(id)sender
+{
+    // 地图移动到以用户头像为中心的位置
+    [self.mapView setCenterCoordinate:_userCircleCoordinate animated:YES];
+}
 
 - (void)addCardView
 {
@@ -233,7 +249,7 @@
         self.jobCard.hidden = NO;
         [UIView animateWithDuration:1.0 animations:^{
             
-            self.jobCard.transform = CGAffineTransformTranslate(self.jobCard.transform, 0, -335);
+            self.jobCard.transform = CGAffineTransformTranslate(self.jobCard.transform, 0, -(jobCardHeight + tabbarTopMargin + tabbarHeight));
             
         } completion:^(BOOL finished) {
             self.jobCard.isVisible = !self.jobCard.isVisible;
@@ -249,8 +265,7 @@
          {
              if(self.jobCard.isVisible)
              {
-                 self.jobCard.transform = CGAffineTransformTranslate(self.jobCard.transform, 0, 335);
-                 
+                 self.jobCard.transform = CGAffineTransformTranslate(self.jobCard.transform, 0, jobCardHeight + tabbarTopMargin + tabbarHeight);
              }
              
          } completion:^(BOOL finished){

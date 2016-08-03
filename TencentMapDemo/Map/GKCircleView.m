@@ -8,6 +8,15 @@
 
 #import "GKCircleView.h"
 
+
+#define frameScaleDur 2.0
+#define layerOpacityDur  2.0
+#define frameScaleMax  1.3
+#define frameScaleMin  1.0
+#define layerOpacityMax 1.0
+#define layerOpacityMin 0.0
+
+
 @implementation GKCircleView
 
 
@@ -20,7 +29,7 @@
     
     CGContextSetFillColorWithColor(context, [UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.37].CGColor);
     
-    CGContextAddArc(context, rect.origin.x + rect.size.width * 0.5, rect.origin.y + rect.size.height * 0.5, rect.size.width * 0.5, 0, 2 * M_PI, 0); //添加一个圆
+    CGContextAddArc(context, CGRectGetMidX(rect), CGRectGetMidY(rect), rect.size.width * 0.5, 0, 2 * M_PI, 0); //添加一个圆
     CGContextDrawPath(context, kCGPathFill); //绘制路径
     
     [self addAnimation];
@@ -32,27 +41,24 @@
     frameScale.delegate = self;
     frameScale.keyPath = @"transform.scale";
     
-    frameScale.duration = 2.0;
+    frameScale.duration = frameScaleDur;
     frameScale.repeatCount = MAXFLOAT;
     frameScale.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
     
-    double gk_maxScale = 1.3;
-    double gk_minScale = 1.0;
-    frameScale.values = @[@(gk_minScale), @(gk_maxScale)];
+    frameScale.values = @[@(frameScaleMin), @(frameScaleMax)];
     [self.layer addAnimation:frameScale forKey:@"scale"];
     
     
     CAKeyframeAnimation *layerOpacity = [CAKeyframeAnimation animation];
     layerOpacity.keyPath = @"opacity";
     
-    layerOpacity.duration = 2.0;
+    layerOpacity.duration = layerOpacityDur;
     layerOpacity.repeatCount = MAXFLOAT;
     layerOpacity.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
     
     
-    layerOpacity.values = @[@1.0, @0.0];
+    layerOpacity.values = @[@(layerOpacityMax), @(layerOpacityMin)];
     [self.layer addAnimation:layerOpacity forKey:@"opacity"];
-    
 }
 
 

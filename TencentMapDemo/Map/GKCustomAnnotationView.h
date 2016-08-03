@@ -15,9 +15,6 @@ typedef NS_ENUM(NSUInteger, AnnotationViewType) {
 
 @protocol GKCustomAnnotationViewDelegate <NSObject>
 
-- (void)iconViewClicked;
-
-
 - (void)shouldPresentJobCardView:(BOOL)shouldPresent;
 
 - (void)moveAnnotationToMapCenter:(id <QAnnotation>) nnotation;

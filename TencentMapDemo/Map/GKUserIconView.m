@@ -18,6 +18,11 @@
 @end
 
 
+#define circleViewRadius 80
+#define selfBounds self.bounds
+#define iconBtnWidth 60
+#define iconBtnHeight 60
+
 @implementation GKUserIconView
 
 
@@ -44,16 +49,17 @@
         self.image = nil;
         self.backgroundColor = [UIColor clearColor];
         
-        self.circleView = [[GKCircleView alloc] initWithFrame:CGRectMake(self.bounds.origin.x, self.bounds.origin.y, 80, 80)];
-        self.circleView.center = CGPointMake(self.bounds.origin.x + self.bounds.size.width * 0.5, self.bounds.origin.y + self.bounds.size.height * 0.5);
+        self.circleView = [[GKCircleView alloc] initWithFrame:CGRectMake(selfBounds.origin.x, selfBounds.origin.y, circleViewRadius, circleViewRadius)];
+        self.circleView.center = CGPointMake(CGRectGetMidX(selfBounds), CGRectGetMinY(selfBounds));
         
         [self addSubview:self.circleView];
         
         self.iconBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.iconBtn.frame = CGRectMake(self.bounds.origin.x, self.bounds.origin.y, 60, 60);
-        [self.iconBtn setImage:[UIImage imageNamed:@"subway_station"] forState:UIControlStateNormal];
-        self.iconBtn.layer.cornerRadius = 30.0;
-        self.iconBtn.center = CGPointMake(self.bounds.origin.x + self.bounds.size.width * 0.5, self.bounds.origin.y + self.bounds.size.height * 0.5);
+        self.iconBtn.frame = CGRectMake(selfBounds.origin.x, selfBounds.origin.y, iconBtnWidth, iconBtnHeight);
+        [self.iconBtn setImage:[UIImage imageNamed:@"0.jpg"] forState:UIControlStateNormal];
+        self.iconBtn.layer.cornerRadius = iconBtnWidth * 0.5;
+        self.iconBtn.clipsToBounds = YES;
+        self.iconBtn.center = self.circleView.center;
         [self.iconBtn addTarget:self action:@selector(clickedUserIcon:) forControlEvents:UIControlEventTouchUpInside];
         
         [self addSubview:self.iconBtn];
