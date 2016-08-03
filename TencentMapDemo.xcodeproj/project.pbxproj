@@ -79,6 +79,12 @@
 		EFA36F8A1D51A97D00829356 /* GKBackgroundAnnotationView.h in Headers */ = {isa = PBXBuildFile; fileRef = EFA36F881D51A97D00829356 /* GKBackgroundAnnotationView.h */; };
 		EFA36F8B1D51A97D00829356 /* GKBackgroundAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = EFA36F891D51A97D00829356 /* GKBackgroundAnnotationView.m */; };
 		EFA36F8D1D51BBF400829356 /* 0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EFA36F8C1D51BBF400829356 /* 0.jpg */; };
+		EFA36F901D51C7EF00829356 /* GKCallOutAnnotationView.h in Headers */ = {isa = PBXBuildFile; fileRef = EFA36F8E1D51C7EF00829356 /* GKCallOutAnnotationView.h */; };
+		EFA36F911D51C7EF00829356 /* GKCallOutAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = EFA36F8F1D51C7EF00829356 /* GKCallOutAnnotationView.m */; };
+		EFA36F931D51C8BB00829356 /* GKCallOutAnnotationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFA36F921D51C8BB00829356 /* GKCallOutAnnotationView.xib */; };
+		EFA36F971D51CAF700829356 /* GKCallOutViewBrandCell.h in Headers */ = {isa = PBXBuildFile; fileRef = EFA36F941D51CAF700829356 /* GKCallOutViewBrandCell.h */; };
+		EFA36F981D51CAF700829356 /* GKCallOutViewBrandCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFA36F951D51CAF700829356 /* GKCallOutViewBrandCell.m */; };
+		EFA36F991D51CAF700829356 /* GKCallOutViewBrandCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFA36F961D51CAF700829356 /* GKCallOutViewBrandCell.xib */; };
 		EFB904F91D47042600E52B37 /* FBKVOController.h in Headers */ = {isa = PBXBuildFile; fileRef = EFB904F31D47042600E52B37 /* FBKVOController.h */; };
 		EFB904FA1D47042600E52B37 /* FBKVOController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFB904F41D47042600E52B37 /* FBKVOController.m */; };
 		EFB904FC1D47042600E52B37 /* KVOController.h in Headers */ = {isa = PBXBuildFile; fileRef = EFB904F61D47042600E52B37 /* KVOController.h */; };
@@ -403,6 +409,12 @@
 		EFA36F881D51A97D00829356 /* GKBackgroundAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKBackgroundAnnotationView.h; sourceTree = "<group>"; };
 		EFA36F891D51A97D00829356 /* GKBackgroundAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKBackgroundAnnotationView.m; sourceTree = "<group>"; };
 		EFA36F8C1D51BBF400829356 /* 0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 0.jpg; sourceTree = "<group>"; };
+		EFA36F8E1D51C7EF00829356 /* GKCallOutAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCallOutAnnotationView.h; sourceTree = "<group>"; };
+		EFA36F8F1D51C7EF00829356 /* GKCallOutAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKCallOutAnnotationView.m; sourceTree = "<group>"; };
+		EFA36F921D51C8BB00829356 /* GKCallOutAnnotationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GKCallOutAnnotationView.xib; sourceTree = "<group>"; };
+		EFA36F941D51CAF700829356 /* GKCallOutViewBrandCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCallOutViewBrandCell.h; sourceTree = "<group>"; };
+		EFA36F951D51CAF700829356 /* GKCallOutViewBrandCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKCallOutViewBrandCell.m; sourceTree = "<group>"; };
+		EFA36F961D51CAF700829356 /* GKCallOutViewBrandCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GKCallOutViewBrandCell.xib; sourceTree = "<group>"; };
 		EFB904F31D47042600E52B37 /* FBKVOController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBKVOController.h; sourceTree = "<group>"; };
 		EFB904F41D47042600E52B37 /* FBKVOController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBKVOController.m; sourceTree = "<group>"; };
 		EFB904F61D47042600E52B37 /* KVOController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVOController.h; sourceTree = "<group>"; };
@@ -719,6 +731,12 @@
 				EF6C47641D507647008D135C /* GKCombineAnnotationView.h */,
 				EF6C47651D507647008D135C /* GKCombineAnnotationView.m */,
 				EF6C47681D50766A008D135C /* GKCombineAnnotationView.xib */,
+				EFA36F8E1D51C7EF00829356 /* GKCallOutAnnotationView.h */,
+				EFA36F8F1D51C7EF00829356 /* GKCallOutAnnotationView.m */,
+				EFA36F921D51C8BB00829356 /* GKCallOutAnnotationView.xib */,
+				EFA36F941D51CAF700829356 /* GKCallOutViewBrandCell.h */,
+				EFA36F951D51CAF700829356 /* GKCallOutViewBrandCell.m */,
+				EFA36F961D51CAF700829356 /* GKCallOutViewBrandCell.xib */,
 				EF06757D1D4B332200AEBFDB /* GKCustomAnnotationView.h */,
 				EF06757E1D4B332200AEBFDB /* GKCustomAnnotationView.m */,
 				EFA36F841D51A95500829356 /* GKBackgroundAnnotation.h */,
@@ -1126,6 +1144,7 @@
 				EFD261EE1D3CD96D002693F9 /* QCircle.h in Headers */,
 				EFD261EF1D3CD96E002693F9 /* QCircleView.h in Headers */,
 				EFD261F01D3CD96E002693F9 /* QCityData.h in Headers */,
+				EFA36F901D51C7EF00829356 /* GKCallOutAnnotationView.h in Headers */,
 				EFA36F861D51A95500829356 /* GKBackgroundAnnotation.h in Headers */,
 				EFD261F11D3CD96E002693F9 /* QGeocoder.h in Headers */,
 				EF0675B11D4B332200AEBFDB /* GKCustomAnnotationView.h in Headers */,
@@ -1163,6 +1182,7 @@
 				EFD262061D3CD96E002693F9 /* QRoute.h in Headers */,
 				EFD262071D3CD96E002693F9 /* QRoutePassbySegment.h in Headers */,
 				EFD262081D3CD96E002693F9 /* QRouteResult.h in Headers */,
+				EFA36F971D51CAF700829356 /* GKCallOutViewBrandCell.h in Headers */,
 				EFD262091D3CD96E002693F9 /* QRouteSearch.h in Headers */,
 				EFD2620A1D3CD96E002693F9 /* QSearch.h in Headers */,
 				EF6C47791D509CA2008D135C /* GKJobTypeTableViewCell.h in Headers */,
@@ -1290,6 +1310,7 @@
 				EFD2631B1D3CDB1B002693F9 /* navi_icon_island_3@2x.png in Resources */,
 				EFD2636D1D3CDB1B002693F9 /* walknav_endpoint@2x.png in Resources */,
 				EFD262D71D3CDB1B002693F9 /* subway_station.png in Resources */,
+				EFA36F991D51CAF700829356 /* GKCallOutViewBrandCell.xib in Resources */,
 				EFD262E81D3CDB1B002693F9 /* color_texture2.png in Resources */,
 				EFD262D11D3CDB1B002693F9 /* Province_Satellite.png in Resources */,
 				EFD262DC1D3CDB1B002693F9 /* bubble_middle@2x.png in Resources */,
@@ -1447,6 +1468,7 @@
 				EF0675931D4B332200AEBFDB /* 2014121502355319.jpeg in Resources */,
 				EFD262FD1D3CDB1B002693F9 /* pin_green@2x.png in Resources */,
 				EFD2635C1D3CDB1B002693F9 /* navi_info_speed_35@2x.png in Resources */,
+				EFA36F931D51C8BB00829356 /* GKCallOutAnnotationView.xib in Resources */,
 				EF0675991D4B332200AEBFDB /* 201412150236201.jpeg in Resources */,
 				EFD263471D3CDB1B002693F9 /* navi_icon_right_1_back@3x.png in Resources */,
 				EFD263691D3CDB1B002693F9 /* navi_info_toll@2x.png in Resources */,
@@ -1520,6 +1542,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFA36F911D51C7EF00829356 /* GKCallOutAnnotationView.m in Sources */,
 				EF0675BE1D4B332200AEBFDB /* GKMapView.m in Sources */,
 				EF0675BC1D4B332200AEBFDB /* GKMainMapView.m in Sources */,
 				EFD2618E1D3CD661002693F9 /* ViewController.m in Sources */,
@@ -1536,6 +1559,7 @@
 				EF6C47801D50A9D3008D135C /* GKBrandCollectionViewCell.m in Sources */,
 				EFA36F8B1D51A97D00829356 /* GKBackgroundAnnotationView.m in Sources */,
 				EF6C47741D509C02008D135C /* GKBrandTableViewCell.m in Sources */,
+				EFA36F981D51CAF700829356 /* GKCallOutViewBrandCell.m in Sources */,
 				EFD261881D3CD661002693F9 /* main.m in Sources */,
 				EF0675C61D4B339D00AEBFDB /* GKMapViewSingleTon.m in Sources */,
 				EF6C47851D50AC73008D135C /* GKBrandCollectionView.m in Sources */,

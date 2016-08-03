@@ -15,6 +15,7 @@
 #import "GKCircleView.h"
 #import "GKJobCardView.h"
 #import "GKCombineAnnotationView.h"
+#import "GKCallOutAnnotationView.h"
 
 @interface GKCustomAnnotationView ()
 {
@@ -29,6 +30,7 @@
 @property (nonatomic, strong) GKJobCardView *jobCard;
 @property (nonatomic, strong) UIButton *iconBtn;
 @property (nonatomic, strong) GKCombineAnnotationView *AnnotationView;
+@property (nonatomic, strong) GKCallOutAnnotationView *callOutAnnotationView;
 
 @end
 
@@ -68,6 +70,16 @@
         [self.AnnotationView.btn_1 addTarget:self action:@selector(didclickBtn:) forControlEvents:UIControlEventTouchUpInside];
         [self.AnnotationView.btn_2 addTarget:self action:@selector(didclickBtn:) forControlEvents:UIControlEventTouchUpInside];
         [self.AnnotationView.btn_3 addTarget:self action:@selector(didclickBtn:) forControlEvents:UIControlEventTouchUpInside];
+        
+        
+//        self.callOutAnnotationView = [[[NSBundle mainBundle] loadNibNamed:@"GKCombineAnnotationView" owner:self options:nil] lastObject];
+//        self.callOutAnnotationView.frame = CGRectMake(selfBounds.origin.x, selfBounds.origin.y, annotationViewWidth, annotationViewHeight);
+//        self.callOutAnnotationView.center = CGPointMake(CGRectGetMidX(selfBounds), CGRectGetMidY(selfBounds));
+//        self.callOutAnnotationView.layer.cornerRadius = annotationViewHeight * 0.5;
+//        self.callOutAnnotationView.clipsToBounds = YES;
+//        
+//        [self addSubview:self.callOutAnnotationView];
+        
         
     }
     return self;
