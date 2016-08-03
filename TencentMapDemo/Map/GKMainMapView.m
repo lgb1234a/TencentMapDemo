@@ -127,8 +127,15 @@
         [self buildJobCardView];
         [self buildUserIconBtn];
         
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didTapedCalloutViewCell:) name:@"didTapedCalloutViewCell" object:nil];
     }
     return self;
+}
+
+- (void)didTapedCalloutViewCell:(NSNotification *)notification
+{
+    NSLog(@"taped cell with id: %@", notification.userInfo[@"userInfo"]);
 }
 
 

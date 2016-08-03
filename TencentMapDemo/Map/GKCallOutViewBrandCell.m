@@ -10,7 +10,6 @@
 
 @interface GKCallOutViewBrandCell ()
 
-@property (weak, nonatomic) IBOutlet UIButton *GKCallOutBrandCell;
 
 @end
 
@@ -28,10 +27,11 @@
 {
     [super awakeFromNib];
     
-    [_GKCallOutBrandCell addTarget:self action:@selector(didSelectedBrandCell) forControlEvents:UIControlEventTouchUpInside];
+    [_callOutBrandBtn addTarget:self action:@selector(didSelectedBrandCell) forControlEvents:UIControlEventTouchUpInside];
     
     
-    _GKCallOutBrandCell.layer.cornerRadius = self.bounds.size.width * 0.5;
+    _callOutBrandBtn.layer.cornerRadius = self.bounds.size.height * 0.5;
+    _callOutBrandBtn.clipsToBounds = YES;
 }
 
 - (void)didSelectedBrandCell
@@ -43,6 +43,8 @@
         __weak typeof(self) wself = self;
         [self.delegate GKCallOutViewBrandCell:wself DidSelectedBrandCellWithCellId:wself.cellId];
     }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"didTapedCalloutViewCell" object:self userInfo:@{@"userInfo" : @(_cellId)}];
 }
 
 @end

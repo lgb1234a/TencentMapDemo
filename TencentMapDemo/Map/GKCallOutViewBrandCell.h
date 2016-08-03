@@ -20,6 +20,8 @@
 
 @property (nonatomic, assign) NSInteger cellId;
 
+@property (weak, nonatomic) IBOutlet UIButton *callOutBrandBtn;
+
 @property (nonatomic, assign) id<GKCallOutViewBrandCellDelegate> delegate;
 
 @end

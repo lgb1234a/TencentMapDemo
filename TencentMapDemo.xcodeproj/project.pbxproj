@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3037EA5F7C39B3BB61549078 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 611930BB40C6940D928E29BA /* libPods.a */; };
 		EF06758F1D4B332200AEBFDB /* 2014121502354126.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EF06755A1D4B332200AEBFDB /* 2014121502354126.jpeg */; };
 		EF0675901D4B332200AEBFDB /* 2014121502354477.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EF06755B1D4B332200AEBFDB /* 2014121502354477.jpeg */; };
 		EF0675911D4B332200AEBFDB /* 201412150235466.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EF06755C1D4B332200AEBFDB /* 201412150235466.jpeg */; };
@@ -337,6 +338,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C1F35937D51438D3459A56A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		611930BB40C6940D928E29BA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		6481F939A5F9FD6FDCF4806D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		EF06755A1D4B332200AEBFDB /* 2014121502354126.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2014121502354126.jpeg; sourceTree = "<group>"; };
 		EF06755B1D4B332200AEBFDB /* 2014121502354477.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2014121502354477.jpeg; sourceTree = "<group>"; };
 		EF06755C1D4B332200AEBFDB /* 201412150235466.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 201412150235466.jpeg; sourceTree = "<group>"; };
@@ -667,6 +671,7 @@
 				EFD261BE1D3CD747002693F9 /* SystemConfiguration.framework in Frameworks */,
 				EFD261BC1D3CD73F002693F9 /* libstdc++.6.0.9.tbd in Frameworks */,
 				EFD261BA1D3CD6E7002693F9 /* libSOSOMAPAPI_3D.a in Frameworks */,
+				3037EA5F7C39B3BB61549078 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -687,6 +692,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2908A802D2530731E329FCFE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0C1F35937D51438D3459A56A /* Pods.debug.xcconfig */,
+				6481F939A5F9FD6FDCF4806D /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		5711632EA2FC4E2E20240718 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				611930BB40C6940D928E29BA /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EF0675591D4B332200AEBFDB /* DemoRes */ = {
 			isa = PBXGroup;
 			children = (
@@ -812,6 +834,8 @@
 				EFD2619F1D3CD661002693F9 /* TencentMapDemoTests */,
 				EFD261AA1D3CD661002693F9 /* TencentMapDemoUITests */,
 				EFD261841D3CD661002693F9 /* Products */,
+				2908A802D2530731E329FCFE /* Pods */,
+				5711632EA2FC4E2E20240718 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1202,10 +1226,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EFD261B01D3CD661002693F9 /* Build configuration list for PBXNativeTarget "TencentMapDemo" */;
 			buildPhases = (
+				19F2A55C7EB6435FB5BCBF07 /* Check Pods Manifest.lock */,
 				EFD2617F1D3CD661002693F9 /* Sources */,
 				EFD261801D3CD661002693F9 /* Frameworks */,
 				EFD261811D3CD661002693F9 /* Resources */,
 				EFD261EA1D3CD962002693F9 /* Headers */,
+				2F38CCAE3672E9E6AA800466 /* Embed Pods Frameworks */,
+				03255F99D5C26C364214C252 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1537,6 +1564,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		03255F99D5C26C364214C252 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		19F2A55C7EB6435FB5BCBF07 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		2F38CCAE3672E9E6AA800466 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		EFD2617F1D3CD661002693F9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -1707,6 +1782,7 @@
 		};
 		EFD261B11D3CD661002693F9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0C1F35937D51438D3459A56A /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ENABLE_BITCODE = NO;
@@ -1717,7 +1793,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/TencentMapDemo/TencentMapSdk",
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"$(inherited)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.gikoo.TencentMapDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1725,6 +1804,7 @@
 		};
 		EFD261B21D3CD661002693F9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6481F939A5F9FD6FDCF4806D /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ENABLE_BITCODE = NO;
@@ -1735,7 +1815,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/TencentMapDemo/TencentMapSdk",
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.gikoo.TencentMapDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

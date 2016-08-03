@@ -7,16 +7,18 @@
 //
 
 #import "GKCallOutAnnotationView.h"
-#import "GKCallOutViewBrandCell.h"
+#import <Masonry.h>
 
 @interface GKCallOutAnnotationView () <GKCallOutViewBrandCellDelegate>
 
 @property (nonatomic, strong) NSMutableArray *brandDataArray;
 
+
 @property (weak, nonatomic) IBOutlet UIScrollView *backScrollView;
 
-@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 
+
+@property (nonatomic, strong) UIView *container;
 @end
 
 #define btnWidth 50
@@ -42,6 +44,25 @@
     return _brandDataArray;
 }
 
+- (NSMutableArray *)btnArray
+{
+    if(!_btnArray)
+    {
+        _btnArray = [NSMutableArray array];
+    }
+    return _btnArray;
+}
+
+- (UIButton *)homeBtn
+{
+    if(!_homeBtn)
+    {
+        _homeBtn = ((GKCallOutViewBrandCell *)[self.btnArray firstObject]).callOutBrandBtn;
+    }
+    
+    return _homeBtn;
+}
+
 
 - (void)awakeFromNib
 {
@@ -53,27 +74,91 @@
     static CGFloat selfHeight = 50.0;
 
     
+    _container = [UIView new];
+    _container.backgroundColor = [UIColor clearColor];
+    
+    [_backScrollView addSubview:_container];
+    
+    [_container mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(_backScrollView);
+        make.width.equalTo(_backScrollView);
+    }];
+    
     for(int i = 0; i < self.brandDataArray.count; i++)
     {
         GKCallOutViewBrandCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"GKCallOutViewBrandCell" owner:nil options:nil] lastObject];
         cell.cellId = [self.brandDataArray[i] integerValue];
         cell.delegate = self;
+        cell.tag = i;
         
-        cell.frame = CGRectMake(selfWidth, 0, cellWidth, cellHeight);
+        [_container addSubview:cell];
+        
+        // 与数组中前一个btn建立约束
+        
+        [cell mas_updateConstraints:^(MASConstraintMaker *make) {
+            
+            make.left.mas_equalTo(_container.mas_left).with.offset(cellMargin);
+            make.width.equalTo(@(cellWidth));
+            make.height.equalTo(@(cellHeight));
+            make.top.equalTo(_container).with.offset(cellMargin);
+        }];
+        
+        
         selfWidth = selfWidth + cellWidth + cellMargin;
-        
-        _backScrollView.contentSize = CGSizeMake(selfWidth, selfHeight);
         
         if(i < 4)
         {
             self.bounds = CGRectMake(0, 0, selfWidth, selfHeight);
         }
         
-        [_backScrollView addSubview:cell];
+        [self.btnArray addObject:cell];
+        
+        [self layoutIfNeeded];
+    }
+    
+    _selfWidth = selfWidth;
+}
+
+- (void)calloutSubViews:(BOOL)needCallout
+{
+    CGFloat cellMargin = 5.0;
+    CGFloat cellWidth  = 50.0;
+    CGFloat cellHeight = 50.0;
+    CGFloat selfWidth  = 5.0;
+    CGFloat selfHeight = 50.0;
+    
+    for(int i = 0; i < self.brandDataArray.count; i++)
+    {
+        GKCallOutViewBrandCell *cell = self.btnArray[i];
+        
+        // 与数组中前一个btn建立约束
+        
+        [cell mas_updateConstraints:^(MASConstraintMaker *make) {
+            
+            if(needCallout)
+            {
+                
+                make.left.mas_equalTo(_container.mas_left).with.offset(selfWidth);
+            }else
+            {
+                make.left.mas_equalTo(_container.mas_left).with.offset(cellMargin);
+            }
+            
+            make.width.equalTo(@(cellWidth));
+            make.height.equalTo(@(cellHeight));
+            make.top.equalTo(_container).with.offset(cellMargin);
+        }];
+        
+        
+        selfWidth = selfWidth + cellWidth + cellMargin;
         
         [self layoutIfNeeded];
     }
 }
 
+- (void)hideSubViews
+{
+    [self calloutSubViews:NO];
+}
 
 @end

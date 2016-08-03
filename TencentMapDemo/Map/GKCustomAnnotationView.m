@@ -14,7 +14,7 @@
 #import "GKMapViewSingleTon.h"
 #import "GKCircleView.h"
 #import "GKJobCardView.h"
-#import "GKCombineAnnotationView.h"
+//#import "GKCombineAnnotationView.h"
 #import "GKCallOutAnnotationView.h"
 
 @interface GKCustomAnnotationView ()
@@ -29,7 +29,7 @@
 @property (nonatomic, strong) GKCircleView *circleView;
 @property (nonatomic, strong) GKJobCardView *jobCard;
 @property (nonatomic, strong) UIButton *iconBtn;
-@property (nonatomic, strong) GKCombineAnnotationView *AnnotationView;
+//@property (nonatomic, strong) GKCombineAnnotationView *AnnotationView;
 @property (nonatomic, strong) GKCallOutAnnotationView *callOutAnnotationView;
 
 @end
@@ -40,6 +40,9 @@
 #define annotationViewMaxWidth 225
 #define annotationViewMaxScale 1.1
 #define annotationViewMinScale (10 / 11.0)
+#define scaleMaxDur 0.2
+#define scaleMinDur 0.1
+#define frameScaleDur 0.5
 
 @implementation GKCustomAnnotationView
 
@@ -52,33 +55,23 @@
         self.image = nil;
         self.backgroundColor = [UIColor clearColor];
         
-//        self.circleView = [[GKCircleView alloc] initWithFrame:CGRectMake(selfBounds.origin.x, selfBounds.origin.y, 80, 80)];
-//        self.circleView.center = CGPointMake(selfBounds.origin.x + selfBounds.size.width * 0.5, selfBounds.origin.y + selfBounds.size.height * 0.5);
-//        self.circleView.hidden = YES;
         
-//        [self addSubview:self.circleView];
+        self.callOutAnnotationView = [[[NSBundle mainBundle] loadNibNamed:@"GKCallOutAnnotationView" owner:self options:nil] lastObject];
+        self.callOutAnnotationView.frame = CGRectMake(selfBounds.origin.x, selfBounds.origin.y, annotationViewWidth, annotationViewHeight);
+        self.callOutAnnotationView.center = CGPointMake(CGRectGetMidX(selfBounds), CGRectGetMidY(selfBounds));
+        self.callOutAnnotationView.layer.cornerRadius = annotationViewHeight * 0.5;
+        self.callOutAnnotationView.clipsToBounds = YES;
         
-        self.AnnotationView = [[[NSBundle mainBundle] loadNibNamed:@"GKCombineAnnotationView" owner:self options:nil] lastObject];
-        self.AnnotationView.frame = CGRectMake(selfBounds.origin.x, selfBounds.origin.y, annotationViewWidth, annotationViewHeight);
-        self.AnnotationView.center = CGPointMake(CGRectGetMidX(selfBounds), CGRectGetMidY(selfBounds));
-        self.AnnotationView.layer.cornerRadius = annotationViewHeight * 0.5;
-        self.AnnotationView.clipsToBounds = YES;
+        [self.callOutAnnotationView.homeBtn addTarget:self action:@selector(didClickHomeBtn:) forControlEvents:UIControlEventTouchUpInside];
+        for(int i = 0; i < _callOutAnnotationView.btnArray.count; i++)
+        {
+            GKCallOutViewBrandCell *cell = _callOutAnnotationView.btnArray[i];
+            cell.callOutBrandBtn.tag = i;
+            
+            [cell.callOutBrandBtn addTarget:self action:@selector(didclickBtn:) forControlEvents:UIControlEventTouchUpInside];
+        }
         
-        [self addSubview:self.AnnotationView];
-        
-        [self.AnnotationView.iconBtn addTarget:self action:@selector(clickedAnnotation:) forControlEvents:UIControlEventTouchUpInside];
-        [self.AnnotationView.btn_1 addTarget:self action:@selector(didclickBtn:) forControlEvents:UIControlEventTouchUpInside];
-        [self.AnnotationView.btn_2 addTarget:self action:@selector(didclickBtn:) forControlEvents:UIControlEventTouchUpInside];
-        [self.AnnotationView.btn_3 addTarget:self action:@selector(didclickBtn:) forControlEvents:UIControlEventTouchUpInside];
-        
-        
-//        self.callOutAnnotationView = [[[NSBundle mainBundle] loadNibNamed:@"GKCombineAnnotationView" owner:self options:nil] lastObject];
-//        self.callOutAnnotationView.frame = CGRectMake(selfBounds.origin.x, selfBounds.origin.y, annotationViewWidth, annotationViewHeight);
-//        self.callOutAnnotationView.center = CGPointMake(CGRectGetMidX(selfBounds), CGRectGetMidY(selfBounds));
-//        self.callOutAnnotationView.layer.cornerRadius = annotationViewHeight * 0.5;
-//        self.callOutAnnotationView.clipsToBounds = YES;
-//        
-//        [self addSubview:self.callOutAnnotationView];
+        [self addSubview:self.callOutAnnotationView];
         
         
     }
@@ -92,7 +85,8 @@
     
     if(type == AnnotationViewTypeNormal)
     {
-        self.AnnotationView.pageControl.hidden = YES;
+//        self.AnnotationView.pageControl.hidden = YES;
+        self.callOutAnnotationView.pageControl.hidden = YES;
     }
 }
 
@@ -103,18 +97,16 @@
 
 - (void)resetUI
 {
-    self.AnnotationView.hidden = NO;
+    self.callOutAnnotationView.hidden = NO;
     
 //    self.AnnotationView.layer.anchorPoint = CGPointMake(0.5, 0.5);
     
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:frameScaleDur animations:^{
         
-        self.AnnotationView.frame = CGRectMake(selfBounds.origin.x, selfBounds.origin.y, annotationViewWidth, annotationViewHeight);
-        self.AnnotationView.center = CGPointMake(CGRectGetMidX(selfBounds), CGRectGetMinY(selfBounds));
+        self.callOutAnnotationView.frame = CGRectMake(selfBounds.origin.x, selfBounds.origin.y, annotationViewWidth, annotationViewHeight);
+        self.callOutAnnotationView.center = CGPointMake(CGRectGetMidX(selfBounds), CGRectGetMinY(selfBounds));
         
-        self.AnnotationView.leadingBetBtn_1AndScroll.priority = UILayoutPriorityDefaultHigh;
-        self.AnnotationView.leadingBetBtn_2AndScroll.priority = UILayoutPriorityDefaultHigh;
-        self.AnnotationView.leadingBetBtn_3AndScroll.priority = UILayoutPriorityDefaultHigh;
+        [self.callOutAnnotationView hideSubViews];
         
         [self layoutIfNeeded];
     } completion:^(BOOL finished) {
@@ -126,21 +118,23 @@
 
 #pragma mark - private
 
-- (void)clickedAnnotation:(id)sender
+
+- (void)didClickHomeBtn:(id)sender
 {
-    self.AnnotationView.iconBtn.selected = !self.AnnotationView.iconBtn.selected;
+    UIButton *btn = (UIButton *)sender;
     
-    if(self.AnnotationView.iconBtn.selected)
+    
+    btn.selected = !btn.selected;
+    if(btn.selected)
     {
         if(self.type == AnnotationViewTypeNormal)
         {
             [self presentJobCard];
-        
+
         }else
         {
             [self callOutCombineAnnotation];
         }
-        
     }else
     {
         if(self.type == AnnotationViewTypeNormal)
@@ -189,27 +183,19 @@
 
 // 点击大头针
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
+    
     UIView *result = [super hitTest:point withEvent:event];
     
-    CGPoint shopViewPointButton = [_AnnotationView.iconBtn convertPoint:point fromView:self];
-    
-    if ([_AnnotationView.iconBtn pointInside:shopViewPointButton withEvent:event]) {
-        return _AnnotationView.iconBtn;
-    }
-    
-    shopViewPointButton = [_AnnotationView.btn_1 convertPoint:point fromView:self];
-    if ([_AnnotationView.btn_1 pointInside:shopViewPointButton withEvent:event]) {
-        return _AnnotationView.btn_1;
-    }
-    
-    shopViewPointButton = [_AnnotationView.btn_2 convertPoint:point fromView:self];
-    if ([_AnnotationView.btn_2 pointInside:shopViewPointButton withEvent:event]) {
-        return _AnnotationView.btn_2;
-    }
-    
-    shopViewPointButton = [_AnnotationView.btn_3 convertPoint:point fromView:self];
-    if ([_AnnotationView.btn_3 pointInside:shopViewPointButton withEvent:event]) {
-        return _AnnotationView.btn_3;
+    for(int i = 0; i < _callOutAnnotationView.btnArray.count; i++)
+    {
+        GKCallOutViewBrandCell *cell = _callOutAnnotationView.btnArray[i];
+        
+        CGPoint shopViewPointButton = [cell.callOutBrandBtn convertPoint:point fromView:self];
+        
+        if([cell.callOutBrandBtn pointInside:shopViewPointButton withEvent:event])
+        {
+            return cell.callOutBrandBtn;
+        }
     }
     
     return result;
@@ -218,20 +204,18 @@
 
 - (void)callOutCombineAnnotation
 {
-    [UIView animateWithDuration:0.2 animations:^{
-        self.AnnotationView.transform = CGAffineTransformScale(self.AnnotationView.transform, annotationViewMaxScale, annotationViewMaxScale);
+    [UIView animateWithDuration:scaleMaxDur animations:^{
+        self.callOutAnnotationView.transform = CGAffineTransformScale(self.callOutAnnotationView.transform, annotationViewMaxScale, annotationViewMaxScale);
     } completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.1 animations:^{
-            self.AnnotationView.transform = CGAffineTransformScale(self.AnnotationView.transform, annotationViewMinScale, annotationViewMinScale);
+        [UIView animateWithDuration:scaleMinDur animations:^{
+            self.callOutAnnotationView.transform = CGAffineTransformScale(self.callOutAnnotationView.transform, annotationViewMinScale, annotationViewMinScale);
         } completion:^(BOOL finished) {
-            [UIView animateWithDuration:0.5 animations:^{
+            [UIView animateWithDuration:frameScaleDur animations:^{
                 
-                self.AnnotationView.frame = CGRectMake(selfBounds.origin.x, selfBounds.origin.y, annotationViewMaxWidth, annotationViewHeight);
-                self.AnnotationView.center = CGPointMake(CGRectGetMidX(selfBounds), CGRectGetMidY(selfBounds));
+                self.callOutAnnotationView.frame = CGRectMake(selfBounds.origin.x, selfBounds.origin.y, annotationViewMaxWidth, annotationViewHeight);
+                self.callOutAnnotationView.center = CGPointMake(CGRectGetMidX(selfBounds), CGRectGetMidY(selfBounds));
                 
-                self.AnnotationView.leadingBetBtn_1AndScroll.priority = UILayoutPriorityDefaultLow;
-                self.AnnotationView.leadingBetBtn_2AndScroll.priority = UILayoutPriorityDefaultLow;
-                self.AnnotationView.leadingBetBtn_3AndScroll.priority = UILayoutPriorityDefaultLow;
+                [self.callOutAnnotationView calloutSubViews:YES];
                 
                 
                 [self layoutIfNeeded];
@@ -250,11 +234,11 @@
 
 - (void)presentJobCard
 {
-    [UIView animateWithDuration:0.2 animations:^{
-        self.AnnotationView.transform = CGAffineTransformScale(self.AnnotationView.transform, annotationViewMaxScale, annotationViewMaxScale);
+    [UIView animateWithDuration:scaleMaxDur animations:^{
+        self.callOutAnnotationView.transform = CGAffineTransformScale(self.callOutAnnotationView.transform, annotationViewMaxScale, annotationViewMaxScale);
     } completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.1 animations:^{
-            self.AnnotationView.transform = CGAffineTransformScale(self.AnnotationView.transform, annotationViewMinScale, annotationViewMinScale);
+        [UIView animateWithDuration:scaleMinDur animations:^{
+            self.callOutAnnotationView.transform = CGAffineTransformScale(self.callOutAnnotationView.transform, annotationViewMinScale, annotationViewMinScale);
         } completion:^(BOOL finished) {
             
             if(self.delegate && [self.delegate respondsToSelector:@selector(shouldPresentJobCardView:)])
@@ -273,11 +257,11 @@
 
 - (void)presentJobCardWithBtn:(UIButton *)btn
 {
-    [UIView animateWithDuration:0.2 animations:^{
-        btn.transform = CGAffineTransformScale(self.AnnotationView.transform, annotationViewMaxScale, annotationViewMaxScale);
+    [UIView animateWithDuration:scaleMaxDur animations:^{
+        btn.transform = CGAffineTransformScale(self.callOutAnnotationView.transform, annotationViewMaxScale, annotationViewMaxScale);
     } completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.1 animations:^{
-            btn.transform = CGAffineTransformScale(self.AnnotationView.transform, annotationViewMinScale, annotationViewMinScale);
+        [UIView animateWithDuration:scaleMinDur animations:^{
+            btn.transform = CGAffineTransformScale(self.callOutAnnotationView.transform, annotationViewMinScale, annotationViewMinScale);
         } completion:^(BOOL finished) {
             
             if(self.delegate && [self.delegate respondsToSelector:@selector(shouldPresentJobCardView:)])
@@ -290,11 +274,11 @@
 
 - (void)hideJobCard
 {
-    [UIView animateWithDuration:0.2 animations:^{
-        self.AnnotationView.transform = CGAffineTransformScale(self.AnnotationView.transform, annotationViewMaxScale, annotationViewMaxScale);
+    [UIView animateWithDuration:scaleMaxDur animations:^{
+        self.callOutAnnotationView.transform = CGAffineTransformScale(self.callOutAnnotationView.transform, annotationViewMaxScale, annotationViewMaxScale);
     } completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.1 animations:^{
-            self.AnnotationView.transform = CGAffineTransformScale(self.AnnotationView.transform, annotationViewMinScale, annotationViewMinScale);
+        [UIView animateWithDuration:scaleMinDur animations:^{
+            self.callOutAnnotationView.transform = CGAffineTransformScale(self.callOutAnnotationView.transform, annotationViewMinScale, annotationViewMinScale);
         } completion:^(BOOL finished) {
             
             if(self.delegate && [self.delegate respondsToSelector:@selector(shouldPresentJobCardView:)])
