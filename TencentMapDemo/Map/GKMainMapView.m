@@ -31,7 +31,13 @@
 
 @property (nonatomic, assign) CLLocationCoordinate2D userCircleCoordinate;
 
+
+@property (nonatomic, strong) UIButton *userIconBtn;
+
 @end
+
+
+#define screenRect [UIScreen mainScreen].bounds
 
 @implementation GKMainMapView
 
@@ -47,8 +53,8 @@
 
 - (void)buildJobCardView
 {
-    CGRect screenRect = [UIScreen mainScreen].bounds;
-    CGRect cardRect = CGRectMake(10, screenRect.size.height, screenRect.size.width - 20, 300);
+//    CGRect screenRect = [UIScreen mainScreen].bounds;
+    CGRect cardRect = CGRectMake(10, screenRect.size.height, screenRect.size.width - 20, 280);
     if(!_jobCard)
     {
         _jobCard = [[[NSBundle mainBundle] loadNibNamed:@"GKJobCardView" owner:nil options:nil] firstObject];
@@ -56,6 +62,21 @@
         _jobCard.hidden = YES;
         _jobCard.isVisible = NO;
         [self addSubview:_jobCard];
+    }
+}
+
+- (void)buildUserIconBtn
+{
+    if(!_userIconBtn)
+    {
+        _userIconBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _userIconBtn.frame = CGRectMake(10, screenRect.size.height - 70, 60, 60);
+        [_userIconBtn setImage:[UIImage imageNamed:@"color_texture"] forState:UIControlStateNormal];
+        _userIconBtn.backgroundColor = [UIColor redColor];
+        _userIconBtn.layer.cornerRadius = 30.0;
+        _userIconBtn.clipsToBounds = YES;
+        _userIconBtn.hidden = YES;
+        [self addSubview:_userIconBtn];
     }
 }
 
@@ -79,7 +100,10 @@
         
         // 设置标注
         QPointAnnotation *annotation = [[QPointAnnotation alloc] init];
-        [annotation setCoordinate:CLLocationCoordinate2DMake(39.987161,116.427621)];
+        [annotation setCoordinate:CLLocationCoordinate2DMake(39.987161,116.527621)];
+        
+        QPointAnnotation *normalAnnotation = [[QPointAnnotation alloc] init];
+        [normalAnnotation setCoordinate:CLLocationCoordinate2DMake(39.867161,116.327621)];
         
         GKUserIconViewAnnotation *iconAnnotation = [[GKUserIconViewAnnotation alloc] init];
         [iconAnnotation setCoordinate:CLLocationCoordinate2DMake(39.980161,116.227621)];
@@ -87,11 +111,13 @@
         
         //添加标注
         [self.annotations addObject:annotation];
+        [self.annotations addObject:normalAnnotation];
         [self.annotations addObject:iconAnnotation];
         
         [self.mapView addAnnotations:self.annotations];
         
         [self buildJobCardView];
+        [self buildUserIconBtn];
         
     }
     return self;
@@ -103,6 +129,7 @@
            viewForAnnotation:(id<QAnnotation>)annotation
 {
     static NSString *customReuseIndentifier = @"custReuseIdentifieer";
+    static NSString *normalReuseIndentifier = @"normalReuseIdentifieer";
     static NSString *userIconReuseIdentifier = @"userIcon";
     
     // 用户头像
@@ -126,6 +153,18 @@
             if (annotationView == nil) {
                 annotationView = [[GKCustomAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:customReuseIndentifier];
                 annotationView.delegate = self;
+                annotationView.type = AnnotationViewTypeCombine;
+                
+                return annotationView;
+            }
+        }
+        
+        if ([annotation isEqual:[_annotations objectAtIndex:1]]) {
+            GKCustomAnnotationView *annotationView = (GKCustomAnnotationView *)[_mapView dequeueReusableAnnotationViewWithIdentifier:normalReuseIndentifier];
+            if (annotationView == nil) {
+                annotationView = [[GKCustomAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:normalReuseIndentifier];
+                annotationView.delegate = self;
+                annotationView.type = AnnotationViewTypeNormal;
                 
                 return annotationView;
             }
@@ -158,9 +197,11 @@
     if(QMapRectContainsPoint(mapRect, QMapPointForCoordinate(_userCircleCoordinate)))
     {
         NSLog(@"屏幕内");
+        _userIconBtn.hidden = YES;
     }else
     {
         NSLog(@"屏幕外");
+        _userIconBtn.hidden = NO;
     }
 }
 
@@ -177,36 +218,47 @@
     }
 }
 
+- (void)moveAnnotationToMapCenter:(id<QAnnotation>)nnotation
+{
+    [self.mapView setCenterCoordinate:nnotation.coordinate animated:YES];
+}
+
 #pragma mark - private
 
 
 - (void)addCardView
 {
-    self.jobCard.hidden = NO;
-    [UIView animateWithDuration:1.0 animations:^{
-        
-        self.jobCard.transform = CGAffineTransformTranslate(self.jobCard.transform, 0, -355);
-        
-    } completion:^(BOOL finished) {
-        self.jobCard.isVisible = !self.jobCard.isVisible;
-    }];
+    if(!self.jobCard.isVisible)
+    {
+        self.jobCard.hidden = NO;
+        [UIView animateWithDuration:1.0 animations:^{
+            
+            self.jobCard.transform = CGAffineTransformTranslate(self.jobCard.transform, 0, -335);
+            
+        } completion:^(BOOL finished) {
+            self.jobCard.isVisible = !self.jobCard.isVisible;
+        }];
+    }
 }
 
 - (void)removewCardView
 {
-    [UIView animateWithDuration:1.0 animations:^
-     {
-         if(self.jobCard.isVisible)
+    if(self.jobCard.isVisible)
+    {
+        [UIView animateWithDuration:1.0 animations:^
          {
-             self.jobCard.transform = CGAffineTransformTranslate(self.jobCard.transform, 0, 355);
+             if(self.jobCard.isVisible)
+             {
+                 self.jobCard.transform = CGAffineTransformTranslate(self.jobCard.transform, 0, 335);
+                 
+             }
              
-         }
-         
-     } completion:^(BOOL finished){
-         
-         self.jobCard.isVisible = !self.jobCard.isVisible;
-         self.jobCard.hidden = YES;
-     }];
+         } completion:^(BOOL finished){
+             
+             self.jobCard.isVisible = !self.jobCard.isVisible;
+             self.jobCard.hidden = YES;
+         }];
+    }
 }
 
 @end

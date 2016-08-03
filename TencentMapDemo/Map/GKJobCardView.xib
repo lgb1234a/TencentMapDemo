@@ -12,7 +12,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cBI-XT-AG6">
-                    <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LocationHaloSmall.png" translatesAutoresizingMaskIntoConstraints="NO" id="UkP-8c-8no">
                             <rect key="frame" x="10" y="-20" width="60" height="60"/>
@@ -40,16 +40,16 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="201412150236367.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="MU8-nf-lnq">
-                            <rect key="frame" x="5" y="62" width="114" height="373"/>
+                            <rect key="frame" x="5" y="62" width="114" height="393"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2014121502354934.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="Wri-Cb-6OV">
-                            <rect key="frame" x="243" y="62" width="114" height="373"/>
+                            <rect key="frame" x="243" y="62" width="114" height="393"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2014121502354126.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="HiS-B9-6Ut">
-                            <rect key="frame" x="362" y="62" width="114" height="373"/>
+                            <rect key="frame" x="362" y="62" width="114" height="393"/>
                         </imageView>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5q7-bb-mXh">
-                            <rect key="frame" x="0.0" y="440" width="600" height="140"/>
+                            <rect key="frame" x="0.0" y="460" width="600" height="140"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="140" id="abW-4m-z1X"/>
@@ -57,10 +57,10 @@
                             <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </tableView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2014121502361159.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="Hdw-P7-BGu">
-                            <rect key="frame" x="124" y="62" width="114" height="373"/>
+                            <rect key="frame" x="124" y="62" width="114" height="393"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2014121502360822.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="Zu5-aR-EPg">
-                            <rect key="frame" x="481" y="62" width="114" height="373"/>
+                            <rect key="frame" x="481" y="62" width="114" height="393"/>
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" red="1" green="0.87843137250000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -115,7 +115,7 @@
                 <constraint firstItem="cBI-XT-AG6" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="7XS-9d-7Ro"/>
                 <constraint firstAttribute="bottom" secondItem="cBI-XT-AG6" secondAttribute="bottom" id="G00-9I-od0"/>
                 <constraint firstAttribute="trailing" secondItem="cBI-XT-AG6" secondAttribute="trailing" id="KRb-0v-4Bs"/>
-                <constraint firstItem="cBI-XT-AG6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="N5D-v3-yap"/>
+                <constraint firstItem="cBI-XT-AG6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="N5D-v3-yap"/>
                 <constraint firstItem="cBI-XT-AG6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="h6g-7f-Tqr"/>
             </constraints>
             <connections>

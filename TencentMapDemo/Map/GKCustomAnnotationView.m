@@ -51,7 +51,6 @@
         
 //        [self addSubview:self.circleView];
         
-        
         self.AnnotationView = [[[NSBundle mainBundle] loadNibNamed:@"GKCombineAnnotationView" owner:self options:nil] lastObject];
         self.AnnotationView.frame = CGRectMake(self.bounds.origin.x, self.bounds.origin.y, 60, 65);
         self.AnnotationView.center = CGPointMake(self.bounds.origin.x + self.bounds.size.width * 0.5, self.bounds.origin.y + self.bounds.size.height * 0.5);
@@ -64,10 +63,21 @@
         [self.AnnotationView.btn_1 addTarget:self action:@selector(didclickBtn:) forControlEvents:UIControlEventTouchUpInside];
         [self.AnnotationView.btn_2 addTarget:self action:@selector(didclickBtn:) forControlEvents:UIControlEventTouchUpInside];
         [self.AnnotationView.btn_3 addTarget:self action:@selector(didclickBtn:) forControlEvents:UIControlEventTouchUpInside];
+        
     }
     return self;
 }
 
+
+- (void)setType:(AnnotationViewType)type
+{
+    _type = type;
+    
+    if(type == AnnotationViewTypeNormal)
+    {
+        self.AnnotationView.pageControl.hidden = YES;
+    }
+}
 
 #pragma mark - lazy
 
@@ -78,11 +88,7 @@
 {
     self.AnnotationView.hidden = NO;
     
-    self.AnnotationView.layer.anchorPoint = CGPointMake(0.5, 0.5);
-    if(self.delegate && [self.delegate respondsToSelector:@selector(shouldPresentJobCardView:)])
-    {
-        [self.delegate shouldPresentJobCardView:NO];
-    }
+//    self.AnnotationView.layer.anchorPoint = CGPointMake(0.5, 0.5);
     
     [UIView animateWithDuration:0.5 animations:^{
         
@@ -96,13 +102,12 @@
         [self layoutIfNeeded];
     } completion:^(BOOL finished) {
         
-        
+        [self hideJobCard];
     }];
 }
 
 
 #pragma mark - private
-
 
 - (void)clickedAnnotation:(id)sender
 {
@@ -110,40 +115,24 @@
     
     if(self.AnnotationView.iconBtn.selected)
     {
-        
-        if(self.delegate && [self.delegate respondsToSelector:@selector(shouldPresentJobCardView:)])
+        if(self.type == AnnotationViewTypeNormal)
         {
-            [self.delegate shouldPresentJobCardView:YES];
-        }
+            [self presentJobCard];
         
-        [UIView animateWithDuration:0.2 animations:^{
-            self.AnnotationView.transform = CGAffineTransformScale(self.AnnotationView.transform, 1.1, 1.1);
-        } completion:^(BOOL finished) {
-            [UIView animateWithDuration:0.1 animations:^{
-                self.AnnotationView.transform = CGAffineTransformScale(self.AnnotationView.transform, 10 / 11.0, 10 / 11.0);
-            } completion:^(BOOL finished) {
-                [UIView animateWithDuration:0.5 animations:^{
-                    
-                    self.AnnotationView.frame = CGRectMake(self.bounds.origin.x, self.bounds.origin.y, 225, 65);
-                    self.AnnotationView.center = CGPointMake(self.bounds.origin.x + self.bounds.size.width * 0.5, self.bounds.origin.y + self.bounds.size.height * 0.5);
-                    
-                    self.AnnotationView.leadingBetBtn_1AndScroll.priority = UILayoutPriorityDefaultLow;
-                    self.AnnotationView.leadingBetBtn_2AndScroll.priority = UILayoutPriorityDefaultLow;
-                    self.AnnotationView.leadingBetBtn_3AndScroll.priority = UILayoutPriorityDefaultLow;
-                    
-                    
-                    [self layoutIfNeeded];
-                } completion:^(BOOL finished) {
-                    
-                    
-                }];
-            }];
-        }];
+        }else
+        {
+            [self callOutCombineAnnotation];
+        }
         
     }else
     {
-        [self resetUI];
-        
+        if(self.type == AnnotationViewTypeNormal)
+        {
+            [self hideJobCard];
+        }else
+        {
+            [self resetUI];
+        }
     }
 }
 
@@ -153,13 +142,22 @@
     
     switch (btn.tag) {
         case 1:
+        {
             NSLog(@"click btn1");
+            [self presentJobCardWithBtn:btn];
+        }
             break;
         case 2:
+        {
             NSLog(@"click btn2");
+            [self presentJobCardWithBtn:btn];
+        }
             break;
         case 3:
+        {
             NSLog(@"click btn3");
+            [self presentJobCardWithBtn:btn];
+        }
             break;
             
         default:
@@ -200,5 +198,94 @@
     return result;
 }
 
+
+- (void)callOutCombineAnnotation
+{
+    [UIView animateWithDuration:0.2 animations:^{
+        self.AnnotationView.transform = CGAffineTransformScale(self.AnnotationView.transform, 1.1, 1.1);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.1 animations:^{
+            self.AnnotationView.transform = CGAffineTransformScale(self.AnnotationView.transform, 10 / 11.0, 10 / 11.0);
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.5 animations:^{
+                
+                self.AnnotationView.frame = CGRectMake(self.bounds.origin.x, self.bounds.origin.y, 225, 65);
+                self.AnnotationView.center = CGPointMake(self.bounds.origin.x + self.bounds.size.width * 0.5, self.bounds.origin.y + self.bounds.size.height * 0.5);
+                
+                self.AnnotationView.leadingBetBtn_1AndScroll.priority = UILayoutPriorityDefaultLow;
+                self.AnnotationView.leadingBetBtn_2AndScroll.priority = UILayoutPriorityDefaultLow;
+                self.AnnotationView.leadingBetBtn_3AndScroll.priority = UILayoutPriorityDefaultLow;
+                
+                
+                [self layoutIfNeeded];
+            } completion:^(BOOL finished) {
+                
+                if(self.delegate && [self.delegate respondsToSelector:@selector(moveAnnotationToMapCenter:)])
+                {
+                    __weak typeof(self) wself = self;
+                    [self.delegate moveAnnotationToMapCenter:wself.annotation];
+                }
+            }];
+        }];
+    }];
+}
+
+
+- (void)presentJobCard
+{
+    [UIView animateWithDuration:0.2 animations:^{
+        self.AnnotationView.transform = CGAffineTransformScale(self.AnnotationView.transform, 1.1, 1.1);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.1 animations:^{
+            self.AnnotationView.transform = CGAffineTransformScale(self.AnnotationView.transform, 10 / 11.0, 10 / 11.0);
+        } completion:^(BOOL finished) {
+            
+            if(self.delegate && [self.delegate respondsToSelector:@selector(shouldPresentJobCardView:)])
+            {
+                [self.delegate shouldPresentJobCardView:YES];
+            }
+            
+            if(self.delegate && [self.delegate respondsToSelector:@selector(moveAnnotationToMapCenter:)])
+            {
+                __weak typeof(self) wself = self;
+                [self.delegate moveAnnotationToMapCenter:wself.annotation];
+            }
+        }];
+    }];
+}
+
+- (void)presentJobCardWithBtn:(UIButton *)btn
+{
+    [UIView animateWithDuration:0.2 animations:^{
+        btn.transform = CGAffineTransformScale(self.AnnotationView.transform, 1.1, 1.1);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.1 animations:^{
+            btn.transform = CGAffineTransformScale(self.AnnotationView.transform, 10 / 11.0, 10 / 11.0);
+        } completion:^(BOOL finished) {
+            
+            if(self.delegate && [self.delegate respondsToSelector:@selector(shouldPresentJobCardView:)])
+            {
+                [self.delegate shouldPresentJobCardView:YES];
+            }
+        }];
+    }];
+}
+
+- (void)hideJobCard
+{
+    [UIView animateWithDuration:0.2 animations:^{
+        self.AnnotationView.transform = CGAffineTransformScale(self.AnnotationView.transform, 1.1, 1.1);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.1 animations:^{
+            self.AnnotationView.transform = CGAffineTransformScale(self.AnnotationView.transform, 10 / 11.0, 10 / 11.0);
+        } completion:^(BOOL finished) {
+            
+            if(self.delegate && [self.delegate respondsToSelector:@selector(shouldPresentJobCardView:)])
+            {
+                [self.delegate shouldPresentJobCardView:NO];
+            }
+        }];
+    }];
+}
 
 @end
