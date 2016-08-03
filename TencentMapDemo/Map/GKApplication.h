@@ -8,10 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-extern NSString *const notiScreenTouch;
-
-extern NSString *const notiScreenMoved;
-
 @interface GKApplication : UIApplication
 
 @end

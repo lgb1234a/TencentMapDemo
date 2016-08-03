@@ -16,6 +16,7 @@
 #import "GKJobCardView.h"
 //#import "GKCombineAnnotationView.h"
 #import "GKCallOutAnnotationView.h"
+#import "GKMaskAnnotationView.h"
 
 @interface GKCustomAnnotationView ()
 {
@@ -63,13 +64,6 @@
         self.callOutAnnotationView.clipsToBounds = YES;
         
         [self.callOutAnnotationView.homeBtn addTarget:self action:@selector(didClickHomeBtn:) forControlEvents:UIControlEventTouchUpInside];
-        for(int i = 0; i < _callOutAnnotationView.btnArray.count; i++)
-        {
-            GKCallOutViewBrandCell *cell = _callOutAnnotationView.btnArray[i];
-            cell.callOutBrandBtn.tag = i;
-            
-            [cell.callOutBrandBtn addTarget:self action:@selector(didclickBtn:) forControlEvents:UIControlEventTouchUpInside];
-        }
         
         [self addSubview:self.callOutAnnotationView];
         
@@ -121,59 +115,16 @@
 
 - (void)didClickHomeBtn:(id)sender
 {
-    UIButton *btn = (UIButton *)sender;
     
-    
-    btn.selected = !btn.selected;
-    if(btn.selected)
+    if(self.type == AnnotationViewTypeNormal)
     {
-        if(self.type == AnnotationViewTypeNormal)
-        {
-            [self presentJobCard];
+        [self presentJobCard];
 
-        }else
-        {
-            [self callOutCombineAnnotation];
-        }
     }else
     {
-        if(self.type == AnnotationViewTypeNormal)
-        {
-            [self hideJobCard];
-        }else
-        {
-            [self resetUI];
-        }
+        [self callOutCombineAnnotation];
     }
-}
-
-- (void)didclickBtn:(id)sender
-{
-    UIButton *btn = (UIButton *)sender;
     
-    switch (btn.tag) {
-        case 1:
-        {
-            NSLog(@"click btn1");
-            [self presentJobCardWithBtn:btn];
-        }
-            break;
-        case 2:
-        {
-            NSLog(@"click btn2");
-            [self presentJobCardWithBtn:btn];
-        }
-            break;
-        case 3:
-        {
-            NSLog(@"click btn3");
-            [self presentJobCardWithBtn:btn];
-        }
-            break;
-            
-        default:
-            break;
-    }
 }
 
 
@@ -186,16 +137,12 @@
     
     UIView *result = [super hitTest:point withEvent:event];
     
-    for(int i = 0; i < _callOutAnnotationView.btnArray.count; i++)
+    CGPoint btnPoint = [_callOutAnnotationView.homeBtn convertPoint:point fromView:self];
+    
+    
+    if([_callOutAnnotationView.homeBtn pointInside:btnPoint withEvent:event])
     {
-        GKCallOutViewBrandCell *cell = _callOutAnnotationView.btnArray[i];
-        
-        CGPoint shopViewPointButton = [cell.callOutBrandBtn convertPoint:point fromView:self];
-        
-        if([cell.callOutBrandBtn pointInside:shopViewPointButton withEvent:event])
-        {
-            return cell.callOutBrandBtn;
-        }
+        return _callOutAnnotationView.homeBtn;
     }
     
     return result;
@@ -204,31 +151,18 @@
 
 - (void)callOutCombineAnnotation
 {
-    [UIView animateWithDuration:scaleMaxDur animations:^{
-        self.callOutAnnotationView.transform = CGAffineTransformScale(self.callOutAnnotationView.transform, annotationViewMaxScale, annotationViewMaxScale);
-    } completion:^(BOOL finished) {
-        [UIView animateWithDuration:scaleMinDur animations:^{
-            self.callOutAnnotationView.transform = CGAffineTransformScale(self.callOutAnnotationView.transform, annotationViewMinScale, annotationViewMinScale);
-        } completion:^(BOOL finished) {
-            [UIView animateWithDuration:frameScaleDur animations:^{
-                
-                self.callOutAnnotationView.frame = CGRectMake(selfBounds.origin.x, selfBounds.origin.y, annotationViewMaxWidth, annotationViewHeight);
-                self.callOutAnnotationView.center = CGPointMake(CGRectGetMidX(selfBounds), CGRectGetMidY(selfBounds));
-                
-                [self.callOutAnnotationView calloutSubViews:YES];
-                
-                
-                [self layoutIfNeeded];
-            } completion:^(BOOL finished) {
-                
-                if(self.delegate && [self.delegate respondsToSelector:@selector(moveAnnotationToMapCenter:)])
-                {
-                    __weak typeof(self) wself = self;
-                    [self.delegate moveAnnotationToMapCenter:wself.annotation];
-                }
-            }];
-        }];
-    }];
+    
+//    if(self.delegate && [self.delegate respondsToSelector:@selector(moveAnnotationToMapCenter:)])
+//    {
+//        __weak typeof(self) wself = self;
+//        [self.delegate moveAnnotationToMapCenter:wself.annotation];
+//    }
+    
+    if(self.delegate && [self.delegate respondsToSelector:@selector(addMaskAnnotationView:)])
+    {
+        [self.delegate addMaskAnnotationView:self.annotation];
+    }
+    
 }
 
 
@@ -255,22 +189,6 @@
     }];
 }
 
-- (void)presentJobCardWithBtn:(UIButton *)btn
-{
-    [UIView animateWithDuration:scaleMaxDur animations:^{
-        btn.transform = CGAffineTransformScale(self.callOutAnnotationView.transform, annotationViewMaxScale, annotationViewMaxScale);
-    } completion:^(BOOL finished) {
-        [UIView animateWithDuration:scaleMinDur animations:^{
-            btn.transform = CGAffineTransformScale(self.callOutAnnotationView.transform, annotationViewMinScale, annotationViewMinScale);
-        } completion:^(BOOL finished) {
-            
-            if(self.delegate && [self.delegate respondsToSelector:@selector(shouldPresentJobCardView:)])
-            {
-                [self.delegate shouldPresentJobCardView:YES];
-            }
-        }];
-    }];
-}
 
 - (void)hideJobCard
 {

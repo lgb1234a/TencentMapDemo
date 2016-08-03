@@ -17,7 +17,9 @@ typedef NS_ENUM(NSUInteger, AnnotationViewType) {
 
 - (void)shouldPresentJobCardView:(BOOL)shouldPresent;
 
-- (void)moveAnnotationToMapCenter:(id <QAnnotation>) nnotation;
+- (void)moveAnnotationToMapCenter:(id <QAnnotation>)annotation;
+
+- (void)addMaskAnnotationView:(id<QAnnotation>)annotation;
 
 @end
 

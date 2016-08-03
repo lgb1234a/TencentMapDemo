@@ -17,6 +17,7 @@
 #import "GKJobCardView.h"
 #import "GKBackgroundAnnotation.h"
 #import "GKBackgroundAnnotationView.h"
+#import "GKMaskAnnotationView.h"
 
 @interface GKMainMapView () <QMapViewDelegate, GKCustomAnnotationViewDelegate>
 
@@ -33,6 +34,8 @@
 @property (nonatomic, assign) CLLocationCoordinate2D userCircleCoordinate;
 
 @property (nonatomic, strong) UIButton *userIconBtn;
+
+@property (nonatomic, strong) GKMaskAnnotationView *maskAnnotationView;
 
 @end
 
@@ -107,7 +110,7 @@
         
         // 设置标注
         QPointAnnotation *combineAnnotation = [[QPointAnnotation alloc] init];
-        [combineAnnotation setCoordinate:CLLocationCoordinate2DMake(39.987161,116.527621)];
+        [combineAnnotation setCoordinate:CLLocationCoordinate2DMake(39.987161,116.427621)];
         
         QPointAnnotation *normalAnnotation = [[QPointAnnotation alloc] init];
         [normalAnnotation setCoordinate:CLLocationCoordinate2DMake(39.867161,116.327621)];
@@ -235,9 +238,29 @@
 }
 
 // 点击标注，移动到地图中心
-- (void)moveAnnotationToMapCenter:(id<QAnnotation>)nnotation
+- (void)moveAnnotationToMapCenter:(id<QAnnotation>)annotation
 {
-    [self.mapView setCenterCoordinate:nnotation.coordinate animated:YES];
+    [self.mapView setCenterCoordinate:annotation.coordinate animated:YES];
+}
+
+- (void)addMaskAnnotationView:(id<QAnnotation>)annotation
+{
+    // 地图坐标转换为屏幕坐标系坐标
+    CGPoint annotationPoint = [self.mapView convertCoordinate:annotation.coordinate toPointToView:self];
+    
+    UIButton *maskBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    maskBtn.backgroundColor = [UIColor clearColor];
+    maskBtn.frame = self.bounds;
+    [maskBtn addTarget:self action:@selector(didTapedMaskBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:maskBtn];
+    
+    _maskAnnotationView = [[[NSBundle mainBundle] loadNibNamed:@"GKMaskAnnotationView" owner:nil options:nil] firstObject];
+    _maskAnnotationView.center = annotationPoint;
+    
+    
+    [_maskAnnotationView addHideOrCalloutAnimation:NO completion:nil];
+    
+    [self addSubview:_maskAnnotationView];
 }
 
 #pragma mark - private
@@ -262,6 +285,12 @@
             self.jobCard.isVisible = !self.jobCard.isVisible;
         }];
     }
+    
+    UIButton *maskBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    maskBtn.backgroundColor = [UIColor clearColor];
+    maskBtn.frame = self.bounds;
+    [maskBtn addTarget:self action:@selector(tapedToHideCardView:) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:maskBtn];
 }
 
 - (void)removewCardView
@@ -281,6 +310,28 @@
              self.jobCard.hidden = YES;
          }];
     }
+}
+
+- (void)didTapedMaskBtn:(id)sender
+{
+    // 点击了遮罩
+    
+    UIButton *btn = (UIButton *)sender;
+    [btn removeFromSuperview];
+    
+    __weak typeof(_maskAnnotationView) weakView = _maskAnnotationView;
+    [_maskAnnotationView addHideOrCalloutAnimation:YES completion:^{
+        [weakView removeFromSuperview];
+    }];
+}
+
+- (void)tapedToHideCardView:(id)sender
+{
+    UIButton *btn = (UIButton *)sender;
+    
+    [btn removeFromSuperview];
+    
+    [self removewCardView];
 }
 
 @end

@@ -54,6 +54,9 @@
 		EF0675C21D4B332200AEBFDB /* GKUserIconViewAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = EF06758E1D4B332200AEBFDB /* GKUserIconViewAnnotation.m */; };
 		EF0675C51D4B339D00AEBFDB /* GKMapViewSingleTon.h in Headers */ = {isa = PBXBuildFile; fileRef = EF0675C31D4B339D00AEBFDB /* GKMapViewSingleTon.h */; };
 		EF0675C61D4B339D00AEBFDB /* GKMapViewSingleTon.m in Sources */ = {isa = PBXBuildFile; fileRef = EF0675C41D4B339D00AEBFDB /* GKMapViewSingleTon.m */; };
+		EF2825181D51F9B7009FD680 /* GKMaskAnnotationView.h in Headers */ = {isa = PBXBuildFile; fileRef = EF2825161D51F9B7009FD680 /* GKMaskAnnotationView.h */; };
+		EF2825191D51F9B7009FD680 /* GKMaskAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = EF2825171D51F9B7009FD680 /* GKMaskAnnotationView.m */; };
+		EF28251B1D51FA89009FD680 /* GKMaskAnnotationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF28251A1D51FA89009FD680 /* GKMaskAnnotationView.xib */; };
 		EF34701F1D4EDFEC00E7A735 /* GKApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = EF34701D1D4EDFEC00E7A735 /* GKApplication.h */; };
 		EF3470201D4EDFEC00E7A735 /* GKApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = EF34701E1D4EDFEC00E7A735 /* GKApplication.m */; };
 		EF6C47621D503062008D135C /* GKCircleView.h in Headers */ = {isa = PBXBuildFile; fileRef = EF6C47601D503062008D135C /* GKCircleView.h */; };
@@ -387,6 +390,9 @@
 		EF06758E1D4B332200AEBFDB /* GKUserIconViewAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKUserIconViewAnnotation.m; sourceTree = "<group>"; };
 		EF0675C31D4B339D00AEBFDB /* GKMapViewSingleTon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKMapViewSingleTon.h; sourceTree = "<group>"; };
 		EF0675C41D4B339D00AEBFDB /* GKMapViewSingleTon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKMapViewSingleTon.m; sourceTree = "<group>"; };
+		EF2825161D51F9B7009FD680 /* GKMaskAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKMaskAnnotationView.h; sourceTree = "<group>"; };
+		EF2825171D51F9B7009FD680 /* GKMaskAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKMaskAnnotationView.m; sourceTree = "<group>"; };
+		EF28251A1D51FA89009FD680 /* GKMaskAnnotationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GKMaskAnnotationView.xib; sourceTree = "<group>"; };
 		EF34701D1D4EDFEC00E7A735 /* GKApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKApplication.h; sourceTree = "<group>"; };
 		EF34701E1D4EDFEC00E7A735 /* GKApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKApplication.m; sourceTree = "<group>"; };
 		EF6C47601D503062008D135C /* GKCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCircleView.h; sourceTree = "<group>"; };
@@ -761,6 +767,9 @@
 				EFA36F961D51CAF700829356 /* GKCallOutViewBrandCell.xib */,
 				EF06757D1D4B332200AEBFDB /* GKCustomAnnotationView.h */,
 				EF06757E1D4B332200AEBFDB /* GKCustomAnnotationView.m */,
+				EF2825161D51F9B7009FD680 /* GKMaskAnnotationView.h */,
+				EF2825171D51F9B7009FD680 /* GKMaskAnnotationView.m */,
+				EF28251A1D51FA89009FD680 /* GKMaskAnnotationView.xib */,
 				EFA36F841D51A95500829356 /* GKBackgroundAnnotation.h */,
 				EFA36F851D51A95500829356 /* GKBackgroundAnnotation.m */,
 				EFA36F881D51A97D00829356 /* GKBackgroundAnnotationView.h */,
@@ -1209,6 +1218,7 @@
 				EFA36F971D51CAF700829356 /* GKCallOutViewBrandCell.h in Headers */,
 				EFD262091D3CD96E002693F9 /* QRouteSearch.h in Headers */,
 				EFD2620A1D3CD96E002693F9 /* QSearch.h in Headers */,
+				EF2825181D51F9B7009FD680 /* GKMaskAnnotationView.h in Headers */,
 				EF6C47791D509CA2008D135C /* GKJobTypeTableViewCell.h in Headers */,
 				EF6C47621D503062008D135C /* GKCircleView.h in Headers */,
 				EFD2620B1D3CD96E002693F9 /* QShape.h in Headers */,
@@ -1419,6 +1429,7 @@
 				EFD263391D3CDB1B002693F9 /* navi_icon_left_1_front@2x.png in Resources */,
 				EFD263631D3CDB1B002693F9 /* navi_info_speed_70@2x.png in Resources */,
 				EFD263711D3CDB1B002693F9 /* tilebackground@2x.png in Resources */,
+				EF28251B1D51FA89009FD680 /* GKMaskAnnotationView.xib in Resources */,
 				EFD262F51D3CDB1B002693F9 /* LocationHaloSmall.png in Resources */,
 				EFD262E41D3CDB1B002693F9 /* color_arrow_texture03.png in Resources */,
 				EFD2635D1D3CDB1B002693F9 /* navi_info_speed_40@2x.png in Resources */,
@@ -1624,6 +1635,7 @@
 				EF3470201D4EDFEC00E7A735 /* GKApplication.m in Sources */,
 				EF0675B21D4B332200AEBFDB /* GKCustomAnnotationView.m in Sources */,
 				EF0675B61D4B332200AEBFDB /* GKJobCardView.m in Sources */,
+				EF2825191D51F9B7009FD680 /* GKMaskAnnotationView.m in Sources */,
 				EFD2618B1D3CD661002693F9 /* AppDelegate.m in Sources */,
 				EFA36F871D51A95500829356 /* GKBackgroundAnnotation.m in Sources */,
 				EF6C477A1D509CA2008D135C /* GKJobTypeTableViewCell.m in Sources */,
