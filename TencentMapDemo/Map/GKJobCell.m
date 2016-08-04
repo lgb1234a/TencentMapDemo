@@ -31,7 +31,6 @@
     [super awakeFromNib];
     
     [self setupSubProperty];
-    
 }
 
 

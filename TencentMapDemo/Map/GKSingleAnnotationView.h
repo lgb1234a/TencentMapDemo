@@ -10,6 +10,9 @@
 
 @interface GKSingleAnnotationView : UIView
 
+/**
+ *  cell对应的button
+ */
 @property (weak, nonatomic) IBOutlet UIButton *annotationBtn;
 
 @end

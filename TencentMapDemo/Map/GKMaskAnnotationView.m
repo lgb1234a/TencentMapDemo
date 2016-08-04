@@ -12,14 +12,14 @@
 
 @interface GKMaskAnnotationView () <UIScrollViewDelegate>
 
+// 数据源
 @property (nonatomic, strong) NSMutableArray *brandDataArray;
 
-
+// 底部scrollView
 @property (weak, nonatomic) IBOutlet UIScrollView *backScrollView;
 
-
-
-@property (nonatomic, strong) UIView *container;
+// 页面控制器
+@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 
 @end
 
@@ -30,13 +30,9 @@
 
 @implementation GKMaskAnnotationView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
+
+#pragma mark - lazy
+
 - (NSMutableArray *)brandDataArray
 {
     if(!_brandDataArray)
@@ -55,10 +51,37 @@
     return _btnArray;
 }
 
+#pragma mark - public
 
-- (void)awakeFromNib
+- (void)hideSubViews
 {
-    
+    [self calloutSubViews:NO];
+}
+
+- (void)addHideOrCalloutAnimation:(BOOL)isHide completion:(dispatch_block_t)completionBlock
+{
+    if(isHide)
+    {
+        [UIView animateWithDuration:0.8 animations:^{
+            [self hideSubViews];
+        } completion:^(BOOL finished) {
+            if(completionBlock)
+            {
+                completionBlock();
+            }
+        }];
+    }else
+    {
+        [UIView animateWithDuration:0.8 animations:^{
+            [self calloutSubViews:YES];
+        } completion:^(BOOL finished) {
+            
+            if(completionBlock)
+            {
+                completionBlock();
+            }
+        }];
+    }
 }
 
 - (void)calloutSubViews:(BOOL)needCallout
@@ -80,12 +103,8 @@
             // 与数组中前一个btn建立约束
             [cell mas_updateConstraints:^(MASConstraintMaker *make) {
                 
-                
                 make.left.mas_equalTo(_backScrollView.mas_left).with.offset(selfWidth);
-                    
                 selfWidth = selfWidth + cellWidth + cellMargin;
-                
-                
                 make.width.equalTo(@(cellWidth));
                 make.height.equalTo(@(cellHeight));
                 make.top.equalTo(_backScrollView).with.offset(cellMargin);
@@ -134,11 +153,9 @@
             _backScrollView.contentSize = CGSizeMake(perPageWidth * ceilf(self.brandDataArray.count / 4.0), cellHeight);
         }
     }
-    
-    _selfWidth = selfWidth;
-    
 }
 
+#pragma mark - private
 
 - (void)configSubViews
 {
@@ -161,43 +178,7 @@
     }
 }
 
-- (void)hideSubViews
-{
-    [self calloutSubViews:NO];
-}
-
-- (void)addHideOrCalloutAnimation:(BOOL)isHide completion:(dispatch_block_t)completionBlock
-{
-    if(isHide)
-    {
-        [UIView animateWithDuration:0.8 animations:^{
-            [self hideSubViews];
-        } completion:^(BOOL finished) {
-            if(completionBlock)
-            {
-                completionBlock();
-            }
-        }];
-    }else
-    {
-        [UIView animateWithDuration:0.8 animations:^{
-            [self calloutSubViews:YES];
-        } completion:^(BOOL finished) {
-            
-            if(completionBlock)
-            {
-                completionBlock();
-            }
-        }];
-    }
-}
-
 #pragma mark - UIScrollViewDelegate
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
-{
-    
-}
-
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {

@@ -21,6 +21,7 @@
 
 - (void)awakeFromNib
 {
+    // 初始化UI
     self.annotationBtn.layer.cornerRadius = self.annotationBtn.bounds.size.height * 0.5;
     self.annotationBtn.clipsToBounds = YES;
 }

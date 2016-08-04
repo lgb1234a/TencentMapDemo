@@ -13,6 +13,11 @@
 
 @end
 
+#define scaleMaxDur 0.2
+#define scaleMinDur 0.1
+#define annotationViewMaxScale 1.1
+#define annotationViewMinScale (10 / 11.0)
+
 @implementation GKCallOutViewBrandCell
 
 /*
@@ -27,22 +32,22 @@
 {
     [super awakeFromNib];
     
+    // 初始化UI
     [_callOutBrandBtn addTarget:self action:@selector(didSelectedBrandCell) forControlEvents:UIControlEventTouchUpInside];
-    
-    
     _callOutBrandBtn.layer.cornerRadius = self.bounds.size.height * 0.5;
     _callOutBrandBtn.clipsToBounds = YES;
 }
 
+// 点击按钮事件
 - (void)didSelectedBrandCell
 {
     NSLog(@"Taped cell : %ld", _cellId);
     
-    [UIView animateWithDuration:0.2 animations:^{
-        self.transform = CGAffineTransformScale(self.transform, 1.1, 1.1);
+    [UIView animateWithDuration:scaleMaxDur animations:^{
+        self.transform = CGAffineTransformScale(self.transform, annotationViewMaxScale, annotationViewMaxScale);
     } completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.1 animations:^{
-            self.transform = CGAffineTransformScale(self.transform, 10 / 11.0, 10 / 11.0);
+        [UIView animateWithDuration:scaleMinDur animations:^{
+            self.transform = CGAffineTransformScale(self.transform, annotationViewMinScale, annotationViewMinScale);
         } completion:^(BOOL finished) {
             if(self.delegate && [self.delegate respondsToSelector:@selector(GKCallOutViewBrandCell:DidSelectedBrandCellWithCellId:)])
             {

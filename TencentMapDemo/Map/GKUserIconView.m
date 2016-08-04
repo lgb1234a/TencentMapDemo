@@ -60,7 +60,6 @@
         self.iconBtn.layer.cornerRadius = iconBtnWidth * 0.5;
         self.iconBtn.clipsToBounds = YES;
         self.iconBtn.center = self.circleView.center;
-        [self.iconBtn addTarget:self action:@selector(clickedUserIcon:) forControlEvents:UIControlEventTouchUpInside];
         
         [self addSubview:self.iconBtn];
         
@@ -68,11 +67,6 @@
     return self;
 }
 
-// 点击用户头像
-- (void)clickedUserIcon:(id)sender
-{
-    
-}
 
 
 @end

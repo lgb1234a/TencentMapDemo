@@ -80,10 +80,6 @@
 		EF6C47811D50A9D3008D135C /* GKBrandCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF6C477E1D50A9D3008D135C /* GKBrandCollectionViewCell.xib */; };
 		EF6C47841D50AC73008D135C /* GKBrandCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = EF6C47821D50AC73008D135C /* GKBrandCollectionView.h */; };
 		EF6C47851D50AC73008D135C /* GKBrandCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = EF6C47831D50AC73008D135C /* GKBrandCollectionView.m */; };
-		EFA36F861D51A95500829356 /* GKBackgroundAnnotation.h in Headers */ = {isa = PBXBuildFile; fileRef = EFA36F841D51A95500829356 /* GKBackgroundAnnotation.h */; };
-		EFA36F871D51A95500829356 /* GKBackgroundAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = EFA36F851D51A95500829356 /* GKBackgroundAnnotation.m */; };
-		EFA36F8A1D51A97D00829356 /* GKBackgroundAnnotationView.h in Headers */ = {isa = PBXBuildFile; fileRef = EFA36F881D51A97D00829356 /* GKBackgroundAnnotationView.h */; };
-		EFA36F8B1D51A97D00829356 /* GKBackgroundAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = EFA36F891D51A97D00829356 /* GKBackgroundAnnotationView.m */; };
 		EFA36F8D1D51BBF400829356 /* 0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EFA36F8C1D51BBF400829356 /* 0.jpg */; };
 		EFA36F971D51CAF700829356 /* GKCallOutViewBrandCell.h in Headers */ = {isa = PBXBuildFile; fileRef = EFA36F941D51CAF700829356 /* GKCallOutViewBrandCell.h */; };
 		EFA36F981D51CAF700829356 /* GKCallOutViewBrandCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFA36F951D51CAF700829356 /* GKCallOutViewBrandCell.m */; };
@@ -415,10 +411,6 @@
 		EF6C477E1D50A9D3008D135C /* GKBrandCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GKBrandCollectionViewCell.xib; sourceTree = "<group>"; };
 		EF6C47821D50AC73008D135C /* GKBrandCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKBrandCollectionView.h; sourceTree = "<group>"; };
 		EF6C47831D50AC73008D135C /* GKBrandCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKBrandCollectionView.m; sourceTree = "<group>"; };
-		EFA36F841D51A95500829356 /* GKBackgroundAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKBackgroundAnnotation.h; sourceTree = "<group>"; };
-		EFA36F851D51A95500829356 /* GKBackgroundAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKBackgroundAnnotation.m; sourceTree = "<group>"; };
-		EFA36F881D51A97D00829356 /* GKBackgroundAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKBackgroundAnnotationView.h; sourceTree = "<group>"; };
-		EFA36F891D51A97D00829356 /* GKBackgroundAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKBackgroundAnnotationView.m; sourceTree = "<group>"; };
 		EFA36F8C1D51BBF400829356 /* 0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 0.jpg; sourceTree = "<group>"; };
 		EFA36F941D51CAF700829356 /* GKCallOutViewBrandCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCallOutViewBrandCell.h; sourceTree = "<group>"; };
 		EFA36F951D51CAF700829356 /* GKCallOutViewBrandCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKCallOutViewBrandCell.m; sourceTree = "<group>"; };
@@ -767,10 +759,6 @@
 				EF2825161D51F9B7009FD680 /* GKMaskAnnotationView.h */,
 				EF2825171D51F9B7009FD680 /* GKMaskAnnotationView.m */,
 				EF28251A1D51FA89009FD680 /* GKMaskAnnotationView.xib */,
-				EFA36F841D51A95500829356 /* GKBackgroundAnnotation.h */,
-				EFA36F851D51A95500829356 /* GKBackgroundAnnotation.m */,
-				EFA36F881D51A97D00829356 /* GKBackgroundAnnotationView.h */,
-				EFA36F891D51A97D00829356 /* GKBackgroundAnnotationView.m */,
 				EF0675811D4B332200AEBFDB /* GKJobCardView.h */,
 				EF0675821D4B332200AEBFDB /* GKJobCardView.m */,
 				EF0675831D4B332200AEBFDB /* GKJobCardView.xib */,
@@ -1165,7 +1153,6 @@
 			files = (
 				EFD261EB1D3CD96D002693F9 /* QAnnotation.h in Headers */,
 				EF0675BB1D4B332200AEBFDB /* GKMainMapView.h in Headers */,
-				EFA36F8A1D51A97D00829356 /* GKBackgroundAnnotationView.h in Headers */,
 				EFD261EC1D3CD96D002693F9 /* QAnnotationView.h in Headers */,
 				EFD261ED1D3CD96D002693F9 /* QAppKeyCheck.h in Headers */,
 				EF0675B81D4B332200AEBFDB /* GKJobCell.h in Headers */,
@@ -1173,7 +1160,6 @@
 				EFD261EE1D3CD96D002693F9 /* QCircle.h in Headers */,
 				EFD261EF1D3CD96E002693F9 /* QCircleView.h in Headers */,
 				EFD261F01D3CD96E002693F9 /* QCityData.h in Headers */,
-				EFA36F861D51A95500829356 /* GKBackgroundAnnotation.h in Headers */,
 				EFD261F11D3CD96E002693F9 /* QGeocoder.h in Headers */,
 				EF0675B11D4B332200AEBFDB /* GKCustomAnnotationView.h in Headers */,
 				EFD261F21D3CD96E002693F9 /* QGeometry.h in Headers */,
@@ -1633,7 +1619,6 @@
 				EF0675B61D4B332200AEBFDB /* GKJobCardView.m in Sources */,
 				EF2825191D51F9B7009FD680 /* GKMaskAnnotationView.m in Sources */,
 				EFD2618B1D3CD661002693F9 /* AppDelegate.m in Sources */,
-				EFA36F871D51A95500829356 /* GKBackgroundAnnotation.m in Sources */,
 				EF2825251D532369009FD680 /* GKCustomAnnotation.m in Sources */,
 				EF6C477A1D509CA2008D135C /* GKJobTypeTableViewCell.m in Sources */,
 				EFB904FA1D47042600E52B37 /* FBKVOController.m in Sources */,
@@ -1641,7 +1626,6 @@
 				EFB904FE1D47042600E52B37 /* NSObject+FBKVOController.m in Sources */,
 				EF0675B91D4B332200AEBFDB /* GKJobCell.m in Sources */,
 				EF6C47801D50A9D3008D135C /* GKBrandCollectionViewCell.m in Sources */,
-				EFA36F8B1D51A97D00829356 /* GKBackgroundAnnotationView.m in Sources */,
 				EF6C47741D509C02008D135C /* GKBrandTableViewCell.m in Sources */,
 				EFA36F981D51CAF700829356 /* GKCallOutViewBrandCell.m in Sources */,
 				EFD261881D3CD661002693F9 /* main.m in Sources */,

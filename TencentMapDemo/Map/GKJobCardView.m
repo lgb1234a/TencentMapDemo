@@ -46,7 +46,6 @@
     return 2;
 }
 
-
 - (GKJobCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     GKJobCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];

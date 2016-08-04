@@ -15,27 +15,27 @@
 #import "GKUserIconView.h"
 #import "GKMapViewSingleTon.h"
 #import "GKJobCardView.h"
-#import "GKBackgroundAnnotation.h"
-#import "GKBackgroundAnnotationView.h"
 #import "GKMaskAnnotationView.h"
 #import "GKCustomAnnotation.h"
 
 @interface GKMainMapView () <QMapViewDelegate, GKCustomAnnotationViewDelegate>
 
+// 地图
 @property (nonatomic, strong) GKMapView *mapView;
 
+// 所有的标注
 @property (nonatomic, strong) NSMutableArray *annotations;
 
+// 岗位视图
 @property (nonatomic, strong) GKJobCardView *jobCard;
 
-@property (nonatomic, strong) QCircle *userCircle;
-
-@property (nonatomic, strong) QCircle *tapedCircle;
-
+// 用户头像的中心坐标
 @property (nonatomic, assign) CLLocationCoordinate2D userCircleCoordinate;
 
+// 用户头像按钮
 @property (nonatomic, strong) UIButton *userIconBtn;
 
+// 聚合岗位详情视图
 @property (nonatomic, strong) GKMaskAnnotationView *maskAnnotationView;
 
 
@@ -52,6 +52,7 @@
 #define tabbarTopMargin  5
 #define annotationViewWidth 60
 #define annotationViewHeight 65
+#define cardViewAnimateDur 1.0
 
 @implementation GKMainMapView
 
@@ -172,12 +173,9 @@
     if ([annotation isKindOfClass:[GKUserIconViewAnnotation class]]) {
         
         GKUserIconView *annotationView = (GKUserIconView *)[_mapView dequeueReusableAnnotationViewWithIdentifier:userIconReuseIdentifier];
-        
-        
         if(!annotationView)
         {
             annotationView = [[GKUserIconView alloc] initWithAnnotation:annotation reuseIdentifier:userIconReuseIdentifier];
-            
             return annotationView;
         }
     }
@@ -195,7 +193,6 @@
             }
         }
         
-        
         GKCustomAnnotationView *annotationView = (GKCustomAnnotationView *)[_mapView dequeueReusableAnnotationViewWithIdentifier:normalReuseIndentifier];
         if (annotationView == nil) {
             annotationView = [[GKCustomAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:normalReuseIndentifier];
@@ -204,14 +201,13 @@
             
             return annotationView;
         }
-        
     }
-    
     return nil;
 }
 
 //<QMapViewDelegate >中的定位回调函数
 - (void)mapView:(QMapView *)mapView didUpdateUserLocation:(QUserLocation *)userLocation {
+    
     NSLog(@"latitude:%f, longitude:%f", userLocation.location.latitude, userLocation.location.longitude);
     
     _userCircleCoordinate = userLocation.location;
@@ -314,7 +310,7 @@
     if(!self.jobCard.isVisible)
     {
         self.jobCard.hidden = NO;
-        [UIView animateWithDuration:1.0 animations:^{
+        [UIView animateWithDuration:cardViewAnimateDur animations:^{
             
             self.jobCard.transform = CGAffineTransformTranslate(self.jobCard.transform, 0, -(jobCardHeight + tabbarTopMargin + tabbarHeight));
             
@@ -330,7 +326,7 @@
 {
     if(self.jobCard.isVisible)
     {
-        [UIView animateWithDuration:1.0 animations:^
+        [UIView animateWithDuration:cardViewAnimateDur animations:^
          {
              if(self.jobCard.isVisible)
              {

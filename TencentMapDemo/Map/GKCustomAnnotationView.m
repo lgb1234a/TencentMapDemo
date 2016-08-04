@@ -29,7 +29,6 @@
 @property (nonatomic, strong) GKCircleView *circleView;
 @property (nonatomic, strong) GKJobCardView *jobCard;
 @property (nonatomic, strong) UIButton *iconBtn;
-//@property (nonatomic, strong) GKCombineAnnotationView *AnnotationView;
 @property (nonatomic, strong) GKSingleAnnotationView *singleAnnotationView;
 
 @end
@@ -46,7 +45,6 @@
 
 @implementation GKCustomAnnotationView
 
-
 #pragma mark - life
 
 - (id)initWithAnnotation:(id<QAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier
@@ -54,7 +52,6 @@
     if (self=[super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier]) {
         self.image = nil;
         self.backgroundColor = [UIColor clearColor];
-        
         
         self.singleAnnotationView = [[[NSBundle mainBundle] loadNibNamed:@"GKSingleAnnotationView" owner:nil options:nil] lastObject];
         self.singleAnnotationView.frame = CGRectMake(selfBounds.origin.x, selfBounds.origin.y, annotationViewWidth, annotationViewHeight);
@@ -73,11 +70,6 @@
 - (void)setType:(AnnotationViewType)type
 {
     _type = type;
-    
-    if(type == AnnotationViewTypeNormal)
-    {
-        
-    }
 }
 
 #pragma mark - lazy
@@ -88,27 +80,28 @@
 
 #pragma mark - private
 
-
+// 点击标注的按钮
 - (void)didClickHomeBtn:(id)sender
 {
     if(self.type == AnnotationViewTypeNormal)
     {
-        
+        // 非聚合岗位，展示岗位详情卡片
         [self presentJobCard];
         
     }else
     {
+        // 聚合岗位，展开聚合标注
         [self callOutCombineAnnotation];
     }
     
 }
 
-
+// 拦截点击事件
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event{
     return NO;
 }
 
-// 点击大头针
+// 拦截事件
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
     
     UIView *result = [super hitTest:point withEvent:event];
@@ -124,7 +117,7 @@
     return result;
 }
 
-
+// 打开聚合标注
 - (void)callOutCombineAnnotation
 {
     
@@ -141,7 +134,7 @@
     
 }
 
-
+// 通知代理显示岗位视图
 - (void)presentJobCard
 {
     [UIView animateWithDuration:scaleMaxDur animations:^{
@@ -165,7 +158,7 @@
     }];
 }
 
-
+// 通知代理隐藏岗位视图
 - (void)hideJobCard
 {
     [UIView animateWithDuration:scaleMaxDur animations:^{

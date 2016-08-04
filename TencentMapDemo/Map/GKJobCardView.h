@@ -10,6 +10,9 @@
 
 @interface GKJobCardView : UIView
 
-@property (nonatomic) BOOL isVisible;
+/**
+ *  是否可见
+ */
+@property (nonatomic, assign) BOOL isVisible;
 
 @end
