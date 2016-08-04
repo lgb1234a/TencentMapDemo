@@ -352,6 +352,7 @@
     __weak typeof(_maskAnnotationView) weakView = _maskAnnotationView;
     [_maskAnnotationView addHideOrCalloutAnimation:YES completion:^{
         [weakView removeFromSuperview];
+        
     }];
 }
 

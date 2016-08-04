@@ -42,7 +42,7 @@
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="201412150236367.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="MU8-nf-lnq">
                             <rect key="frame" x="5" y="62" width="114" height="393"/>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2014121502354934.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="Wri-Cb-6OV">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="201412150237258.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="Wri-Cb-6OV">
                             <rect key="frame" x="243" y="62" width="114" height="393"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2014121502354126.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="HiS-B9-6Ut">
@@ -56,10 +56,10 @@
                             </constraints>
                             <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </tableView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2014121502361159.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="Hdw-P7-BGu">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="201412150236201.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="Hdw-P7-BGu">
                             <rect key="frame" x="124" y="62" width="114" height="393"/>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2014121502360822.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="Zu5-aR-EPg">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2014121502354477.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="Zu5-aR-EPg">
                             <rect key="frame" x="481" y="62" width="114" height="393"/>
                         </imageView>
                     </subviews>
@@ -136,10 +136,10 @@
     </objects>
     <resources>
         <image name="2014121502354126.jpeg" width="1000" height="750"/>
-        <image name="2014121502354934.jpeg" width="1000" height="750"/>
-        <image name="2014121502360822.jpeg" width="1000" height="750"/>
-        <image name="2014121502361159.jpeg" width="1000" height="750"/>
+        <image name="2014121502354477.jpeg" width="1000" height="750"/>
+        <image name="201412150236201.jpeg" width="1000" height="750"/>
         <image name="201412150236367.jpeg" width="1000" height="750"/>
+        <image name="201412150237258.jpeg" width="1000" height="750"/>
         <image name="LocationHaloSmall.png" width="56" height="56"/>
     </resources>
 </document>

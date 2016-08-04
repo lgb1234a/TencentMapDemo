@@ -13,7 +13,7 @@
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ewQ-Bd-ANU">
                     <rect key="frame" x="0.0" y="0.0" width="65" height="60"/>
-                    <state key="normal" image="2014121502355952.jpeg"/>
+                    <state key="normal" image="201412150236201.jpeg"/>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -31,6 +31,6 @@
         </view>
     </objects>
     <resources>
-        <image name="2014121502355952.jpeg" width="1000" height="750"/>
+        <image name="201412150236201.jpeg" width="1000" height="750"/>
     </resources>
 </document>

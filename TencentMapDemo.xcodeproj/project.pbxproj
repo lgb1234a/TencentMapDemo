@@ -11,31 +11,9 @@
 		EF06758F1D4B332200AEBFDB /* 2014121502354126.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EF06755A1D4B332200AEBFDB /* 2014121502354126.jpeg */; };
 		EF0675901D4B332200AEBFDB /* 2014121502354477.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EF06755B1D4B332200AEBFDB /* 2014121502354477.jpeg */; };
 		EF0675911D4B332200AEBFDB /* 201412150235466.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EF06755C1D4B332200AEBFDB /* 201412150235466.jpeg */; };
-		EF0675921D4B332200AEBFDB /* 2014121502354934.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EF06755D1D4B332200AEBFDB /* 2014121502354934.jpeg */; };
-		EF0675931D4B332200AEBFDB /* 2014121502355319.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EF06755E1D4B332200AEBFDB /* 2014121502355319.jpeg */; };
-		EF0675941D4B332200AEBFDB /* 2014121502355952.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EF06755F1D4B332200AEBFDB /* 2014121502355952.jpeg */; };
-		EF0675951D4B332200AEBFDB /* 2014121502360427.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EF0675601D4B332200AEBFDB /* 2014121502360427.jpeg */; };
-		EF0675961D4B332200AEBFDB /* 2014121502360822.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EF0675611D4B332200AEBFDB /* 2014121502360822.jpeg */; };
-		EF0675971D4B332200AEBFDB /* 2014121502361159.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EF0675621D4B332200AEBFDB /* 2014121502361159.jpeg */; };
-		EF0675981D4B332200AEBFDB /* 2014121502361614.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EF0675631D4B332200AEBFDB /* 2014121502361614.jpeg */; };
 		EF0675991D4B332200AEBFDB /* 201412150236201.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EF0675641D4B332200AEBFDB /* 201412150236201.jpeg */; };
-		EF06759A1D4B332200AEBFDB /* 2014121502362438.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EF0675651D4B332200AEBFDB /* 2014121502362438.jpeg */; };
-		EF06759B1D4B332200AEBFDB /* 2014121502362710.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EF0675661D4B332200AEBFDB /* 2014121502362710.jpeg */; };
-		EF06759C1D4B332200AEBFDB /* 2014121502363052.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EF0675671D4B332200AEBFDB /* 2014121502363052.jpeg */; };
-		EF06759D1D4B332200AEBFDB /* 2014121502363337.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EF0675681D4B332200AEBFDB /* 2014121502363337.jpeg */; };
 		EF06759E1D4B332200AEBFDB /* 201412150236367.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EF0675691D4B332200AEBFDB /* 201412150236367.jpeg */; };
-		EF06759F1D4B332200AEBFDB /* 2014121502364211.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EF06756A1D4B332200AEBFDB /* 2014121502364211.jpeg */; };
-		EF0675A01D4B332200AEBFDB /* 2014121502365019.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EF06756B1D4B332200AEBFDB /* 2014121502365019.jpeg */; };
-		EF0675A11D4B332200AEBFDB /* 2014121502365525.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EF06756C1D4B332200AEBFDB /* 2014121502365525.jpeg */; };
-		EF0675A21D4B332200AEBFDB /* 2014121502365814.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EF06756D1D4B332200AEBFDB /* 2014121502365814.jpeg */; };
-		EF0675A31D4B332200AEBFDB /* 2014121502370518.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EF06756E1D4B332200AEBFDB /* 2014121502370518.jpeg */; };
-		EF0675A41D4B332200AEBFDB /* 2014121502371292.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EF06756F1D4B332200AEBFDB /* 2014121502371292.jpeg */; };
-		EF0675A51D4B332200AEBFDB /* 2014121502371616.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EF0675701D4B332200AEBFDB /* 2014121502371616.jpeg */; };
-		EF0675A61D4B332200AEBFDB /* 2014121502372072.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EF0675711D4B332200AEBFDB /* 2014121502372072.jpeg */; };
 		EF0675A71D4B332200AEBFDB /* 201412150237258.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EF0675721D4B332200AEBFDB /* 201412150237258.jpeg */; };
-		EF0675A81D4B332200AEBFDB /* 2014121502372790.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EF0675731D4B332200AEBFDB /* 2014121502372790.jpeg */; };
-		EF0675A91D4B332200AEBFDB /* 2014121502373224.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EF0675741D4B332200AEBFDB /* 2014121502373224.jpeg */; };
-		EF0675AA1D4B332200AEBFDB /* 2014121502373626.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EF0675751D4B332200AEBFDB /* 2014121502373626.jpeg */; };
 		EF0675B11D4B332200AEBFDB /* GKCustomAnnotationView.h in Headers */ = {isa = PBXBuildFile; fileRef = EF06757D1D4B332200AEBFDB /* GKCustomAnnotationView.h */; };
 		EF0675B21D4B332200AEBFDB /* GKCustomAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = EF06757E1D4B332200AEBFDB /* GKCustomAnnotationView.m */; };
 		EF0675B51D4B332200AEBFDB /* GKJobCardView.h in Headers */ = {isa = PBXBuildFile; fileRef = EF0675811D4B332200AEBFDB /* GKJobCardView.h */; };
@@ -342,31 +320,9 @@
 		EF06755A1D4B332200AEBFDB /* 2014121502354126.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2014121502354126.jpeg; sourceTree = "<group>"; };
 		EF06755B1D4B332200AEBFDB /* 2014121502354477.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2014121502354477.jpeg; sourceTree = "<group>"; };
 		EF06755C1D4B332200AEBFDB /* 201412150235466.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 201412150235466.jpeg; sourceTree = "<group>"; };
-		EF06755D1D4B332200AEBFDB /* 2014121502354934.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2014121502354934.jpeg; sourceTree = "<group>"; };
-		EF06755E1D4B332200AEBFDB /* 2014121502355319.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2014121502355319.jpeg; sourceTree = "<group>"; };
-		EF06755F1D4B332200AEBFDB /* 2014121502355952.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2014121502355952.jpeg; sourceTree = "<group>"; };
-		EF0675601D4B332200AEBFDB /* 2014121502360427.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2014121502360427.jpeg; sourceTree = "<group>"; };
-		EF0675611D4B332200AEBFDB /* 2014121502360822.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2014121502360822.jpeg; sourceTree = "<group>"; };
-		EF0675621D4B332200AEBFDB /* 2014121502361159.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2014121502361159.jpeg; sourceTree = "<group>"; };
-		EF0675631D4B332200AEBFDB /* 2014121502361614.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2014121502361614.jpeg; sourceTree = "<group>"; };
 		EF0675641D4B332200AEBFDB /* 201412150236201.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 201412150236201.jpeg; sourceTree = "<group>"; };
-		EF0675651D4B332200AEBFDB /* 2014121502362438.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2014121502362438.jpeg; sourceTree = "<group>"; };
-		EF0675661D4B332200AEBFDB /* 2014121502362710.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2014121502362710.jpeg; sourceTree = "<group>"; };
-		EF0675671D4B332200AEBFDB /* 2014121502363052.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2014121502363052.jpeg; sourceTree = "<group>"; };
-		EF0675681D4B332200AEBFDB /* 2014121502363337.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2014121502363337.jpeg; sourceTree = "<group>"; };
 		EF0675691D4B332200AEBFDB /* 201412150236367.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 201412150236367.jpeg; sourceTree = "<group>"; };
-		EF06756A1D4B332200AEBFDB /* 2014121502364211.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2014121502364211.jpeg; sourceTree = "<group>"; };
-		EF06756B1D4B332200AEBFDB /* 2014121502365019.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2014121502365019.jpeg; sourceTree = "<group>"; };
-		EF06756C1D4B332200AEBFDB /* 2014121502365525.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2014121502365525.jpeg; sourceTree = "<group>"; };
-		EF06756D1D4B332200AEBFDB /* 2014121502365814.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2014121502365814.jpeg; sourceTree = "<group>"; };
-		EF06756E1D4B332200AEBFDB /* 2014121502370518.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2014121502370518.jpeg; sourceTree = "<group>"; };
-		EF06756F1D4B332200AEBFDB /* 2014121502371292.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2014121502371292.jpeg; sourceTree = "<group>"; };
-		EF0675701D4B332200AEBFDB /* 2014121502371616.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2014121502371616.jpeg; sourceTree = "<group>"; };
-		EF0675711D4B332200AEBFDB /* 2014121502372072.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2014121502372072.jpeg; sourceTree = "<group>"; };
 		EF0675721D4B332200AEBFDB /* 201412150237258.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 201412150237258.jpeg; sourceTree = "<group>"; };
-		EF0675731D4B332200AEBFDB /* 2014121502372790.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2014121502372790.jpeg; sourceTree = "<group>"; };
-		EF0675741D4B332200AEBFDB /* 2014121502373224.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2014121502373224.jpeg; sourceTree = "<group>"; };
-		EF0675751D4B332200AEBFDB /* 2014121502373626.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2014121502373626.jpeg; sourceTree = "<group>"; };
 		EF06757D1D4B332200AEBFDB /* GKCustomAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCustomAnnotationView.h; sourceTree = "<group>"; };
 		EF06757E1D4B332200AEBFDB /* GKCustomAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKCustomAnnotationView.m; sourceTree = "<group>"; };
 		EF0675811D4B332200AEBFDB /* GKJobCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKJobCardView.h; sourceTree = "<group>"; };
@@ -711,31 +667,9 @@
 				EF06755A1D4B332200AEBFDB /* 2014121502354126.jpeg */,
 				EF06755B1D4B332200AEBFDB /* 2014121502354477.jpeg */,
 				EF06755C1D4B332200AEBFDB /* 201412150235466.jpeg */,
-				EF06755D1D4B332200AEBFDB /* 2014121502354934.jpeg */,
-				EF06755E1D4B332200AEBFDB /* 2014121502355319.jpeg */,
-				EF06755F1D4B332200AEBFDB /* 2014121502355952.jpeg */,
-				EF0675601D4B332200AEBFDB /* 2014121502360427.jpeg */,
-				EF0675611D4B332200AEBFDB /* 2014121502360822.jpeg */,
-				EF0675621D4B332200AEBFDB /* 2014121502361159.jpeg */,
-				EF0675631D4B332200AEBFDB /* 2014121502361614.jpeg */,
 				EF0675641D4B332200AEBFDB /* 201412150236201.jpeg */,
-				EF0675651D4B332200AEBFDB /* 2014121502362438.jpeg */,
-				EF0675661D4B332200AEBFDB /* 2014121502362710.jpeg */,
-				EF0675671D4B332200AEBFDB /* 2014121502363052.jpeg */,
-				EF0675681D4B332200AEBFDB /* 2014121502363337.jpeg */,
 				EF0675691D4B332200AEBFDB /* 201412150236367.jpeg */,
-				EF06756A1D4B332200AEBFDB /* 2014121502364211.jpeg */,
-				EF06756B1D4B332200AEBFDB /* 2014121502365019.jpeg */,
-				EF06756C1D4B332200AEBFDB /* 2014121502365525.jpeg */,
-				EF06756D1D4B332200AEBFDB /* 2014121502365814.jpeg */,
-				EF06756E1D4B332200AEBFDB /* 2014121502370518.jpeg */,
-				EF06756F1D4B332200AEBFDB /* 2014121502371292.jpeg */,
-				EF0675701D4B332200AEBFDB /* 2014121502371616.jpeg */,
-				EF0675711D4B332200AEBFDB /* 2014121502372072.jpeg */,
 				EF0675721D4B332200AEBFDB /* 201412150237258.jpeg */,
-				EF0675731D4B332200AEBFDB /* 2014121502372790.jpeg */,
-				EF0675741D4B332200AEBFDB /* 2014121502373224.jpeg */,
-				EF0675751D4B332200AEBFDB /* 2014121502373626.jpeg */,
 				EFA36F8C1D51BBF400829356 /* 0.jpg */,
 			);
 			path = DemoRes;
@@ -1319,12 +1253,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF06759D1D4B332200AEBFDB /* 2014121502363337.jpeg in Resources */,
 				EFD262C51D3CDB1B002693F9 /* city.json in Resources */,
 				EFD263251D3CDB1B002693F9 /* navi_icon_island_8@2x.png in Resources */,
 				EFD262FA1D3CDB1B002693F9 /* navi_location_compass@2x.png in Resources */,
 				EF6C47811D50A9D3008D135C /* GKBrandCollectionViewCell.xib in Resources */,
-				EF0675A41D4B332200AEBFDB /* 2014121502371292.jpeg in Resources */,
 				EFD263011D3CDB1B002693F9 /* navi_bg_horizon_left@2x.png in Resources */,
 				EFD263181D3CDB1B002693F9 /* navi_icon_island_1@3x.png in Resources */,
 				EFD2631B1D3CDB1B002693F9 /* navi_icon_island_3@2x.png in Resources */,
@@ -1342,7 +1274,6 @@
 				EFD262D91D3CDB1B002693F9 /* redflag.png in Resources */,
 				EFD263191D3CDB1B002693F9 /* navi_icon_island_2@2x.png in Resources */,
 				EFD2636B1D3CDB1B002693F9 /* navi_layout_div@2x.png in Resources */,
-				EF0675971D4B332200AEBFDB /* 2014121502361159.jpeg in Resources */,
 				EFD2633A1D3CDB1B002693F9 /* navi_icon_left_2@2x.png in Resources */,
 				EFD263001D3CDB1B002693F9 /* location_compass@2x.png in Resources */,
 				EFD263341D3CDB1B002693F9 /* navi_icon_left@3x.png in Resources */,
@@ -1360,7 +1291,6 @@
 				EFD262D61D3CDB1B002693F9 /* streetcfg.dat in Resources */,
 				EFD262C41D3CDB1B002693F9 /* heat_map_nodes.txt in Resources */,
 				EFD261C41D3CD87F002693F9 /* File in Resources */,
-				EF06759B1D4B332200AEBFDB /* 2014121502362710.jpeg in Resources */,
 				EFD2636E1D3CDB1B002693F9 /* start_point_in_map@2x.png in Resources */,
 				EFD262E51D3CDB1B002693F9 /* color_point_texture.png in Resources */,
 				EFD262DF1D3CDB1B002693F9 /* bubble_right_press@2x.png in Resources */,
@@ -1371,7 +1301,6 @@
 				EF6C477B1D509CA2008D135C /* GKJobTypeTableViewCell.xib in Resources */,
 				EFD2634A1D3CDB1B002693F9 /* navi_icon_right_2@3x.png in Resources */,
 				EFD263231D3CDB1B002693F9 /* navi_icon_island_7@2x.png in Resources */,
-				EF0675A31D4B332200AEBFDB /* 2014121502370518.jpeg in Resources */,
 				EFD263731D3CDB1B002693F9 /* RouteNavigationViewController.xib in Resources */,
 				EFD263371D3CDB1B002693F9 /* navi_icon_left_1_back@2x.png in Resources */,
 				EFD263301D3CDB1B002693F9 /* navi_icon_lane_left@3x.png in Resources */,
@@ -1390,7 +1319,6 @@
 				EFD2632F1D3CDB1B002693F9 /* navi_icon_lane_left@2x.png in Resources */,
 				EFD2632E1D3CDB1B002693F9 /* navi_icon_keep_on_right@3x.png in Resources */,
 				EFD262F11D3CDB1B002693F9 /* location@2x.png in Resources */,
-				EF0675A51D4B332200AEBFDB /* 2014121502371616.jpeg in Resources */,
 				EFD2635A1D3CDB1B002693F9 /* navi_info_speed_25@2x.png in Resources */,
 				EFD2634F1D3CDB1B002693F9 /* navi_info_alert@2x.png in Resources */,
 				EFD262D21D3CDB1B002693F9 /* ProvinceHighway.png in Resources */,
@@ -1398,7 +1326,6 @@
 				EFD263741D3CDB1B002693F9 /* tiananmen.png in Resources */,
 				EFD2633E1D3CDB1B002693F9 /* navi_icon_left_front@2x.png in Resources */,
 				EFD262ED1D3CDB1B002693F9 /* dottedline_texture_normal.png in Resources */,
-				EF0675961D4B332200AEBFDB /* 2014121502360822.jpeg in Resources */,
 				EFD263171D3CDB1B002693F9 /* navi_icon_island_1@2x.png in Resources */,
 				EFD263321D3CDB1B002693F9 /* navi_icon_lane_right@3x.png in Resources */,
 				EFD2631C1D3CDB1B002693F9 /* navi_icon_island_3@3x.png in Resources */,
@@ -1416,13 +1343,10 @@
 				EFD262E41D3CDB1B002693F9 /* color_arrow_texture03.png in Resources */,
 				EFD2635D1D3CDB1B002693F9 /* navi_info_speed_40@2x.png in Resources */,
 				EFD263071D3CDB1B002693F9 /* navi_icon_fork_front@3x.png in Resources */,
-				EF0675A21D4B332200AEBFDB /* 2014121502365814.jpeg in Resources */,
-				EF0675921D4B332200AEBFDB /* 2014121502354934.jpeg in Resources */,
 				EFD2634C1D3CDB1B002693F9 /* navi_icon_right_back@3x.png in Resources */,
 				EFD2632A1D3CDB1B002693F9 /* navi_icon_island_in@3x.png in Resources */,
 				EFD263141D3CDB1B002693F9 /* navi_icon_front_right@2x.png in Resources */,
 				EFD262F21D3CDB1B002693F9 /* location_direction@2x.png in Resources */,
-				EF06759A1D4B332200AEBFDB /* 2014121502362438.jpeg in Resources */,
 				EFD263041D3CDB1B002693F9 /* navi_icon_back@3x.png in Resources */,
 				EFD262EA1D3CDB1B002693F9 /* color_texture_cap2.png in Resources */,
 				EFD263461D3CDB1B002693F9 /* navi_icon_right_1_back@2x.png in Resources */,
@@ -1430,17 +1354,13 @@
 				EFD2633F1D3CDB1B002693F9 /* navi_icon_left_front@3x.png in Resources */,
 				EFA36F8D1D51BBF400829356 /* 0.jpg in Resources */,
 				EFD262F01D3CDB1B002693F9 /* icon_camera_overlay@2x.png in Resources */,
-				EF0675941D4B332200AEBFDB /* 2014121502355952.jpeg in Resources */,
 				EFD263271D3CDB1B002693F9 /* navi_icon_island_9@2x.png in Resources */,
 				EFD2630B1D3CDB1B002693F9 /* navi_icon_fork_mid_left@3x.png in Resources */,
 				EFD2633C1D3CDB1B002693F9 /* navi_icon_left_back@2x.png in Resources */,
 				EFD263111D3CDB1B002693F9 /* navi_icon_front@3x.png in Resources */,
 				EFD263361D3CDB1B002693F9 /* navi_icon_left_1@3x.png in Resources */,
 				EFD263291D3CDB1B002693F9 /* navi_icon_island_in@2x.png in Resources */,
-				EF0675A91D4B332200AEBFDB /* 2014121502373224.jpeg in Resources */,
 				EFD261961D3CD661002693F9 /* LaunchScreen.storyboard in Resources */,
-				EF0675A11D4B332200AEBFDB /* 2014121502365525.jpeg in Resources */,
-				EF0675A61D4B332200AEBFDB /* 2014121502372072.jpeg in Resources */,
 				EFD263331D3CDB1B002693F9 /* navi_icon_left@2x.png in Resources */,
 				EFD2634D1D3CDB1B002693F9 /* navi_icon_right_front@2x.png in Resources */,
 				EFD263351D3CDB1B002693F9 /* navi_icon_left_1@2x.png in Resources */,
@@ -1461,7 +1381,6 @@
 				EFD2631A1D3CDB1B002693F9 /* navi_icon_island_2@3x.png in Resources */,
 				EFD263591D3CDB1B002693F9 /* navi_info_speed_20@2x.png in Resources */,
 				EFD262CD1D3CDB1B002693F9 /* offline_ver.cfg in Resources */,
-				EF0675981D4B332200AEBFDB /* 2014121502361614.jpeg in Resources */,
 				EFD263621D3CDB1B002693F9 /* navi_info_speed_65@2x.png in Resources */,
 				EFD263381D3CDB1B002693F9 /* navi_icon_left_1_back@3x.png in Resources */,
 				EF06759E1D4B332200AEBFDB /* 201412150236367.jpeg in Resources */,
@@ -1483,9 +1402,7 @@
 				EFD263161D3CDB1B002693F9 /* navi_icon_goal@2x.png in Resources */,
 				EFD2634E1D3CDB1B002693F9 /* navi_icon_right_front@3x.png in Resources */,
 				EFD263121D3CDB1B002693F9 /* navi_icon_front_left@2x.png in Resources */,
-				EF0675A81D4B332200AEBFDB /* 2014121502372790.jpeg in Resources */,
 				EFD263101D3CDB1B002693F9 /* navi_icon_front@2x.png in Resources */,
-				EF0675931D4B332200AEBFDB /* 2014121502355319.jpeg in Resources */,
 				EFD262FD1D3CDB1B002693F9 /* pin_green@2x.png in Resources */,
 				EFD2635C1D3CDB1B002693F9 /* navi_info_speed_35@2x.png in Resources */,
 				EF0675991D4B332200AEBFDB /* 201412150236201.jpeg in Resources */,
@@ -1502,15 +1419,12 @@
 				EFD263511D3CDB1B002693F9 /* navi_info_light@2x.png in Resources */,
 				EFD262E71D3CDB1B002693F9 /* color_texture.png in Resources */,
 				EFD262C91D3CDB1B002693F9 /* NationalHighway.png in Resources */,
-				EF06759C1D4B332200AEBFDB /* 2014121502363052.jpeg in Resources */,
 				EFD262F41D3CDB1B002693F9 /* LocationHaloMini.png in Resources */,
-				EF0675A01D4B332200AEBFDB /* 2014121502365019.jpeg in Resources */,
 				EFD2630A1D3CDB1B002693F9 /* navi_icon_fork_mid_left@2x.png in Resources */,
 				EFD263561D3CDB1B002693F9 /* navi_info_speed_110@2x.png in Resources */,
 				EFD263221D3CDB1B002693F9 /* navi_icon_island_6@3x.png in Resources */,
 				EFD2633B1D3CDB1B002693F9 /* navi_icon_left_2@3x.png in Resources */,
 				EF0675BA1D4B332200AEBFDB /* GKJobCell.xib in Resources */,
-				EF0675951D4B332200AEBFDB /* 2014121502360427.jpeg in Resources */,
 				EFD263641D3CDB1B002693F9 /* navi_info_speed_75@2x.png in Resources */,
 				EFD262E91D3CDB1B002693F9 /* color_texture_cap.png in Resources */,
 				EFD262FE1D3CDB1B002693F9 /* pin_red@2x.png in Resources */,
@@ -1531,10 +1445,8 @@
 				EFD263421D3CDB1B002693F9 /* navi_icon_right@2x.png in Resources */,
 				EFD263091D3CDB1B002693F9 /* navi_icon_fork_left@3x.png in Resources */,
 				EFD263601D3CDB1B002693F9 /* navi_info_speed_55@2x.png in Resources */,
-				EF0675AA1D4B332200AEBFDB /* 2014121502373626.jpeg in Resources */,
 				EF6C476F1D509AAE008D135C /* GKMainFilterView.xib in Resources */,
 				EFD2632C1D3CDB1B002693F9 /* navi_icon_keep_on_left@3x.png in Resources */,
-				EF06759F1D4B332200AEBFDB /* 2014121502364211.jpeg in Resources */,
 				EFD262FC1D3CDB1B002693F9 /* none@2x.png in Resources */,
 				EFD262DD1D3CDB1B002693F9 /* bubble_middle_press@2x.png in Resources */,
 				EFD263281D3CDB1B002693F9 /* navi_icon_island_9@3x.png in Resources */,
