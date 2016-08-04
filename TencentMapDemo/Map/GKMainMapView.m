@@ -18,7 +18,7 @@
 #import "GKBackgroundAnnotation.h"
 #import "GKBackgroundAnnotationView.h"
 #import "GKMaskAnnotationView.h"
-#import "GKCallOutAnnotationView.h"
+#import "GKCustomAnnotation.h"
 
 @interface GKMainMapView () <QMapViewDelegate, GKCustomAnnotationViewDelegate>
 
@@ -37,8 +37,6 @@
 @property (nonatomic, strong) UIButton *userIconBtn;
 
 @property (nonatomic, strong) GKMaskAnnotationView *maskAnnotationView;
-
-@property (nonatomic, strong) GKCallOutAnnotationView *callOutAnnotationView;
 
 
 @end
@@ -96,15 +94,6 @@
     }
 }
 
-- (GKCallOutAnnotationView *)callOutAnnotationView
-{
-    if(!_callOutAnnotationView)
-    {
-        [self addSubview:self.callOutAnnotationView];
-    }
-    
-    return _callOutAnnotationView;
-}
 
 #pragma mark - life
 
@@ -125,21 +114,33 @@
         
         
         // 设置标注
-        QPointAnnotation *combineAnnotation = [[QPointAnnotation alloc] init];
-        [combineAnnotation setCoordinate:CLLocationCoordinate2DMake(39.987161,116.427621)];
-        
-        QPointAnnotation *normalAnnotation = [[QPointAnnotation alloc] init];
-        [normalAnnotation setCoordinate:CLLocationCoordinate2DMake(39.867161,116.327621)];
         
         GKUserIconViewAnnotation *iconAnnotation = [[GKUserIconViewAnnotation alloc] init];
         [iconAnnotation setCoordinate:CLLocationCoordinate2DMake(39.980161,116.227621)];
         self.userCircleCoordinate = iconAnnotation.coordinate;
         
+        GKCustomAnnotation *combineAnnotation = [[GKCustomAnnotation alloc] init];
+        [combineAnnotation setCoordinate:CLLocationCoordinate2DMake(39.987161,116.427621)];
+        
+        GKCustomAnnotation *normalAnnotation = [[GKCustomAnnotation alloc] init];
+        [normalAnnotation setCoordinate:CLLocationCoordinate2DMake(39.867161,116.327621)];
+        
+        GKCustomAnnotation *normalAnnotation1 = [[GKCustomAnnotation alloc] init];
+        [normalAnnotation1 setCoordinate:CLLocationCoordinate2DMake(39.80000, 116.360000)];
+        
+        GKCustomAnnotation *normalAnnotation2 = [[GKCustomAnnotation alloc] init];
+        [normalAnnotation2 setCoordinate:CLLocationCoordinate2DMake(39.70000, 116.370000)];
+        
+        GKCustomAnnotation *normalAnnotation3 = [[GKCustomAnnotation alloc] init];
+        [normalAnnotation3 setCoordinate:CLLocationCoordinate2DMake(39.83000, 116.500000)];
         //添加标注
         
         [self.annotations addObject:iconAnnotation];
         [self.annotations addObject:combineAnnotation];
         [self.annotations addObject:normalAnnotation];
+        [self.annotations addObject:normalAnnotation1];
+        [self.annotations addObject:normalAnnotation2];
+        [self.annotations addObject:normalAnnotation3];
         
         [self.mapView addAnnotations:self.annotations];
         
@@ -181,7 +182,7 @@
         }
     }
     
-    if ([annotation isKindOfClass:[QPointAnnotation class]]) {
+    if ([annotation isKindOfClass:[GKCustomAnnotation class]]) {
         //添加自定义annotation
         if ([annotation isEqual:[_annotations objectAtIndex:1]]) {
             GKCustomAnnotationView *annotationView = (GKCustomAnnotationView *)[_mapView dequeueReusableAnnotationViewWithIdentifier:customReuseIndentifier];
@@ -194,16 +195,16 @@
             }
         }
         
-        if ([annotation isEqual:[_annotations objectAtIndex:2]]) {
-            GKCustomAnnotationView *annotationView = (GKCustomAnnotationView *)[_mapView dequeueReusableAnnotationViewWithIdentifier:normalReuseIndentifier];
-            if (annotationView == nil) {
-                annotationView = [[GKCustomAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:normalReuseIndentifier];
-                annotationView.delegate = self;
-                annotationView.type = AnnotationViewTypeNormal;
-                
-                return annotationView;
-            }
+        
+        GKCustomAnnotationView *annotationView = (GKCustomAnnotationView *)[_mapView dequeueReusableAnnotationViewWithIdentifier:normalReuseIndentifier];
+        if (annotationView == nil) {
+            annotationView = [[GKCustomAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:normalReuseIndentifier];
+            annotationView.delegate = self;
+            annotationView.type = AnnotationViewTypeNormal;
+            
+            return annotationView;
         }
+        
     }
     
     return nil;
@@ -258,7 +259,10 @@
 // 点击标注，移动到地图中心
 - (void)moveAnnotationToMapCenter:(id<QAnnotation>)annotation
 {
-    [self.mapView setCenterCoordinate:annotation.coordinate animated:YES];
+//    CGPoint newCenterPoint = CGPointMake(CGRectGetMinX(screenRect), CGRectGetMidY(screenRect) + (jobCardHeight));
+//    CLLocationCoordinate2D newCenterCoordinate = [self.mapView convertPoint:newCenterPoint toCoordinateFromView:self.mapView];
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(annotation.coordinate.latitude - 0.2, annotation.coordinate.longitude);
+    [self.mapView setCenterCoordinate:coordinate animated:YES];
 }
 
 - (void)addMaskAnnotationView:(id<QAnnotation>)annotation withAnnotationRect:(CGRect)annotationRect
