@@ -15,8 +15,8 @@
 #import "GKCircleView.h"
 #import "GKJobCardView.h"
 //#import "GKCombineAnnotationView.h"
-#import "GKCallOutAnnotationView.h"
 #import "GKMaskAnnotationView.h"
+#import "GKSingleAnnotationView.h"
 
 @interface GKCustomAnnotationView ()
 {
@@ -31,7 +31,7 @@
 @property (nonatomic, strong) GKJobCardView *jobCard;
 @property (nonatomic, strong) UIButton *iconBtn;
 //@property (nonatomic, strong) GKCombineAnnotationView *AnnotationView;
-@property (nonatomic, strong) GKCallOutAnnotationView *callOutAnnotationView;
+@property (nonatomic, strong) GKSingleAnnotationView *singleAnnotationView;
 
 @end
 
@@ -57,17 +57,15 @@
         self.backgroundColor = [UIColor clearColor];
         
         
-        self.callOutAnnotationView = [[[NSBundle mainBundle] loadNibNamed:@"GKCallOutAnnotationView" owner:self options:nil] lastObject];
-        self.callOutAnnotationView.frame = CGRectMake(selfBounds.origin.x, selfBounds.origin.y, annotationViewWidth, annotationViewHeight);
-        self.callOutAnnotationView.center = CGPointMake(CGRectGetMidX(selfBounds), CGRectGetMidY(selfBounds));
-        self.callOutAnnotationView.layer.cornerRadius = annotationViewHeight * 0.5;
-        self.callOutAnnotationView.clipsToBounds = YES;
+        self.singleAnnotationView = [[[NSBundle mainBundle] loadNibNamed:@"GKSingleAnnotationView" owner:nil options:nil] lastObject];
+        self.singleAnnotationView.frame = CGRectMake(selfBounds.origin.x, selfBounds.origin.y, annotationViewWidth, annotationViewHeight);
+        self.singleAnnotationView.center = CGPointMake(CGRectGetMidX(selfBounds), CGRectGetMidY(selfBounds));
+        self.singleAnnotationView.layer.cornerRadius = annotationViewHeight * 0.5;
+        self.singleAnnotationView.clipsToBounds = YES;
         
-        [self.callOutAnnotationView.homeBtn addTarget:self action:@selector(didClickHomeBtn:) forControlEvents:UIControlEventTouchUpInside];
+        [self.singleAnnotationView.annotationBtn addTarget:self action:@selector(didClickHomeBtn:) forControlEvents:UIControlEventTouchUpInside];
         
-        [self addSubview:self.callOutAnnotationView];
-        
-        
+        [self addSubview:self.singleAnnotationView];
     }
     return self;
 }
@@ -79,8 +77,7 @@
     
     if(type == AnnotationViewTypeNormal)
     {
-//        self.AnnotationView.pageControl.hidden = YES;
-        self.callOutAnnotationView.pageControl.hidden = YES;
+        
     }
 }
 
@@ -89,37 +86,17 @@
 
 #pragma mark - public
 
-- (void)resetUI
-{
-    self.callOutAnnotationView.hidden = NO;
-    
-//    self.AnnotationView.layer.anchorPoint = CGPointMake(0.5, 0.5);
-    
-    [UIView animateWithDuration:frameScaleDur animations:^{
-        
-        self.callOutAnnotationView.frame = CGRectMake(selfBounds.origin.x, selfBounds.origin.y, annotationViewWidth, annotationViewHeight);
-        self.callOutAnnotationView.center = CGPointMake(CGRectGetMidX(selfBounds), CGRectGetMinY(selfBounds));
-        
-        [self.callOutAnnotationView hideSubViews];
-        
-        [self layoutIfNeeded];
-    } completion:^(BOOL finished) {
-        
-        [self hideJobCard];
-    }];
-}
-
 
 #pragma mark - private
 
 
 - (void)didClickHomeBtn:(id)sender
 {
-    
     if(self.type == AnnotationViewTypeNormal)
     {
+        
         [self presentJobCard];
-
+        
     }else
     {
         [self callOutCombineAnnotation];
@@ -137,12 +114,12 @@
     
     UIView *result = [super hitTest:point withEvent:event];
     
-    CGPoint btnPoint = [_callOutAnnotationView.homeBtn convertPoint:point fromView:self];
+    CGPoint btnPoint = [_singleAnnotationView.annotationBtn convertPoint:point fromView:self];
     
     
-    if([_callOutAnnotationView.homeBtn pointInside:btnPoint withEvent:event])
+    if([_singleAnnotationView.annotationBtn pointInside:btnPoint withEvent:event])
     {
-        return _callOutAnnotationView.homeBtn;
+        return _singleAnnotationView.annotationBtn;
     }
     
     return result;
@@ -158,9 +135,9 @@
 //        [self.delegate moveAnnotationToMapCenter:wself.annotation];
 //    }
     
-    if(self.delegate && [self.delegate respondsToSelector:@selector(addMaskAnnotationView:)])
+    if(self.delegate && [self.delegate respondsToSelector:@selector(addMaskAnnotationView:withAnnotationRect:)])
     {
-        [self.delegate addMaskAnnotationView:self.annotation];
+        [self.delegate addMaskAnnotationView:self.annotation withAnnotationRect:selfBounds];
     }
     
 }
@@ -169,10 +146,10 @@
 - (void)presentJobCard
 {
     [UIView animateWithDuration:scaleMaxDur animations:^{
-        self.callOutAnnotationView.transform = CGAffineTransformScale(self.callOutAnnotationView.transform, annotationViewMaxScale, annotationViewMaxScale);
+        self.singleAnnotationView.transform = CGAffineTransformScale(self.singleAnnotationView.transform, annotationViewMaxScale, annotationViewMaxScale);
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:scaleMinDur animations:^{
-            self.callOutAnnotationView.transform = CGAffineTransformScale(self.callOutAnnotationView.transform, annotationViewMinScale, annotationViewMinScale);
+            self.singleAnnotationView.transform = CGAffineTransformScale(self.singleAnnotationView.transform, annotationViewMinScale, annotationViewMinScale);
         } completion:^(BOOL finished) {
             
             if(self.delegate && [self.delegate respondsToSelector:@selector(shouldPresentJobCardView:)])
@@ -193,10 +170,10 @@
 - (void)hideJobCard
 {
     [UIView animateWithDuration:scaleMaxDur animations:^{
-        self.callOutAnnotationView.transform = CGAffineTransformScale(self.callOutAnnotationView.transform, annotationViewMaxScale, annotationViewMaxScale);
+        self.singleAnnotationView.transform = CGAffineTransformScale(self.singleAnnotationView.transform, annotationViewMaxScale, annotationViewMaxScale);
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:scaleMinDur animations:^{
-            self.callOutAnnotationView.transform = CGAffineTransformScale(self.callOutAnnotationView.transform, annotationViewMinScale, annotationViewMinScale);
+            self.singleAnnotationView.transform = CGAffineTransformScale(self.singleAnnotationView.transform, annotationViewMinScale, annotationViewMinScale);
         } completion:^(BOOL finished) {
             
             if(self.delegate && [self.delegate respondsToSelector:@selector(shouldPresentJobCardView:)])

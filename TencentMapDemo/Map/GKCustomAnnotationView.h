@@ -19,7 +19,7 @@ typedef NS_ENUM(NSUInteger, AnnotationViewType) {
 
 - (void)moveAnnotationToMapCenter:(id <QAnnotation>)annotation;
 
-- (void)addMaskAnnotationView:(id<QAnnotation>)annotation;
+- (void)addMaskAnnotationView:(id<QAnnotation>)annotation withAnnotationRect:(CGRect)annotationRect;
 
 @end
 

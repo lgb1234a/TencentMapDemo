@@ -18,6 +18,7 @@
 #import "GKBackgroundAnnotation.h"
 #import "GKBackgroundAnnotationView.h"
 #import "GKMaskAnnotationView.h"
+#import "GKCallOutAnnotationView.h"
 
 @interface GKMainMapView () <QMapViewDelegate, GKCustomAnnotationViewDelegate>
 
@@ -37,6 +38,9 @@
 
 @property (nonatomic, strong) GKMaskAnnotationView *maskAnnotationView;
 
+@property (nonatomic, strong) GKCallOutAnnotationView *callOutAnnotationView;
+
+
 @end
 
 
@@ -48,6 +52,8 @@
 #define userIconHeight   60
 #define tabbarHeight     50
 #define tabbarTopMargin  5
+#define annotationViewWidth 60
+#define annotationViewHeight 65
 
 @implementation GKMainMapView
 
@@ -88,6 +94,16 @@
         [_userIconBtn addTarget:self action:@selector(tapedUserIconBtn:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_userIconBtn];
     }
+}
+
+- (GKCallOutAnnotationView *)callOutAnnotationView
+{
+    if(!_callOutAnnotationView)
+    {
+        [self addSubview:self.callOutAnnotationView];
+    }
+    
+    return _callOutAnnotationView;
 }
 
 #pragma mark - life
@@ -139,6 +155,8 @@
 - (void)didTapedCalloutViewCell:(NSNotification *)notification
 {
     NSLog(@"taped cell with id: %@", notification.userInfo[@"userInfo"]);
+    
+    [self shouldPresentJobCardView:YES];
 }
 
 
@@ -243,7 +261,7 @@
     [self.mapView setCenterCoordinate:annotation.coordinate animated:YES];
 }
 
-- (void)addMaskAnnotationView:(id<QAnnotation>)annotation
+- (void)addMaskAnnotationView:(id<QAnnotation>)annotation withAnnotationRect:(CGRect)annotationRect
 {
     // 地图坐标转换为屏幕坐标系坐标
     CGPoint annotationPoint = [self.mapView convertCoordinate:annotation.coordinate toPointToView:self];
@@ -252,7 +270,6 @@
     maskBtn.backgroundColor = [UIColor clearColor];
     maskBtn.frame = self.bounds;
     [maskBtn addTarget:self action:@selector(didTapedMaskBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:maskBtn];
     
     _maskAnnotationView = [[[NSBundle mainBundle] loadNibNamed:@"GKMaskAnnotationView" owner:nil options:nil] firstObject];
     _maskAnnotationView.center = annotationPoint;
@@ -260,7 +277,9 @@
     
     [_maskAnnotationView addHideOrCalloutAnimation:NO completion:nil];
     
-    [self addSubview:_maskAnnotationView];
+    [self insertSubview:_maskAnnotationView belowSubview:self.jobCard];
+    [self insertSubview:maskBtn belowSubview:_maskAnnotationView];
+    
 }
 
 #pragma mark - private
@@ -274,6 +293,20 @@
 
 - (void)addCardView
 {
+    UIButton *maskBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    maskBtn.backgroundColor = [UIColor clearColor];
+    maskBtn.frame = self.bounds;
+    [maskBtn addTarget:self action:@selector(tapedToHideCardView:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self insertSubview:maskBtn belowSubview:self.jobCard];
+    
+    if([self.subviews containsObject:_maskAnnotationView])
+    {
+        [maskBtn removeFromSuperview];
+        [self insertSubview:maskBtn belowSubview:_maskAnnotationView];
+    }
+    
+    
     if(!self.jobCard.isVisible)
     {
         self.jobCard.hidden = NO;
@@ -286,12 +319,8 @@
         }];
     }
     
-    UIButton *maskBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    maskBtn.backgroundColor = [UIColor clearColor];
-    maskBtn.frame = self.bounds;
-    [maskBtn addTarget:self action:@selector(tapedToHideCardView:) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:maskBtn];
 }
+
 
 - (void)removewCardView
 {
@@ -311,6 +340,7 @@
          }];
     }
 }
+
 
 - (void)didTapedMaskBtn:(id)sender
 {
